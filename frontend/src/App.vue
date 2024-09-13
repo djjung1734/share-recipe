@@ -16,9 +16,9 @@
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
         rel="stylesheet"
       />
-      <link href="css/styles.css" rel="stylesheet" />
+      <link href="./css/styles.css" rel="stylesheet" type="text/html" />
     </head>
-    <body>
+    <body class="vh-100">
       <router-view></router-view>
     </body>
   </div>
