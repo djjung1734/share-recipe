@@ -24,13 +24,16 @@
             style="font-size: 12px"
             >Log In</span
           >
-          <span
-            type="button"
-            class="btn btn-outline-dark border-0 rounded-circle p-1 material-icons material-symbols-outlined"
-            style="font-size: 32px"
+
+          <router-link to="/user"
+            ><span
+              type="button"
+              class="btn btn-outline-dark border-0 rounded-circle p-1 material-icons material-symbols-outlined"
+              style="font-size: 32px"
+            >
+              person
+            </span></router-link
           >
-            person
-          </span>
         </div>
       </div>
     </nav>
