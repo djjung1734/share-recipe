@@ -1,7 +1,11 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container px-4 px-lg-5">
-      <a class="navbar-brand" href="#!">ShareRECIPE</a>
+      <router-link to="/home">
+        <span type="button" class="btn border-0 navbar-brand"
+          >ShareRECIPE</span
+        ></router-link
+      >
       <div class="d-flex w-50">
         <input
           class="form-control mr-sm-2 py-0"

@@ -1,7 +1,7 @@
 <template>
   <div class="h-100">
     <TopNav />
-    <div class="h-100">
+    <div class="position-fixed" style="top: 56px; bottom: 0px">
       <div
         class="d-flex flex-column flex-shrink-0 p-3 bg-light h-100"
         style="width: 280px"
