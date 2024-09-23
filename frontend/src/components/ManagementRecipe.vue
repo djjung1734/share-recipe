@@ -2,7 +2,13 @@
   <div class="h-100">
     <TopNav />
     <SideNav />
-    <div class="content">레시피</div>
+    <div class="content">
+      <div class="p-3 float-end">
+        <button type="button" class="btn btn-outline-success" @click="btnPopup">
+          레시피 등록
+        </button>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -16,6 +22,11 @@ export default Vue.extend({
   components: {
     TopNav,
     SideNav,
+  },
+  methods: {
+    btnPopup() {
+      window.open("/editRecipe", "_blank", "width=300,height=500");
+    },
   },
 });
 </script>

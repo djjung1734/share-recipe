@@ -2,6 +2,7 @@ import Home from "@/components/Home.vue";
 import ManagementRecipe from "@/components/ManagementRecipe.vue";
 import CookingReview from "@/components/CookingReview.vue";
 import EditMember from "@/components/EditMember.vue";
+import EditRecipe from "@/components/Modal/EditRecipe.vue";
 import Vue from "vue";
 import VueRouter from "vue-router";
 
@@ -21,6 +22,7 @@ export const router = new VueRouter({
     {
       path: "/recipe",
       component: ManagementRecipe,
+      children: [],
     },
     {
       path: "/review",
@@ -29,6 +31,10 @@ export const router = new VueRouter({
     {
       path: "/member",
       component: EditMember,
+    },
+    {
+      path: "/editRecipe",
+      component: EditRecipe,
     },
   ],
 });
