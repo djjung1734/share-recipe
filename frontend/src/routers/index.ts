@@ -1,5 +1,7 @@
 import Home from "@/components/Home.vue";
-import UserPage from "@/components/UserPage.vue";
+import ManagementRecipe from "@/components/ManagementRecipe.vue";
+import CookingReview from "@/components/CookingReview.vue";
+import EditMember from "@/components/EditMember.vue";
 import Vue from "vue";
 import VueRouter from "vue-router";
 
@@ -17,8 +19,16 @@ export const router = new VueRouter({
       component: Home,
     },
     {
-      path: "/user",
-      component: UserPage,
+      path: "/recipe",
+      component: ManagementRecipe,
+    },
+    {
+      path: "/review",
+      component: CookingReview,
+    },
+    {
+      path: "/member",
+      component: EditMember,
     },
   ],
 });

@@ -21,6 +21,7 @@
       </div>
       <div>
         <span
+          type="button"
           class="me-3 text-dark"
           data-bs-toggle="modal"
           data-bs-target="#loginModal"
@@ -28,7 +29,7 @@
           >Log In</span
         >
 
-        <router-link to="/user"
+        <router-link to="/recipe"
           ><span
             type="button"
             class="btn btn-outline-dark border-0 rounded-circle p-1 material-icons material-symbols-outlined"
@@ -39,5 +40,20 @@
         >
       </div>
     </div>
+    <LogInModal />
+    <SignUpModal />
   </nav>
 </template>
+
+<script lang="ts">
+import Vue from "vue";
+import LogInModal from "../Modal/LogInModal.vue";
+import SignUpModal from "../Modal/SignUpModal.vue";
+
+export default Vue.extend({
+  components: {
+    LogInModal,
+    SignUpModal,
+  },
+});
+</script>

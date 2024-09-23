@@ -273,23 +273,17 @@
         </div>
       </div>
     </section>
-    <LogInModal />
-    <SignUpModal />
   </div>
 </template>
 
 <script lang="ts">
 import Vue from "vue";
-import LogInModal from "./Modal/LogInModal.vue";
-import SignUpModal from "./Modal/SignUpModal.vue";
 import TopNav from "./Navigation/TopNav.vue";
 
 export default Vue.extend({
   // eslint-disable-next-line vue/multi-word-component-names
   name: "Home",
   components: {
-    LogInModal,
-    SignUpModal,
     TopNav,
   },
 });
