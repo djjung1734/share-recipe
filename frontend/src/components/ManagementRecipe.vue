@@ -25,7 +25,7 @@ export default Vue.extend({
   },
   methods: {
     btnPopup() {
-      window.open("/editRecipe", "_blank", "width=300,height=500");
+      window.open("/editRecipe", "_blank", "width=800,height=800");
     },
   },
 });
