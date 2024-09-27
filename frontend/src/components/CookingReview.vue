@@ -1,8 +1,10 @@
 <template>
   <div class="h-100">
     <TopNav />
-    <SideNav />
-    <div class="content">요리 후기</div>
+    <div class="d-flex">
+      <SideNav />
+      <div class="container">요리 후기</div>
+    </div>
   </div>
 </template>
 
@@ -19,10 +21,3 @@ export default Vue.extend({
   },
 });
 </script>
-
-<style lang="css" scoped>
-.content {
-  padding-left: 280px;
-  height: calc(100vh - 56px);
-}
-</style>

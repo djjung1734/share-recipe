@@ -1,5 +1,5 @@
 <template>
-  <div class="position-absolute" style="top: 56px; bottom: 0px">
+  <div style="height: calc(100vh - 56px)">
     <div
       class="d-flex flex-column flex-shrink-0 p-3 bg-light h-100"
       style="width: 280px"

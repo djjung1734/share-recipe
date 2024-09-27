@@ -1,12 +1,18 @@
 <template>
   <div class="h-100">
     <TopNav />
-    <SideNav />
-    <div class="content">
-      <div class="p-3 float-end">
-        <button type="button" class="btn btn-outline-success" @click="btnPopup">
-          레시피 등록
-        </button>
+    <div class="d-flex">
+      <SideNav />
+      <div class="container">
+        <div class="float-end">
+          <button
+            type="button"
+            class="btn btn-outline-success"
+            @click="btnPopup"
+          >
+            레시피 등록
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -30,10 +36,3 @@ export default Vue.extend({
   },
 });
 </script>
-
-<style lang="css" scoped>
-.content {
-  padding-left: 280px;
-  height: calc(100vh - 56px);
-}
-</style>
