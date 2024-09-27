@@ -1,25 +1,23 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container px-4 px-lg-5">
+    <div class="container px-4 px-lg-5 py-0">
       <router-link to="/home">
         <span type="button" class="btn border-0 navbar-brand"
           >ShareRECIPE</span
         ></router-link
       >
-      <div class="d-flex w-50">
+      <div class="d-flex align-items-center w-50">
         <input
-          class="form-control mr-sm-2 py-0"
+          class="form-control mr-sm-2 py-1"
           type="search"
           placeholder="Search"
           aria-label="Search"
         />
-        <span
-          type="button"
-          class="btn btn-outline-success border-0 p-1 material-icons material-symbols-outlined"
-          >search</span
-        >
+        <button class="btn border-0">
+          <span class="material-symbols-outlined">search</span>
+        </button>
       </div>
-      <div>
+      <div class="d-flex align-items-center">
         <span
           type="button"
           class="me-3 text-dark"
@@ -29,14 +27,12 @@
           >Log In</span
         >
 
-        <router-link to="/recipe"
-          ><span
-            type="button"
-            class="btn btn-outline-dark border-0 rounded-circle p-1 material-icons material-symbols-outlined"
-            style="font-size: 32px"
-          >
-            person
-          </span></router-link
+        <router-link to="/recipe">
+          <button class="btn border-0 rounded-circle">
+            <span class="material-symbols-outlined" style="font-size: 32px">
+              person
+            </span>
+          </button></router-link
         >
       </div>
     </div>
