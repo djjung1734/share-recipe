@@ -1,6 +1,6 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light py-0">
-    <div class="container px-4 px-lg-5 py-0">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark py-0">
+    <div class="container px-1 py-0">
       <router-link to="/home">
         <span type="button" class="btn border-0 navbar-brand"
           >ShareRECIPE</span
@@ -14,13 +14,13 @@
           aria-label="Search"
         />
         <button class="btn border-0">
-          <span class="material-symbols-outlined">search</span>
+          <span class="material-symbols-outlined text-white">search</span>
         </button>
       </div>
       <div class="d-flex align-items-center">
         <span
           type="button"
-          class="me-3 text-dark"
+          class="me-3 text-white"
           data-bs-toggle="modal"
           data-bs-target="#loginModal"
           style="font-size: 12px"
@@ -29,7 +29,10 @@
 
         <router-link to="/recipe">
           <button class="btn border-0 rounded-circle">
-            <span class="material-symbols-outlined" style="font-size: 32px">
+            <span
+              class="material-symbols-outlined text-white"
+              style="font-size: 32px"
+            >
               person
             </span>
           </button></router-link

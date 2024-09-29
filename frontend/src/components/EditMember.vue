@@ -3,7 +3,7 @@
     <TopNav />
     <div class="d-flex">
       <SideNav />
-      <div class="container bg-light d-flex flex-column">
+      <div class="container d-flex flex-column m-0 bg-light">
         <span class="navbar-brand fs-5 py-1">회원정보수정</span>
         <div
           class="card border-0 h-100 justify-content-center align-items-center"
@@ -96,5 +96,8 @@ input:focus,
 input:not(:placeholder-shown) {
   border-bottom: solid 1px #8aa1a1;
   outline: none;
+}
+.container {
+  max-width: none;
 }
 </style>
