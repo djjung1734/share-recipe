@@ -16,25 +16,27 @@
       <ul class="nav nav-pills flex-column border-top pt-3">
         <li class="nav-item">
           <router-link to="/recipe" class="text-decoration-none"
-            ><div type="button" class="nav-link active">
-              <svg class="bi me-2" width="16" height="16"></svg>
-              레시피
+            ><div type="button" class="nav-link d-flex align-items-center">
+              <span class="material-symbols-outlined pe-2"> ramen_dining </span>
+              <span>레시피</span>
             </div></router-link
           >
         </li>
         <li>
           <router-link to="review" class="text-decoration-none"
-            ><div type="button" class="nav-link">
-              <svg class="bi me-2" width="16" height="16"></svg>
-              요리 후기
+            ><div type="button" class="nav-link d-flex align-items-center">
+              <span class="material-symbols-outlined pe-2"> rate_review </span>
+              <span>요리 후기</span>
             </div></router-link
           >
         </li>
         <li>
           <router-link to="member" class="text-decoration-none"
-            ><div type="button" class="nav-link">
-              <svg class="bi me-2" width="16" height="16"></svg>
-              회원정보수정
+            ><div type="button" class="nav-link d-flex align-items-center">
+              <span class="material-symbols-outlined pe-2">
+                manage_accounts
+              </span>
+              <span>회원정보수정</span>
             </div></router-link
           >
         </li>

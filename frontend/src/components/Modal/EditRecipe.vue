@@ -71,13 +71,13 @@
             />
           </div>
         </div>
-      </div>
-      <div class="col-12 p-3">
-        <div class="float-end">
-          <button type="reset" class="btn btn-outline-secondary me-1">
-            취소
-          </button>
-          <button type="button" class="btn btn-outline-success">등록</button>
+        <div class="col-12 p-3">
+          <div class="float-end">
+            <button type="reset" class="btn btn-outline-secondary me-1">
+              취소
+            </button>
+            <button type="button" class="btn btn-outline-success">등록</button>
+          </div>
         </div>
       </div>
     </div>

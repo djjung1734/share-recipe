@@ -8,33 +8,18 @@
         <div
           class="card border-0 h-100 justify-content-center align-items-center"
         >
-          <div class="">
+          <div class="w-50">
             <div class="input-box">
-              <input
-                id="username"
-                type="text"
-                name="username"
-                placeholder="ID"
-              />
               <label for="username">ID</label>
+              <input id="username" type="text" name="username" />
             </div>
             <div class="input-box">
-              <input
-                id="password"
-                type="password"
-                name="password"
-                placeholder="Password"
-              />
               <label for="password">Password</label>
+              <input id="password" type="password" name="password" />
             </div>
             <div class="input-box">
-              <input
-                id="nickname"
-                type="text"
-                name="nickname"
-                placeholder="Nickname"
-              />
               <label for="nickname">Nickname</label>
+              <input id="nickname" type="text" name="nickname" />
             </div>
             <div class="float-end">
               <button class="btn btn-outline-success" type="submit">
@@ -64,8 +49,9 @@ export default Vue.extend({
 
 <style scoped>
 .input-box {
-  position: relative;
   margin: 10px 0;
+  display: flex;
+  align-items: end;
 }
 .input-box > input {
   background: transparent;
@@ -75,22 +61,12 @@ export default Vue.extend({
   font-size: 14pt;
   width: 100%;
 }
-input::placeholder {
-  color: transparent;
-}
-input:placeholder-shown + label {
-  color: #aaa;
-  font-size: 14pt;
-  top: 15px;
-}
 input:focus + label,
 label {
   color: #8aa1a1;
-  font-size: 10pt;
   pointer-events: none;
-  position: absolute;
-  left: 0px;
-  top: 0px;
+  min-width: 80px;
+  margin-right: 5px;
 }
 input:focus,
 input:not(:placeholder-shown) {
