@@ -20,6 +20,7 @@
               @click="selectMenu('recipe')"
               type="button"
               class="nav-link d-flex align-items-center"
+              :class="{ active: selected === 'recipe' }"
             >
               <span class="material-symbols-outlined pe-2"> ramen_dining </span>
               <span>레시피</span>
@@ -32,6 +33,7 @@
               @click="selectMenu('review')"
               type="button"
               class="nav-link d-flex align-items-center"
+              :class="{ active: selected === 'review' }"
             >
               <span class="material-symbols-outlined pe-2"> rate_review </span>
               <span>요리 후기</span>
@@ -44,6 +46,7 @@
               @click="selectMenu('member')"
               type="button"
               class="nav-link d-flex align-items-center"
+              :class="{ active: selected === 'member' }"
             >
               <span class="material-symbols-outlined pe-2">
                 manage_accounts
@@ -64,12 +67,12 @@ export default Vue.extend({
   name: "ManagementRecipe",
   data() {
     return {
-      select: "recipe",
+      selected: "recipe",
     };
   },
   methods: {
     selectMenu(menu: string) {
-      this.select = menu;
+      this.selected = menu;
     },
   },
 });
