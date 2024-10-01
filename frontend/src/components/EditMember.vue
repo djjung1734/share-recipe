@@ -1,32 +1,24 @@
 <template>
-  <div class="h-100">
-    <TopNav />
-    <div class="d-flex">
-      <SideNav />
-      <div class="container d-flex flex-column m-0 bg-light">
-        <span class="navbar-brand fs-5 py-1">회원정보수정</span>
-        <div
-          class="card border-0 h-100 justify-content-center align-items-center"
-        >
-          <div class="w-50">
-            <div class="input-box">
-              <label for="username">ID</label>
-              <input id="username" type="text" name="username" />
-            </div>
-            <div class="input-box">
-              <label for="password">Password</label>
-              <input id="password" type="password" name="password" />
-            </div>
-            <div class="input-box">
-              <label for="nickname">Nickname</label>
-              <input id="nickname" type="text" name="nickname" />
-            </div>
-            <div class="float-end">
-              <button class="btn btn-outline-success" type="submit">
-                회원정보 수정
-              </button>
-            </div>
-          </div>
+  <div class="container d-flex flex-column m-0 bg-light">
+    <span class="navbar-brand fs-5 py-1">회원정보수정</span>
+    <div class="card border-0 h-100 justify-content-center align-items-center">
+      <div class="w-50">
+        <div class="input-box">
+          <label for="username">ID</label>
+          <input id="username" type="text" name="username" />
+        </div>
+        <div class="input-box">
+          <label for="password">Password</label>
+          <input id="password" type="password" name="password" />
+        </div>
+        <div class="input-box">
+          <label for="nickname">Nickname</label>
+          <input id="nickname" type="text" name="nickname" />
+        </div>
+        <div class="float-end">
+          <button class="btn btn-outline-success" type="submit">
+            회원정보 수정
+          </button>
         </div>
       </div>
     </div>
@@ -35,15 +27,9 @@
 
 <script lang="ts">
 import Vue from "vue";
-import TopNav from "./Navigation/TopNav.vue";
-import SideNav from "./Navigation/SideNav.vue";
 
 export default Vue.extend({
   name: "EditMember",
-  components: {
-    TopNav,
-    SideNav,
-  },
 });
 </script>
 

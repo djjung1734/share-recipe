@@ -15,24 +15,36 @@
       </div>
       <ul class="nav nav-pills flex-column border-top pt-3">
         <li class="nav-item">
-          <router-link to="/recipe" class="text-decoration-none"
-            ><div type="button" class="nav-link d-flex align-items-center">
+          <router-link to="/user/recipe" class="text-decoration-none"
+            ><div
+              @click="selectMenu('recipe')"
+              type="button"
+              class="nav-link d-flex align-items-center"
+            >
               <span class="material-symbols-outlined pe-2"> ramen_dining </span>
               <span>레시피</span>
             </div></router-link
           >
         </li>
         <li>
-          <router-link to="review" class="text-decoration-none"
-            ><div type="button" class="nav-link d-flex align-items-center">
+          <router-link to="/user/review" class="text-decoration-none"
+            ><div
+              @click="selectMenu('review')"
+              type="button"
+              class="nav-link d-flex align-items-center"
+            >
               <span class="material-symbols-outlined pe-2"> rate_review </span>
               <span>요리 후기</span>
             </div></router-link
           >
         </li>
         <li>
-          <router-link to="member" class="text-decoration-none"
-            ><div type="button" class="nav-link d-flex align-items-center">
+          <router-link to="/user/member" class="text-decoration-none"
+            ><div
+              @click="selectMenu('member')"
+              type="button"
+              class="nav-link d-flex align-items-center"
+            >
               <span class="material-symbols-outlined pe-2">
                 manage_accounts
               </span>
@@ -44,6 +56,24 @@
     </div>
   </div>
 </template>
+
+<script lang="ts">
+import Vue from "vue";
+
+export default Vue.extend({
+  name: "ManagementRecipe",
+  data() {
+    return {
+      select: "recipe",
+    };
+  },
+  methods: {
+    selectMenu(menu: string) {
+      this.select = menu;
+    },
+  },
+});
+</script>
 
 <style scoped>
 .nav-pills .nav-link {

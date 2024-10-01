@@ -1,4 +1,5 @@
 import Home from "@/components/Home.vue";
+import UserPage from "@/components/UserPage.vue";
 import ManagementRecipe from "@/components/ManagementRecipe.vue";
 import CookingReview from "@/components/CookingReview.vue";
 import EditMember from "@/components/EditMember.vue";
@@ -20,18 +21,25 @@ export const router = new VueRouter({
       component: Home,
     },
     {
-      path: "/recipe",
-      component: ManagementRecipe,
-      children: [],
+      path: "/user",
+      component: UserPage,
+      redirect: "/user/recipe",
+      children: [
+        {
+          path: "/user/recipe",
+          component: ManagementRecipe,
+        },
+        {
+          path: "/user/review",
+          component: CookingReview,
+        },
+        {
+          path: "/user/member",
+          component: EditMember,
+        },
+      ],
     },
-    {
-      path: "/review",
-      component: CookingReview,
-    },
-    {
-      path: "/member",
-      component: EditMember,
-    },
+
     {
       path: "/editRecipe",
       component: EditRecipe,

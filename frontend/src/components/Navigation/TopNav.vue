@@ -27,7 +27,7 @@
           >Log In</span
         >
 
-        <router-link to="/recipe">
+        <router-link to="/user/recipe">
           <button class="btn border-0 rounded-circle">
             <span
               class="material-symbols-outlined text-white"
