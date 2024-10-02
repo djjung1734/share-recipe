@@ -1,14 +1,15 @@
 <template>
-  <div class="container d-flex flex-column m-0 bg-light">
+  <div class="container d-flex flex-column m-0 bg-light p-3">
     <span class="navbar-brand fs-5 py-1">레시피</span>
     <div class="card border-0 h-100 p-3">
       <div>
         <button
           type="button"
-          class="btn btn-outline-success float-end"
+          class="btn btn-outline-secondary float-end p-1 pb-0"
           @click="btnPopup"
         >
-          레시피 등록
+          <span class="material-symbols-outlined"> add </span>
+          <span class="material-symbols-outlined"> ramen_dining </span>
         </button>
       </div>
       <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 p-3">

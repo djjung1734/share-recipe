@@ -1,5 +1,5 @@
 <template>
-  <div class="container d-flex flex-column m-0 bg-light">
+  <div class="container d-flex flex-column m-0 bg-light p-3">
     <span class="navbar-brand fs-5 py-1">회원정보수정</span>
     <div class="card border-0 h-100 justify-content-center align-items-center">
       <div class="w-50">
