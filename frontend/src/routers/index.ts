@@ -4,6 +4,7 @@ import ManagementRecipe from "@/components/ManagementRecipe.vue";
 import CookingReview from "@/components/CookingReview.vue";
 import EditMember from "@/components/EditMember.vue";
 import EditRecipe from "@/components/Modal/EditRecipe.vue";
+import RecipeDetail from "@/components/RecipeDetail.vue";
 import Vue from "vue";
 import VueRouter from "vue-router";
 
@@ -39,10 +40,13 @@ export const router = new VueRouter({
         },
       ],
     },
-
     {
       path: "/editRecipe",
       component: EditRecipe,
+    },
+    {
+      path: "/detail",
+      component: RecipeDetail,
     },
   ],
 });
