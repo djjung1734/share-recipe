@@ -16,22 +16,12 @@
             class="h-100 d-flex flex-column justify-content-center align-items-center"
           >
             <div class="input-box">
-              <input
-                id="username"
-                type="text"
-                name="username"
-                placeholder="아이디"
-              />
-              <label for="username">ID</label>
+              <input id="id" type="text" name="id" placeholder="아이디" />
+              <label for="id">ID</label>
             </div>
             <div class="input-box">
-              <input
-                id="password"
-                type="password"
-                name="password"
-                placeholder="비밀번호"
-              />
-              <label for="password">Password</label>
+              <input id="pw" type="password" name="pw" placeholder="비밀번호" />
+              <label for="pw">Password</label>
             </div>
           </div>
         </div>
