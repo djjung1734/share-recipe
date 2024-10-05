@@ -25,21 +25,21 @@
         </div>
         <div class="d-flex align-items-center pb-3">
           <span class="col-md-2 ps-3">요리정보</span>
-          <div class="col-md-3 px-1">
+          <!-- <div class="col-md-3 px-1">
             <label for="people" class="form-label">인원</label>
             <select id="people" class="form-select">
               <option selected>Choose...</option>
               <option>...</option>
             </select>
-          </div>
-          <div class="col-md-3 px-1">
+          </div> -->
+          <div class="col-md-4 px-1">
             <label for="time" class="form-label">시간</label>
             <select id="time" class="form-select">
               <option selected>Choose...</option>
               <option>...</option>
             </select>
           </div>
-          <div class="col-md-3 px-1">
+          <div class="col-md-4 px-1">
             <label for="level" class="form-label">난이도</label>
             <select id="level" class="form-select">
               <option selected>Choose...</option>
