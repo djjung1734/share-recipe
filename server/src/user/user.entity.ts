@@ -15,10 +15,10 @@ export class User {
   @Column()
   nickname: string;
 
-  @Column()
+  @Column({ nullable: true })
   image: string;
 
-  @Column()
+  @Column({ nullable: true })
   imagePath: string;
 
   @OneToMany(() => Recipe, (recipes) => recipes.user)
