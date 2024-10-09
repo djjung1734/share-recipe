@@ -1,3 +1,4 @@
+import { AuthModule } from './auth/auth.module';
 import { UserModule } from './user/user.module';
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
@@ -22,6 +23,7 @@ import { ConfigModule } from '@nestjs/config';
       synchronize: false,
     }),
     UserModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],
