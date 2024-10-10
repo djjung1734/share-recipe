@@ -9,7 +9,7 @@ export class User {
   @Column({ unique: true })
   email: string;
 
-  @Column()
+  @Column({ select: false })
   password: string;
 
   @Column()
@@ -21,6 +21,9 @@ export class User {
   @Column({ nullable: true })
   imagePath: string;
 
-  @OneToMany(() => Recipe, (recipes) => recipes.user)
+  @Column({ select: false, nullable: true })
+  refreshToken?: string;
+
+  @OneToMany(() => Recipe, (recipes) => recipes.user, { cascade: true })
   recipes: Recipe[];
 }
