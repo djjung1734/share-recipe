@@ -1,42 +1,21 @@
-import { User } from './../user/user.entity';
-import { UserService } from './../user/user.service';
+import { AuthGuard } from '@nestjs/passport';
 import { AuthService } from './auth.service';
-import {
-  Controller,
-  Body,
-  Post,
-  UnprocessableEntityException,
-  Res,
-} from '@nestjs/common';
-import * as bcrypt from 'bcrypt';
-import { Response } from 'express';
+import { Controller, Post, Request, UseGuards } from '@nestjs/common';
 
-@Controller('/auth')
+@Controller()
 export class AuthController {
-  constructor(
-    private readonly userService: UserService,
-    private readonly authService: AuthService,
-  ) {}
+  constructor(private readonly authService: AuthService) {}
 
-  @Post('/login')
-  async login(@Body() input: User, @Res() response: Response) {
-    const { email, password } = input;
+  @UseGuards(AuthGuard('local'))
+  @Post('login')
+  async login(@Request() req) {
+    return this.authService.login(req.user);
+  }
 
-    const user = await this.userService.findOne(email);
-
-    if (!user) {
-      throw new UnprocessableEntityException('이메일이 없습니다.');
-    }
-
-    const isAuth = await bcrypt.compare(password, user.password);
-
-    if (!isAuth) {
-      throw new UnprocessableEntityException('비밀번호가 일치하지 않습니다.');
-    }
-
-    this.authService.setRefrechToken({ user, response });
-
-    const jwt = this.authService.getAccessToken({ user });
-    return response.status(200).send(jwt);
+  @UseGuards(AuthGuard('jwt'))
+  @Post('refresh')
+  async refreshToken(@Request() req) {
+    const token = req.headers.authorization.replace('Bearer', '');
+    return this.authService.refreshToken(token);
   }
 }

@@ -1,25 +1,33 @@
 import { User } from './user.entity';
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm/index';
+import { FindOneOptions, Repository } from 'typeorm';
 
 @Injectable()
 export class UserService {
   constructor(
     @InjectRepository(User) private userRepository: Repository<User>,
-  ) {
-    this.userRepository = userRepository;
+  ) {}
+
+  save(user: User) {
+    return this.userRepository.save(user);
   }
 
-  async save(user: User): Promise<void> {
-    await this.userRepository.save(user);
+  findAll() {
+    return this.userRepository.find();
   }
 
-  async findAll(): Promise<User[]> {
-    return await this.userRepository.find();
+  findOne(options?: FindOneOptions<User>) {
+    return this.userRepository.findOne(options);
   }
 
-  async findOne(email): Promise<User> {
-    return await this.userRepository.findOne({ where: { email } });
+  update(id: number, user: User) {
+    return this.userRepository.save(user);
+  }
+
+  getColumns() {
+    return this.userRepository.metadata.columns.map(
+      (column) => column.propertyName as keyof User,
+    );
   }
 }
