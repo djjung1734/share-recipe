@@ -3,7 +3,7 @@ import { Controller, Get, Post, Body } from '@nestjs/common';
 import { UserService } from './user.service';
 import * as bcrypt from 'bcrypt';
 
-@Controller('/user')
+@Controller()
 export class UserController {
   constructor(private readonly userService: UserService) {}
 

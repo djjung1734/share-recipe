@@ -1,5 +1,6 @@
-import { AuthModule } from './auth/auth.module';
-import { UserModule } from './user/user.module';
+import { AppService } from './app.service';
+import { AppController } from './app.controller';
+import { ShareRecipeModule } from './share-recipe.module';
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
@@ -20,8 +21,9 @@ import { ConfigModule } from '@nestjs/config';
       entities: ['dist/**/*.entity{.ts,.js}'],
       synchronize: false,
     }),
-    UserModule,
-    AuthModule,
+    ShareRecipeModule,
   ],
+  controllers: [AppController],
+  providers: [AppService],
 })
 export class AppModule {}
