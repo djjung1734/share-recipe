@@ -29,7 +29,13 @@
             </button>
           </div>
         </div>
-        <span class="pt-3 text-muted">회원가입</span>
+        <span
+          data-bs-toggle="modal"
+          data-bs-target="#signupModal"
+          type="submit"
+          class="pt-3 text-muted"
+          >회원가입</span
+        >
       </div>
     </div>
   </div>

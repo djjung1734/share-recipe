@@ -42,12 +42,10 @@
 
 <script lang="ts">
 import Vue from "vue";
-import LogInModal from "../Modal/LogInModal.vue";
 import SignUpModal from "../Modal/SignUpModal.vue";
 
 export default Vue.extend({
   components: {
-    LogInModal,
     SignUpModal,
   },
 });

@@ -11,7 +11,7 @@
           ></button>
         </div>
         <div class="modal-body">
-          <h6 class="font-weight-normal text-center">로그인 또는 회원가입</h6>
+          <h6 class="font-weight-normal text-center">회원가입</h6>
           <div
             class="h-100 d-flex flex-column justify-content-center align-items-center"
           >

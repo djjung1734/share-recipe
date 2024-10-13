@@ -143,7 +143,7 @@ import Vue from "vue";
 
 export default Vue.extend({
   name: "EditRecipe",
-  data: function () {
+  data: () => {
     return {
       ingredients: [{ name: "", quantity: 0, unit: "", recipeId: "" }],
       steps: [{ content: "", recipeId: "" }],
