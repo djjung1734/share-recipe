@@ -18,15 +18,11 @@
         </button>
       </div>
       <div class="d-flex align-items-center">
-        <span
-          type="button"
-          class="me-3 text-white"
-          data-bs-toggle="modal"
-          data-bs-target="#loginModal"
-          style="font-size: 12px"
-          >Log In</span
+        <router-link to="/login">
+          <span type="button" class="me-3 text-white" style="font-size: 12px"
+            >Log In</span
+          ></router-link
         >
-
         <router-link to="/user/recipe">
           <button class="btn border-0 rounded-circle">
             <span
