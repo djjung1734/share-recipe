@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import Vue from "vue";
-import Vuex from "vuex";
+import Vue from 'vue';
+import Vuex from 'vuex';
 
 Vue.use(Vuex);
 
@@ -10,16 +10,16 @@ export default new Vuex.Store({
   },
   mutations: {
     loadUser(state) {
-      state.user = Vue.$cookies.get("user");
+      state.user = Vue.$cookies.get('user');
     },
     saveToken(state, data) {
-      Vue.$cookies.set("access_token", data.access_token, "60s");
-      Vue.$cookies.set("refresh_token", data.refresh_token, "7d");
-      Vue.$cookies.set("user", JSON.stringify(data.user), "7d");
+      Vue.$cookies.set('access_token', data.access_token, '60s');
+      Vue.$cookies.set('refresh_token', data.refresh_token, '7d');
+      Vue.$cookies.set('user', JSON.stringify(data.user), '7d');
     },
     removeToken(state, data) {
-      Vue.$cookies.remove("access_token");
-      Vue.$cookies.remove("refresh_token");
+      Vue.$cookies.remove('access_token');
+      Vue.$cookies.remove('refresh_token');
     },
   },
   actions: {
@@ -29,16 +29,16 @@ export default new Vuex.Store({
           .post(`/auth/${params.endpoint}`, params.data, params.options)
           .then((response) => {
             if (response.status === 201) {
-              commit("saveToken", response.data);
-              commit("loadUser");
+              commit('saveToken', response.data);
+              commit('loadUser');
               resolve();
             } else {
-              commit("removeToken");
+              commit('removeToken');
               reject();
             }
           })
           .catch(() => {
-            commit("removeToken");
+            commit('removeToken');
             reject();
           });
       });

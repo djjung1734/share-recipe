@@ -8,7 +8,7 @@
             class="btn-close"
             data-bs-dismiss="modal"
             aria-label="Close"
-          ></button>
+          />
         </div>
         <div class="modal-body">
           <h6 class="font-weight-normal text-center">회원가입</h6>
@@ -50,7 +50,7 @@
           </button>
           <button
             class="btn btn-outline-secondary w-100"
-            type="reset"
+            type="button"
             data-bs-dismiss="modal"
           >
             Cancel
@@ -62,10 +62,10 @@
 </template>
 
 <script lang="ts">
-import Vue from "vue";
+import Vue from 'vue';
 
 export default Vue.extend({
-  name: "SignUp",
+  name: 'SignUp',
 });
 </script>
 

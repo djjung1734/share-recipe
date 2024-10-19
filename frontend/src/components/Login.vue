@@ -4,8 +4,7 @@
     <div class="container d-flex flex-column m-0 bg-light p-3">
       <!-- <span class="navbar-brand fs-5 py-1">로그인</span> -->
       <div
-        class="card border-0 h-100 justify-content-center align-items-center"
-      >
+        class="card border-0 h-100 justify-content-center align-items-center">
         <span class="fs-1 py-3">Log-In</span>
         <div class="d-flex w-50 justify-content-center align-items-center">
           <div class="w-50 p-3">
@@ -21,8 +20,7 @@
           <div class="ps-3">
             <button
               class="btn btn-outline-secondary p-3 pb-2 mt-3"
-              type="submit"
-            >
+              type="submit">
               <span class="material-symbols-outlined fs-1">
                 arrow_right_alt
               </span>
@@ -33,34 +31,34 @@
           data-bs-toggle="modal"
           data-bs-target="#signupModal"
           type="submit"
-          class="pt-3 text-muted"
-          >회원가입</span
-        >
+          class="pt-3 text-muted">
+          회원가입
+        </span>
       </div>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import Vue from "vue";
-import TopNav from "./Navigation/TopNav.vue";
+import Vue from 'vue';
+import TopNav from './Navigation/TopNav.vue';
 
 export default Vue.extend({
-  name: "LogIn",
+  name: 'LogIn',
   components: {
     TopNav,
   },
-  data: () => {
+  data(): any {
     return {
-      email: "",
-      password: "",
+      email: '',
+      password: '',
     };
   },
   methods: {
     login() {
       this.$store
-        .dispatch("auth", {
-          endpoint: "login",
+        .dispatch('auth', {
+          endpoint: 'login',
           data: {
             email: this.email,
             password: this.password,
@@ -69,10 +67,10 @@ export default Vue.extend({
         .then(() => {
           window.location.href = this.$route.query?.url
             ? this.$route.query?.url?.toString()
-            : "/";
+            : '/';
         })
         .catch(() => {
-          alert("아이디 혹은 비밀번호를 확인해주세요.");
+          alert('아이디 혹은 비밀번호를 확인해주세요.');
         });
     },
   },

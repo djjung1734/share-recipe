@@ -9,14 +9,15 @@
           width="180"
           height="180"
           src="../../assets/bebe.jpg"
+          alt="..."
         />
 
         <span class="mt-3 fs-4 text-white">Nickname</span>
       </div>
       <ul class="nav nav-pills flex-column border-top pt-3">
         <li class="nav-item">
-          <router-link to="/user/recipe" class="text-decoration-none"
-            ><div
+          <router-link to="/user/recipe" class="text-decoration-none">
+            <button
               @click="selectMenu('recipe')"
               type="button"
               class="nav-link d-flex align-items-center"
@@ -24,12 +25,12 @@
             >
               <span class="material-symbols-outlined pe-2"> ramen_dining </span>
               <span>레시피</span>
-            </div></router-link
-          >
+            </button>
+          </router-link>
         </li>
         <li>
-          <router-link to="/user/review" class="text-decoration-none"
-            ><div
+          <router-link to="/user/review" class="text-decoration-none">
+            <button
               @click="selectMenu('review')"
               type="button"
               class="nav-link d-flex align-items-center"
@@ -37,12 +38,12 @@
             >
               <span class="material-symbols-outlined pe-2"> rate_review </span>
               <span>요리 후기</span>
-            </div></router-link
-          >
+            </button>
+          </router-link>
         </li>
         <li>
-          <router-link to="/user/member" class="text-decoration-none"
-            ><div
+          <router-link to="/user/member" class="text-decoration-none">
+            <button
               @click="selectMenu('member')"
               type="button"
               class="nav-link d-flex align-items-center"
@@ -52,8 +53,8 @@
                 manage_accounts
               </span>
               <span>회원정보수정</span>
-            </div></router-link
-          >
+            </button>
+          </router-link>
         </li>
       </ul>
     </div>
@@ -61,13 +62,13 @@
 </template>
 
 <script lang="ts">
-import Vue from "vue";
+import Vue from 'vue';
 
 export default Vue.extend({
-  name: "ManagementRecipe",
+  name: 'ManagementRecipe',
   data() {
     return {
-      selected: "recipe",
+      selected: 'recipe',
     };
   },
   methods: {

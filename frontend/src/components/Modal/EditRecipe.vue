@@ -21,7 +21,7 @@
             width="150"
             height="100%"
             src="../../assets/bebe.jpg"
-          />
+            alt="..." />
         </div>
         <div class="d-flex align-items-center pb-3">
           <span class="col-md-2 ps-3">요리정보</span>
@@ -43,27 +43,21 @@
         <div class="px-3 m-0"><hr /></div>
         <div class="d-flex align-items-center col-12 m-0 pb-3">
           <span class="ps-3">재료</span>
-          <span
-            class="material-symbols-outlined px-1"
-            @click="addIngredientInput"
-            type="button"
-          >
-            add_circle
-          </span>
+          <button @click="addIngredientInput" type="button">
+            <span class="material-symbols-outlined px-1"> add_circle </span>
+          </button>
         </div>
         <div
           v-for="(ingredient, index) in ingredients"
           :key="index"
-          class="d-flex align-items-center col-12 m-0 px-3 py-1"
-        >
+          class="d-flex align-items-center col-12 m-0 px-3 py-1">
           <div class="col-md-3 px-1">
             <input
               type="text"
               class="form-control"
               placeholder="재료명"
               id="ingredient"
-              v-model="ingredient.name"
-            />
+              v-model="ingredient.name" />
           </div>
           <div class="col-md-3 px-1">
             <input
@@ -71,8 +65,7 @@
               placeholder="용량"
               class="form-control"
               id="quantity"
-              v-model="ingredient.quantity"
-            />
+              v-model="ingredient.quantity" />
           </div>
           <div class="col-md-2 px-1">
             <input
@@ -80,32 +73,22 @@
               class="form-control"
               placeholder="단위"
               id="unit"
-              v-model="ingredient.unit"
-            />
+              v-model="ingredient.unit" />
           </div>
-          <span
-            class="material-symbols-outlined"
-            @click="removeIngredientInput(index)"
-            type="button"
-          >
-            do_not_disturb_on
-          </span>
+          <button @click="removeIngredientInput(index)" type="button">
+            <span class="material-symbols-outlined"> do_not_disturb_on </span>
+          </button>
         </div>
         <div class="d-flex align-items-center col-12 m-0 pt-3">
           <span class="ps-3">요리순서</span>
-          <span
-            type="button"
-            class="material-symbols-outlined px-1"
-            @click="addStepInput"
-          >
-            add_circle
-          </span>
+          <button type="button" @click="addStepInput">
+            <span class="material-symbols-outlined px-1"> add_circle </span>
+          </button>
         </div>
         <div
           v-for="(step, index) in steps"
           :key="index"
-          class="d-flex align-items-center m-0 pb-3"
-        >
+          class="d-flex align-items-center m-0 pb-3">
           <div class="col-md-9 p-3">
             <textarea class="form-control" id="step1" v-model="step.content" />
           </div>
@@ -115,19 +98,15 @@
               width="80"
               height="80"
               src="../../assets/bebe.jpg"
-            />
+              alt="..." />
           </div>
-          <span
-            class="material-symbols-outlined"
-            @click="removeStepInput(index)"
-            type="button"
-          >
-            do_not_disturb_on
-          </span>
+          <button @click="removeStepInput(index)" type="button">
+            <span class="material-symbols-outlined"> do_not_disturb_on </span>
+          </button>
         </div>
         <div class="col-12 p-3">
           <div class="float-end">
-            <button type="reset" class="btn btn-outline-secondary me-1">
+            <button type="button" class="btn btn-outline-secondary me-1">
               취소
             </button>
             <button type="button" class="btn btn-outline-success">등록</button>
@@ -139,33 +118,53 @@
 </template>
 
 <script lang="ts">
-import Vue from "vue";
+import Vue from 'vue';
 
 export default Vue.extend({
-  name: "EditRecipe",
-  data: () => {
+  name: 'EditRecipe',
+  data(): any {
     return {
-      ingredients: [{ name: "", quantity: 0, unit: "", recipeId: "" }],
-      steps: [{ content: "", recipeId: "" }],
+      ingredients: [
+        {
+          name: '',
+          quantity: 0,
+          unit: '',
+          recipeId: '',
+        },
+      ],
+      steps: [
+        {
+          content: '',
+          recipeId: '',
+        },
+      ],
     };
   },
   methods: {
     addIngredientInput() {
-      this.ingredients.push({ name: "", quantity: 0, unit: "", recipeId: "" });
+      this.ingredients.push({
+        name: '',
+        quantity: 0,
+        unit: '',
+        recipeId: '',
+      });
     },
     removeIngredientInput(index: number) {
       if (this.ingredients.length === 1) {
-        alert("더 이상 제거 할 수 없습니다.");
+        alert('더 이상 제거 할 수 없습니다.');
       } else {
         this.ingredients.splice(index, 1);
       }
     },
     addStepInput() {
-      this.steps.push({ content: "", recipeId: "" });
+      this.steps.push({
+        content: '',
+        recipeId: '',
+      });
     },
     removeStepInput(index: number) {
       if (this.steps.length === 1) {
-        alert("더 이상 제거 할 수 없습니다.");
+        alert('더 이상 제거 할 수 없습니다.');
       } else {
         this.steps.splice(index, 1);
       }

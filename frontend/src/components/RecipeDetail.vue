@@ -10,7 +10,7 @@
               width="auto"
               height="100%"
               src="../assets/bebe.jpg"
-            />
+              alt="..." />
           </div>
           <div class="d-flex align-items-center justify-content-end pe-3">
             <img
@@ -18,7 +18,7 @@
               width="80"
               height="80"
               src="../assets/bebe.jpg"
-            />
+              alt="..." />
             <span class="fs-5">Nickname</span>
           </div>
           <div class="p-3">
@@ -54,7 +54,7 @@
                   width="80"
                   height="80"
                   src="../assets/bebe.jpg"
-                />
+                  alt="..." />
               </div>
               <div class="p-3 d-flex justify-content-between">
                 <div class="d-flex flex-column">
@@ -66,7 +66,7 @@
                   width="80"
                   height="80"
                   src="../assets/bebe.jpg"
-                />
+                  alt="..." />
               </div>
               <div class="p-3 d-flex justify-content-between">
                 <div class="d-flex flex-column">
@@ -78,7 +78,7 @@
                   width="80"
                   height="80"
                   src="../assets/bebe.jpg"
-                />
+                  alt="..." />
               </div>
             </div>
           </div>
@@ -89,11 +89,11 @@
 </template>
 
 <script lang="ts">
-import Vue from "vue";
-import TopNav from "./Navigation/TopNav.vue";
+import Vue from 'vue';
+import TopNav from './Navigation/TopNav.vue';
 
 export default Vue.extend({
-  name: "RecipeDetail",
+  name: 'RecipeDetail',
   components: {
     TopNav,
   },
