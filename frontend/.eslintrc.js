@@ -7,7 +7,6 @@ module.exports = {
     'plugin:vue/recommended',
     '@vue/airbnb',
     '@vue/typescript/recommended',
-    '@typescript-eslint/parser',
   ],
   parserOptions: {
     parser: '@typescript-eslint/parser',
