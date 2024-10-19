@@ -9,8 +9,7 @@
           class="form-control mr-sm-2 py-1"
           type="search"
           placeholder="Search"
-          aria-label="Search"
-        />
+          aria-label="Search" />
         <button type="button" class="btn border-0">
           <span class="material-symbols-outlined text-white">search</span>
         </button>
@@ -25,15 +24,13 @@
           <button type="button" class="btn border-0 rounded-circle">
             <span
               class="material-symbols-outlined text-white"
-              style="font-size: 32px"
-            >
+              style="font-size: 32px">
               person
             </span>
           </button></router-link
         >
       </div>
     </div>
-    <LogInModal />
     <SignUpModal />
   </nav>
 </template>
