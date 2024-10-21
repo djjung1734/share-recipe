@@ -15,6 +15,7 @@ module.exports = {
   },
   ignorePatterns: ['.eslintrc.js', 'public/assets'],
   rules: {
+    'operator-linebreak': 'off',
     'import/extensions': [
       'error',
       'ignorePackages',
