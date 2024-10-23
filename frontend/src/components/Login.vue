@@ -10,17 +10,22 @@
           <div class="w-50 p-3">
             <div class="input-box">
               <label for="email">ID</label>
-              <input id="email" type="text" name="email" />
+              <input id="email" v-model="email" type="text" name="email" />
             </div>
             <div class="input-box">
               <label for="password">Password</label>
-              <input id="password" type="password" name="password" />
+              <input
+                id="password"
+                v-model="password"
+                type="password"
+                name="password" />
             </div>
           </div>
           <div class="ps-3">
             <button
               class="btn btn-outline-secondary p-3 pb-2 mt-3"
-              type="submit">
+              type="submit"
+              @click="login">
               <span class="material-symbols-outlined fs-1">
                 arrow_right_alt
               </span>
