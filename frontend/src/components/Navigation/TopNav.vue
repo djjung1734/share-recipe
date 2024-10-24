@@ -27,8 +27,8 @@
               style="font-size: 32px">
               person
             </span>
-          </button></router-link
-        >
+          </button>
+        </router-link>
       </div>
     </div>
     <SignUpModal />
@@ -42,6 +42,11 @@ import SignUpModal from '../Modal/SignUpModal.vue';
 export default Vue.extend({
   components: {
     SignUpModal,
+  },
+  computed: {
+    user() {
+      return this.$store.state.loginStore.user;
+    },
   },
 });
 </script>

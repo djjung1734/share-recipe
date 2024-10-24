@@ -26,8 +26,8 @@
                     </a>
                   </div>
                 </div>
-              </div></router-link
-            >
+              </div>
+            </router-link>
           </div>
           <div class="col mb-5">
             <div class="card h-100">
