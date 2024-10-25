@@ -16,8 +16,19 @@
       </div>
       <div class="d-flex align-items-center">
         <router-link to="/login">
-          <span type="button" class="me-3 text-white" style="font-size: 12px">
+          <span
+            v-if="!user"
+            type="button"
+            class="me-3 text-white"
+            style="font-size: 12px">
             Log In
+          </span>
+          <span
+            v-else
+            type="button"
+            class="me-3 text-white"
+            style="font-size: 12px">
+            {{ user.nickname }}
           </span>
         </router-link>
         <router-link to="/user/recipe">
