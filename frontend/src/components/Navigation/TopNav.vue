@@ -23,11 +23,7 @@
             style="font-size: 12px">
             Log In
           </span>
-          <span
-            v-else
-            type="button"
-            class="me-3 text-white"
-            style="font-size: 12px">
+          <span v-else class="me-3 text-white" style="font-size: 12px">
             {{ user.nickname }}
           </span>
         </router-link>
