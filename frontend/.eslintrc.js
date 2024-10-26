@@ -26,6 +26,9 @@ module.exports = {
         tsx: 'never',
       },
     ],
+    rules: {
+      'vue/html-closing-bracket-newline': 'error',
+    },
     'linebreak-style': 0,
     'vue/no-parsing-error': [2, { 'x-invalid-end-tag': false }],
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
