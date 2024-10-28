@@ -2,14 +2,18 @@
   <div style="height: calc(100vh - 50px)">
     <div class="d-flex flex-column p-3 bg-dark h-100" style="width: 280px">
       <div
-        class="d-flex flex-column align-items-center pb-3 mb-3 mb-md-0 link-dark text-decoration-none">
+        class="d-flex flex-column position-relative align-items-center pb-3 mb-3 mb-md-0 link-dark text-decoration-none">
         <img
           class="border-0 rounded-circle"
           width="180"
           height="180"
           src="../../assets/bebe.jpg"
           alt="..." />
-
+        <div
+          class="badge bg-light rounded-circle text-muted position-absolute p-1"
+          style="bottom: 4.5rem; right: 3rem">
+          <span class="material-symbols-outlined"> settings </span>
+        </div>
         <span class="mt-3 fs-4 text-white">{{ user.nickname }}</span>
       </div>
       <ul class="nav nav-pills flex-column border-top pt-3">
