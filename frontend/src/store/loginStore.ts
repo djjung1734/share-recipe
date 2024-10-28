@@ -14,6 +14,8 @@ const loginStore = {
       Vue.$cookies.set('user', JSON.stringify(data.user), '7d');
     },
     removeToken(state, data) {
+      state.user = null;
+      localStorage.removeItem('user');
       Vue.$cookies.remove('access_token');
       Vue.$cookies.remove('refresh_token');
     },
