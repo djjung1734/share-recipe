@@ -26,20 +26,20 @@ const routes: Array<RouteConfig> = [
     component: Login,
   },
   {
-    path: '/user',
+    path: '/:id',
     component: UserPage,
-    redirect: '/user/recipe',
+    redirect: '/:id/recipe',
     children: [
       {
-        path: '/user/recipe',
+        path: '/:id/recipe',
         component: ManagementRecipe,
       },
       {
-        path: '/user/review',
+        path: '/:id/review',
         component: CookingReview,
       },
       {
-        path: '/user/member',
+        path: '/:id/member',
         component: EditMember,
       },
     ],

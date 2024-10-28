@@ -2,7 +2,7 @@
   <div class="h-100">
     <TopNav />
     <div class="d-flex">
-      <SideNav />
+      <SideNav :user="user" />
       <router-view />
     </div>
   </div>
@@ -18,6 +18,11 @@ export default Vue.extend({
   components: {
     TopNav,
     SideNav,
+  },
+  computed: {
+    user() {
+      return this.$store.state.loginStore.user;
+    },
   },
 });
 </script>
