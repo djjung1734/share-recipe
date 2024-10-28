@@ -43,8 +43,11 @@
         <div class="px-3 m-0"><hr /></div>
         <div class="d-flex align-items-center col-12 m-0 pb-3">
           <span class="ps-3">재료</span>
-          <button @click="addIngredientInput" type="button">
-            <span class="material-symbols-outlined px-1"> add_circle </span>
+          <button
+            @click="addIngredientInput"
+            class="btn px-1 mt-1"
+            type="button">
+            <span class="material-symbols-outlined"> add_circle </span>
           </button>
         </div>
         <div
@@ -75,14 +78,17 @@
               id="unit"
               v-model="ingredient.unit" />
           </div>
-          <button @click="removeIngredientInput(index)" type="button">
+          <button
+            @click="removeIngredientInput(index)"
+            class="btn px-1 mt-1"
+            type="button">
             <span class="material-symbols-outlined"> do_not_disturb_on </span>
           </button>
         </div>
         <div class="d-flex align-items-center col-12 m-0 pt-3">
           <span class="ps-3">요리순서</span>
-          <button type="button" @click="addStepInput">
-            <span class="material-symbols-outlined px-1"> add_circle </span>
+          <button type="button" class="btn px-1 mt-1" @click="addStepInput">
+            <span class="material-symbols-outlined"> add_circle </span>
           </button>
         </div>
         <div
@@ -100,7 +106,10 @@
               src="../../assets/bebe.jpg"
               alt="..." />
           </div>
-          <button @click="removeStepInput(index)" type="button">
+          <button
+            @click="removeStepInput(index)"
+            class="btn px-1 mt-1"
+            type="button">
             <span class="material-symbols-outlined"> do_not_disturb_on </span>
           </button>
         </div>

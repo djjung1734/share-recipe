@@ -26,6 +26,10 @@ const routes: Array<RouteConfig> = [
     component: Login,
   },
   {
+    path: '/editRecipe',
+    component: EditRecipe,
+  },
+  {
     path: '/:id',
     component: UserPage,
     redirect: '/:id/recipe',
@@ -43,10 +47,6 @@ const routes: Array<RouteConfig> = [
         component: EditMember,
       },
     ],
-  },
-  {
-    path: '/editRecipe',
-    component: EditRecipe,
   },
   {
     path: '/detail',

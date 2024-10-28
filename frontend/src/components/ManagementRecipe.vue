@@ -51,7 +51,6 @@
 import Vue from 'vue';
 
 export default Vue.extend({
-  name: 'ManagementRecipe',
   methods: {
     btnPopup() {
       window.open('/editRecipe', '_blank', 'width=800,height=800');
