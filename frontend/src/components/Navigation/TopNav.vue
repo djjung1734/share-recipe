@@ -21,7 +21,7 @@
           </span>
         </router-link>
         <span v-else class="me-3 text-white" style="font-size: 12px">
-          {{ user.nickname }}
+          {{ user.nickname }}님, 환영합니다!
         </span>
         <router-link v-if="!user" to="/login">
           <button type="button" class="btn border-0 rounded-circle">
@@ -32,15 +32,25 @@
             </span>
           </button>
         </router-link>
-        <router-link v-else to="/user/recipe">
-          <button type="button" class="btn border-0 rounded-circle">
-            <span
-              class="material-symbols-outlined text-white"
-              style="font-size: 32px">
-              person
-            </span>
-          </button>
-        </router-link>
+        <button
+          v-if="user"
+          type="button"
+          class="btn border-0 rounded-circle dropdown-toggle"
+          data-bs-toggle="dropdown">
+          <span
+            class="material-symbols-outlined text-white"
+            style="font-size: 32px">
+            person
+          </span>
+        </button>
+        <div class="dropdown-menu dropdown-menu-end">
+          <a class="dropdown-item" :href="`/${user?.id}/recipe`">레시피</a>
+          <a class="dropdown-item" :href="`/${user?.id}/review`">요리 후기</a>
+          <a class="dropdown-item" :href="`/${user?.id}/member`">
+            회원정보수정
+          </a>
+          <a class="dropdown-item" :href="`/`" @click="logout">로그아웃</a>
+        </div>
       </div>
     </div>
     <SignUpModal />
@@ -58,6 +68,11 @@ export default Vue.extend({
   computed: {
     user() {
       return this.$store.state.loginStore.user;
+    },
+  },
+  methods: {
+    logout() {
+      this.$store.commit('removeToken');
     },
   },
 });
