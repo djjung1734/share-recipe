@@ -15,7 +15,7 @@
         </button>
       </div>
       <div class="d-flex align-items-center">
-        <router-link v-if="!user" to="/login">
+        <router-link v-if="!user" class="text-decoration-none" to="/login">
           <span type="button" class="me-3 text-white" style="font-size: 12px">
             Log In
           </span>
@@ -44,12 +44,36 @@
           </span>
         </button>
         <div class="dropdown-menu dropdown-menu-end">
-          <a class="dropdown-item" :href="`/${user?.id}/recipe`">레시피</a>
-          <a class="dropdown-item" :href="`/${user?.id}/review`">요리 후기</a>
-          <a class="dropdown-item" :href="`/${user?.id}/member`">
-            회원정보수정
-          </a>
-          <a class="dropdown-item" :href="`/`" @click="logout">로그아웃</a>
+          <router-link class="text-decoration-none" :to="`/${user?.id}/recipe`">
+            <button
+              type="button"
+              class="dropdown-item"
+              @click="selectMenu('recipe')">
+              레시피
+            </button>
+          </router-link>
+          <router-link class="text-decoration-none" :to="`/${user?.id}/review`">
+            <button
+              type="button"
+              class="dropdown-item"
+              @click="selectMenu('review')">
+              요리 후기
+            </button>
+          </router-link>
+          <router-link class="text-decoration-none" :to="`/${user?.id}/member`">
+            <button
+              type="button"
+              class="dropdown-item"
+              @click="selectMenu('member')"
+              :href="`/${user?.id}/member`">
+              회원정보수정
+            </button>
+          </router-link>
+          <router-link class="text-decoration-none" to="/">
+            <button type="button" class="dropdown-item" @click="logout">
+              로그아웃
+            </button>
+          </router-link>
         </div>
       </div>
     </div>
@@ -73,6 +97,9 @@ export default Vue.extend({
   methods: {
     logout() {
       this.$store.commit('removeToken');
+    },
+    selectMenu(menu: string) {
+      this.$store.commit('selectMenu', menu);
     },
   },
 });

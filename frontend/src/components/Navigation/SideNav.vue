@@ -66,14 +66,14 @@ export default Vue.extend({
       default: () => ({}),
     },
   },
-  data() {
-    return {
-      selected: 'recipe',
-    };
+  computed: {
+    selected() {
+      return this.$store.state.selectedMenu;
+    },
   },
   methods: {
     selectMenu(menu: string) {
-      this.selected = menu;
+      this.$store.commit('selectMenu', menu);
     },
   },
 });

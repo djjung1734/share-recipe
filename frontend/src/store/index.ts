@@ -14,4 +14,13 @@ export default new Vuex.Store({
       paths: ['loginStore'],
     }),
   ],
+  state: {
+    selectedMenu: null,
+  },
+  mutations: {
+    selectMenu(state, menu) {
+      state.selectedMenu = menu;
+    },
+  },
+  actions: {},
 });
