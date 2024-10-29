@@ -7,21 +7,19 @@
             type="button"
             class="btn-close"
             data-bs-dismiss="modal"
-            aria-label="Close"
-          />
+            aria-label="Close" />
         </div>
         <div class="modal-body">
           <h6 class="font-weight-normal text-center">회원가입</h6>
           <div
-            class="h-100 d-flex flex-column justify-content-center align-items-center"
-          >
+            class="h-100 d-flex flex-column justify-content-center align-items-center">
             <div class="input-box">
               <input
                 id="username"
                 type="text"
                 name="username"
                 placeholder="ID"
-              />
+                v-model="user.email" />
               <label for="username">ID</label>
             </div>
             <div class="input-box">
@@ -30,7 +28,7 @@
                 type="password"
                 name="password"
                 placeholder="Password"
-              />
+                v-model="user.password" />
               <label for="password">Password</label>
             </div>
             <div class="input-box">
@@ -39,20 +37,23 @@
                 type="text"
                 name="nickname"
                 placeholder="Nickname"
-              />
+                v-model="user.nickname" />
               <label for="nickname">Nickname</label>
             </div>
           </div>
         </div>
         <div class="modal-footer border-top-0">
-          <button class="btn btn-outline-success w-100" type="submit">
+          <button
+            class="btn btn-outline-success w-100"
+            @click="saveUser()"
+            type="submit"
+            data-bs-dismiss="modal">
             Sign Up
           </button>
           <button
             class="btn btn-outline-secondary w-100"
             type="button"
-            data-bs-dismiss="modal"
-          >
+            data-bs-dismiss="modal">
             Cancel
           </button>
         </div>
@@ -65,7 +66,25 @@
 import Vue from 'vue';
 
 export default Vue.extend({
-  name: 'SignUp',
+  data(vm: any): any {
+    return {
+      user: {
+        email: '',
+        password: '',
+        nickname: '',
+      },
+    };
+  },
+  methods: {
+    saveUser() {
+      window.axios
+        .post('user', this.user)
+        .then(() => {
+          alert('회원가입이 완료되었습니다.');
+        })
+        .catch(() => null);
+    },
+  },
 });
 </script>
 
