@@ -27,7 +27,7 @@ module.exports = {
       },
     ],
     rules: {
-      'vue/html-closing-bracket-newline': 'error',
+      'vue/html-closing-bracket-newline': 2,
     },
     'linebreak-style': 0,
     'vue/no-parsing-error': [2, { 'x-invalid-end-tag': false }],

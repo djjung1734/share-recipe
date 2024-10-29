@@ -1,3 +1,4 @@
+import { UploadModule } from './upload/upload.module';
 import { RouterModule, Routes } from '@nestjs/core';
 import { Module } from '@nestjs/common';
 import { UserModule } from './user/user.module';
@@ -14,6 +15,10 @@ const routes: Routes = [
       {
         path: '/user',
         module: UserModule,
+      },
+      {
+        path: '/upload',
+        module: UploadModule,
       },
     ],
   },
