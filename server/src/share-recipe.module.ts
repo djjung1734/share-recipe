@@ -25,6 +25,11 @@ const routes: Routes = [
 ];
 
 @Module({
-  imports: [RouterModule.register(routes), AuthModule, UserModule],
+  imports: [
+    RouterModule.register(routes),
+    AuthModule,
+    UserModule,
+    UploadModule,
+  ],
 })
 export class ShareRecipeModule {}
