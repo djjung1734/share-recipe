@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "strictNullChecks": false,
     "target": "esnext",
     "module": "esnext",
     "strict": true,
@@ -15,11 +16,11 @@
     "useDefineForClassFields": true,
     "noImplicitAny": false,
     "sourceMap": true,
-    "strictNullChecks": false,
     "baseUrl": ".",
     "types": ["webpack-env"],
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["src/*"],
+      "@backend/*": ["../server/src/*"]
     },
     "lib": ["esnext", "dom", "dom.iterable", "scripthost", "ESNext.String"]
   },
