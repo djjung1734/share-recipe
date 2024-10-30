@@ -5,18 +5,37 @@
       <div class="w-50">
         <div class="input-box">
           <label for="username">ID</label>
-          <input id="username" type="text" name="username" />
+          <input
+            id="username"
+            v-model="user.email"
+            type="text"
+            name="username" />
         </div>
         <div class="input-box">
-          <label for="password">Password</label>
-          <input id="password" type="password" name="password" />
+          <label for="password">비밀번호</label>
+          <input
+            id="password"
+            v-model="user.password"
+            type="password"
+            name="password" />
         </div>
         <div class="input-box">
-          <label for="nickname">Nickname</label>
-          <input id="nickname" type="text" name="nickname" />
+          <label for="nickname">닉네임</label>
+          <input
+            id="nickname"
+            v-model="user.nickname"
+            type="text"
+            name="nickname" />
+        </div>
+        <div class="input-box">
+          <label for="image">이미지</label>
+          <input id="uploadImage" class="upload" type="file" name="file" />
         </div>
         <div class="float-end">
-          <button class="btn btn-outline-success" type="submit">
+          <button
+            class="btn btn-outline-success"
+            @click="saveUser"
+            type="submit">
             회원정보 수정
           </button>
         </div>
@@ -29,7 +48,69 @@
 import Vue from 'vue';
 
 export default Vue.extend({
-  name: 'EditMember',
+  computed: {
+    user() {
+      return this.$store.state.loginStore.user;
+    },
+  },
+  methods: {
+    async saveUser() {
+      await this.uploadImage().then((fileInfo: any) => {
+        if (fileInfo) {
+          const { url, originalname } = fileInfo;
+          this.user.image = originalname;
+          this.user.imagePath = url;
+        }
+        window.axios
+          .post('/user', this.user)
+          .then((response) => {
+            localStorage.setItem(
+              'vuex',
+              JSON.stringify({
+                loginStore: {
+                  user: {
+                    id: response.data.id,
+                    email: response.data.email,
+                    nickname: response.data.nickname,
+                    image: response.data.image,
+                    imagePath: response.data.imagePath,
+                    refreshToken: response.data.refreshToken,
+                  },
+                },
+              }),
+            );
+            alert('회원정보수정이 완료되었습니다.');
+            this.user = null;
+            delete this.user.password;
+            window.location.href = '/user/recipe';
+          })
+          .catch(() => null);
+      });
+    },
+    uploadImage() {
+      return new Promise<void>((resolve, reject) => {
+        const form = new FormData();
+        const file = <HTMLInputElement>document.getElementById('uploadImage');
+        if (file.files[0]) {
+          form.append('upload', file.files[0]);
+          window.axios
+            .post('upload', form, {
+              headers: {
+                'Content-Type': 'multipart/form-data',
+              },
+            })
+            .then((response) => {
+              resolve(response.data);
+            })
+            .catch(() => {
+              reject();
+            });
+        } else {
+          resolve(null);
+        }
+      });
+    },
+  },
 });
 </script>
 
@@ -61,5 +142,18 @@ input:not(:placeholder-shown) {
 }
 .container {
   max-width: none;
+}
+input[type='file']::file-selector-button {
+  width: 100px;
+  height: 30px;
+  background: #fff;
+  border: 1px solid #8aa1a1;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 14px;
+}
+input[type='file']::file-selector-button:hover {
+  background: #8aa1a1;
+  color: #fff;
 }
 </style>
