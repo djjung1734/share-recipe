@@ -2,17 +2,21 @@
   <div style="height: calc(100vh - 50px)">
     <div class="d-flex flex-column p-3 bg-dark h-100" style="width: 280px">
       <div
-        class="d-flex flex-column position-relative align-items-center pb-3 mb-3 mb-md-0 link-dark text-decoration-none">
+        class="d-flex flex-column align-items-center pb-3 mb-3 mb-md-0 link-dark text-decoration-none">
         <img
+          v-if="user.imagePath"
           class="border-0 rounded-circle"
           width="180"
           height="180"
-          src="../../assets/bebe.jpg"
+          :src="user.imagePath"
           alt="..." />
-        <div
-          class="badge bg-light rounded-circle text-muted position-absolute p-1"
-          style="bottom: 4.5rem; right: 3rem">
-          <span class="material-symbols-outlined"> settings </span>
+        <div v-else class="border-0 rounded-circle bg-light">
+          <img
+            class="border-0 rounded-circle bg-light m-5"
+            width="90"
+            height="90"
+            src="https://img.icons8.com/sf-regular-filled/96/no-camera.png"
+            alt="..." />
         </div>
         <span class="mt-3 fs-4 text-white">{{ user.nickname }}</span>
       </div>
@@ -64,13 +68,10 @@
 import Vue from 'vue';
 
 export default Vue.extend({
-  props: {
-    user: {
-      type: Object,
-      default: () => ({}),
-    },
-  },
   computed: {
+    user() {
+      return this.$store.state.loginStore.user;
+    },
     selected() {
       return this.$store.state.selectedMenu;
     },
