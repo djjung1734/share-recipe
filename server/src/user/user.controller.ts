@@ -1,5 +1,12 @@
 import { User } from './user.entity';
-import { Controller, Get, Post, Body } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  ConflictException,
+  InternalServerErrorException,
+} from '@nestjs/common';
 import { UserService } from './user.service';
 import * as bcrypt from 'bcrypt';
 
@@ -14,7 +21,17 @@ export class UserController {
       ...user,
       password: hashedPassword,
     };
-    return this.userService.save(hashedUser);
+
+    try {
+      return await this.userService.save(hashedUser);
+    } catch (error) {
+      console.log('error', error);
+      if (error.code === 'ER_DUP_ENTRY') {
+        throw new ConflictException('Existing username.');
+      } else {
+        throw new InternalServerErrorException();
+      }
+    }
   }
 
   @Get()
