@@ -18,13 +18,21 @@
           </div>
         </div>
         <div class="col-md-3 p-3 d-flex align-items-center">
-          <img
-            class="border-0"
-            width="150"
-            height="100%"
-            src="../../assets/bebe.jpg"
-            alt="..."
-          />
+          <div class="image">
+            <img
+              class="border-0"
+              width="150px"
+              height="100%"
+              src="../../assets/bebe.jpg"
+              alt="..."
+            />
+            <label for="mainImage" class="mt-1">
+              <div type="button" class="btn btn-outline-secondary">
+                이미지 업로드
+              </div>
+            </label>
+            <input id="mainImage" class="upload" type="file" name="mainImage" />
+          </div>
         </div>
         <div class="d-flex align-items-center pb-3">
           <span class="col-md-2 ps-3">요리정보</span>
@@ -201,3 +209,14 @@ export default Vue.extend({
   },
 });
 </script>
+
+<style scoped>
+.image{
+  width:150px;
+  height:150px;
+}
+#mainImage {
+  display: none;
+}
+
+</style>
