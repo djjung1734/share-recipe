@@ -2,17 +2,19 @@
   <div>
     <div class="p-2">
       <div>
-        <h5 class="font-weight-normal text-center">레시피 등록</h5>
+        <h5 class="font-weight-normal text-center">
+          레시피 등록
+        </h5>
       </div>
       <div class="row g-3">
         <div class="col-md-9 py-3">
           <div class="ps-3 pb-1">
             <label for="title" class="form-label">제목</label>
-            <input type="text" class="form-control" id="title" />
+            <input id="title" type="text" class="form-control" />
           </div>
           <div class="ps-3 pt-1">
             <label for="introduce" class="form-label">요리소개</label>
-            <textarea class="form-control" id="introduce" />
+            <textarea id="introduce" class="form-control" />
           </div>
         </div>
         <div class="col-md-3 p-3 d-flex align-items-center">
@@ -21,67 +23,80 @@
             width="150"
             height="100%"
             src="../../assets/bebe.jpg"
-            alt="..." />
+            alt="..."
+          />
         </div>
         <div class="d-flex align-items-center pb-3">
           <span class="col-md-2 ps-3">요리정보</span>
           <div class="col-md-4 px-1">
             <label for="time" class="form-label">시간</label>
             <select id="time" class="form-select">
-              <option selected>Choose...</option>
+              <option selected>
+                Choose...
+              </option>
               <option>...</option>
             </select>
           </div>
           <div class="col-md-4 px-1">
             <label for="level" class="form-label">난이도</label>
             <select id="level" class="form-select">
-              <option selected>Choose...</option>
+              <option selected>
+                Choose...
+              </option>
               <option>...</option>
             </select>
           </div>
         </div>
-        <div class="px-3 m-0"><hr /></div>
+        <div class="px-3 m-0">
+          <hr />
+        </div>
         <div class="d-flex align-items-center col-12 m-0 pb-3">
           <span class="ps-3">재료</span>
           <button
-            @click="addIngredientInput"
             class="btn px-1 mt-1"
-            type="button">
+            type="button"
+            @click="addIngredientInput"
+          >
             <span class="material-symbols-outlined"> add_circle </span>
           </button>
         </div>
         <div
           v-for="(ingredient, index) in ingredients"
           :key="index"
-          class="d-flex align-items-center col-12 m-0 px-3 py-1">
+          class="d-flex align-items-center col-12 m-0 px-3 py-1"
+        >
           <div class="col-md-3 px-1">
             <input
+              id="ingredient"
+              v-model="ingredient.name"
               type="text"
               class="form-control"
               placeholder="재료명"
-              id="ingredient"
-              v-model="ingredient.name" />
+            />
           </div>
           <div class="col-md-3 px-1">
             <input
+              id="quantity"
+              v-model="ingredient.quantity"
               type="number"
               placeholder="용량"
               class="form-control"
-              id="quantity"
-              v-model="ingredient.quantity" />
+            />
           </div>
           <div class="col-md-2 px-1">
             <input
+              id="unit"
+              v-model="ingredient.unit"
               type="text"
               class="form-control"
               placeholder="단위"
-              id="unit"
-              v-model="ingredient.unit" />
+            />
           </div>
           <button
-            @click="removeIngredientInput(index)"
             class="btn px-1 mt-1"
-            type="button">
+            type="button"
+            @click="removeIngredientInput(index)"
+          >
             <span class="material-symbols-outlined"> do_not_disturb_on </span>
           </button>
         </div>
@@ -94,9 +109,10 @@
         <div
           v-for="(step, index) in steps"
           :key="index"
-          class="d-flex align-items-center m-0 pb-3">
+          class="d-flex align-items-center m-0 pb-3"
+        >
           <div class="col-md-9 p-3">
-            <textarea class="form-control" id="step1" v-model="step.content" />
+            <textarea id="step1" v-model="step.content" class="form-control" />
           </div>
           <div class="col-md-2 p-3">
             <img
@@ -104,12 +120,14 @@
               width="80"
               height="80"
               src="../../assets/bebe.jpg"
-              alt="..." />
+              alt="..."
+            />
           </div>
           <button
-            @click="removeStepInput(index)"
             class="btn px-1 mt-1"
-            type="button">
+            type="button"
+            @click="removeStepInput(index)"
+          >
             <span class="material-symbols-outlined"> do_not_disturb_on </span>
           </button>
         </div>
@@ -118,7 +136,9 @@
             <button type="button" class="btn btn-outline-secondary me-1">
               취소
             </button>
-            <button type="button" class="btn btn-outline-success">등록</button>
+            <button type="button" class="btn btn-outline-success">
+              등록
+            </button>
           </div>
         </div>
       </div>

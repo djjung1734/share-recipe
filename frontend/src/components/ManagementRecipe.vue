@@ -6,7 +6,8 @@
         <button
           type="button"
           class="btn btn-outline-secondary float-end p-1 pb-0"
-          @click="btnPopup">
+          @click="btnPopup"
+        >
           <span class="material-symbols-outlined"> add </span>
           <span class="material-symbols-outlined"> ramen_dining </span>
         </button>
@@ -17,12 +18,16 @@
             <img
               class="card-img-top"
               src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg"
-              alt="..." />
+              alt="..."
+            />
             <div class="card-body p-4">
               <div class="text-center">
-                <h5 class="fw-bolder">Special Item</h5>
+                <h5 class="fw-bolder">
+                  Special Item
+                </h5>
                 <div
-                  class="d-flex justify-content-center small text-warning mb-2">
+                  class="d-flex justify-content-center small text-warning mb-2"
+                >
                   <div class="bi-star-fill" />
                   <div class="bi-star-fill" />
                   <div class="bi-star-fill" />

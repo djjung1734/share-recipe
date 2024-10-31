@@ -3,7 +3,8 @@
     <TopNav />
     <div class="container d-flex flex-column m-0 bg-light p-3">
       <div
-        class="card border-0 h-100 justify-content-center align-items-center">
+        class="card border-0 h-100 justify-content-center align-items-center"
+      >
         <span class="fs-1 py-3">Log-In</span>
         <div class="d-flex w-50 justify-content-center align-items-center">
           <div class="w-50 p-3">
@@ -17,14 +18,16 @@
                 id="password"
                 v-model="password"
                 type="password"
-                name="password" />
+                name="password"
+              />
             </div>
           </div>
           <div class="ps-3">
             <button
               class="btn btn-outline-secondary p-3 pb-2 mt-3"
               type="submit"
-              @click="login">
+              @click="login"
+            >
               <span class="material-symbols-outlined fs-1">
                 arrow_right_alt
               </span>
@@ -35,7 +38,8 @@
           data-bs-toggle="modal"
           data-bs-target="#signupModal"
           type="submit"
-          class="pt-3 text-muted">
+          class="pt-3 text-muted"
+        >
           회원가입
         </span>
       </div>

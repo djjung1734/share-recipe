@@ -9,7 +9,8 @@
           class="form-control mr-sm-2 py-1"
           type="search"
           placeholder="Search"
-          aria-label="Search" />
+          aria-label="Search"
+        />
         <button type="button" class="btn border-0">
           <span class="material-symbols-outlined text-white">search</span>
         </button>
@@ -27,7 +28,8 @@
           <button type="button" class="btn border-0 rounded-circle">
             <span
               class="material-symbols-outlined text-white"
-              style="font-size: 32px">
+              style="font-size: 32px"
+            >
               person
             </span>
           </button>
@@ -36,10 +38,12 @@
           v-if="user"
           type="button"
           class="btn border-0 rounded-circle dropdown-toggle"
-          data-bs-toggle="dropdown">
+          data-bs-toggle="dropdown"
+        >
           <span
             class="material-symbols-outlined text-white"
-            style="font-size: 32px">
+            style="font-size: 32px"
+          >
             person
           </span>
         </button>
@@ -48,7 +52,8 @@
             <button
               type="button"
               class="dropdown-item"
-              @click="selectMenu('recipe')">
+              @click="selectMenu('recipe')"
+            >
               레시피
             </button>
           </router-link>
@@ -56,7 +61,8 @@
             <button
               type="button"
               class="dropdown-item"
-              @click="selectMenu('review')">
+              @click="selectMenu('review')"
+            >
               요리 후기
             </button>
           </router-link>
@@ -64,8 +70,9 @@
             <button
               type="button"
               class="dropdown-item"
+              :href="`/${user?.id}/member`"
               @click="selectMenu('member')"
-              :href="`/${user?.id}/member`">
+            >
               회원정보수정
             </button>
           </router-link>

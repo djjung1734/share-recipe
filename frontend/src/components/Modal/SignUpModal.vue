@@ -1,5 +1,5 @@
 <template>
-  <div class="modal fade" id="signupModal" tabindex="-1" aria-hidden="true">
+  <div id="signupModal" class="modal fade" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header border-bottom-0 p-2">
@@ -7,37 +7,44 @@
             type="button"
             class="btn-close"
             data-bs-dismiss="modal"
-            aria-label="Close" />
+            aria-label="Close"
+          />
         </div>
         <div class="modal-body">
-          <h6 class="font-weight-normal text-center">회원가입</h6>
+          <h6 class="font-weight-normal text-center">
+            회원가입
+          </h6>
           <div
-            class="h-100 d-flex flex-column justify-content-center align-items-center">
+            class="h-100 d-flex flex-column justify-content-center align-items-center"
+          >
             <div class="input-box">
               <input
                 id="username"
+                v-model="user.email"
                 type="text"
                 name="username"
                 placeholder="ID"
-                v-model="user.email" />
+              />
               <label for="username">ID</label>
             </div>
             <div class="input-box">
               <input
                 id="password"
+                v-model="user.password"
                 type="password"
                 name="password"
                 placeholder="Password"
-                v-model="user.password" />
+              />
               <label for="password">Password</label>
             </div>
             <div class="input-box">
               <input
                 id="nickname"
+                v-model="user.nickname"
                 type="text"
                 name="nickname"
                 placeholder="Nickname"
-                v-model="user.nickname" />
+              />
               <label for="nickname">Nickname</label>
             </div>
           </div>
@@ -45,15 +52,17 @@
         <div class="modal-footer border-top-0">
           <button
             class="btn btn-outline-success w-100"
-            @click="saveUser()"
             type="submit"
-            data-bs-dismiss="modal">
+            data-bs-dismiss="modal"
+            @click="saveUser()"
+          >
             Sign Up
           </button>
           <button
             class="btn btn-outline-secondary w-100"
             type="button"
-            data-bs-dismiss="modal">
+            data-bs-dismiss="modal"
+          >
             Cancel
           </button>
         </div>

@@ -10,7 +10,8 @@
               width="auto"
               height="100%"
               src="../assets/bebe.jpg"
-              alt="..." />
+              alt="..."
+            />
           </div>
           <div class="d-flex align-items-center justify-content-end pe-3">
             <img
@@ -18,12 +19,15 @@
               width="80"
               height="80"
               src="../assets/bebe.jpg"
-              alt="..." />
+              alt="..."
+            />
             <span class="fs-5">Nickname</span>
           </div>
           <div class="p-3">
             <h3>레시피 제목</h3>
-            <h5 class="text-muted">레시피 소개</h5>
+            <h5 class="text-muted">
+              레시피 소개
+            </h5>
             <div class="d-flex justify-content-evenly p-5 border-bottom">
               <div class="d-flex">
                 <span class="fw-bold pe-3"> 소요시간 </span>
@@ -40,7 +44,9 @@
             </div>
             <div class="p-3 border-bottom">
               <h5>[재료]</h5>
-              <h6 class="text-muted">재료 나열 ...</h6>
+              <h6 class="text-muted">
+                재료 나열 ...
+              </h6>
             </div>
             <div class="p-3">
               <h5>[조리법]</h5>
@@ -54,7 +60,8 @@
                   width="80"
                   height="80"
                   src="../assets/bebe.jpg"
-                  alt="..." />
+                  alt="..."
+                />
               </div>
               <div class="p-3 d-flex justify-content-between">
                 <div class="d-flex flex-column">
@@ -66,7 +73,8 @@
                   width="80"
                   height="80"
                   src="../assets/bebe.jpg"
-                  alt="..." />
+                  alt="..."
+                />
               </div>
               <div class="p-3 d-flex justify-content-between">
                 <div class="d-flex flex-column">
@@ -78,7 +86,8 @@
                   width="80"
                   height="80"
                   src="../assets/bebe.jpg"
-                  alt="..." />
+                  alt="..."
+                />
               </div>
             </div>
           </div>

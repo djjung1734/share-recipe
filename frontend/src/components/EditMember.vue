@@ -9,7 +9,8 @@
             id="username"
             v-model="user.email"
             type="text"
-            name="username" />
+            name="username"
+          />
         </div>
         <div class="input-box">
           <label for="password">비밀번호</label>
@@ -17,7 +18,8 @@
             id="password"
             v-model="user.password"
             type="password"
-            name="password" />
+            name="password"
+          />
         </div>
         <div class="input-box">
           <label for="nickname">닉네임</label>
@@ -25,7 +27,8 @@
             id="nickname"
             v-model="user.nickname"
             type="text"
-            name="nickname" />
+            name="nickname"
+          />
         </div>
         <div class="input-box">
           <label for="image">이미지</label>
@@ -34,8 +37,9 @@
         <div class="float-end">
           <button
             class="btn btn-outline-success"
+            type="submit"
             @click="saveUser"
-            type="submit">
+          >
             회원정보 수정
           </button>
         </div>

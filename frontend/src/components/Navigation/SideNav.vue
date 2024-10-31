@@ -2,21 +2,24 @@
   <div style="height: calc(100vh - 50px)">
     <div class="d-flex flex-column p-3 bg-dark h-100" style="width: 280px">
       <div
-        class="d-flex flex-column align-items-center pb-3 mb-3 mb-md-0 link-dark text-decoration-none">
+        class="d-flex flex-column align-items-center pb-3 mb-3 mb-md-0 link-dark text-decoration-none"
+      >
         <img
           v-if="user.imagePath"
           class="border-0 rounded-circle"
           width="180"
           height="180"
           :src="user.imagePath"
-          alt="..." />
+          alt="..."
+        />
         <div v-else class="border-0 rounded-circle bg-light">
           <img
             class="border-0 rounded-circle bg-light m-5"
             width="90"
             height="90"
             src="https://img.icons8.com/sf-regular-filled/96/no-camera.png"
-            alt="..." />
+            alt="..."
+          />
         </div>
         <span class="mt-3 fs-4 text-white">{{ user.nickname }}</span>
       </div>
@@ -24,10 +27,11 @@
         <li class="nav-item">
           <router-link :to="`/${user.id}/recipe`" class="text-decoration-none">
             <button
-              @click="selectMenu('recipe')"
               type="button"
               class="nav-link d-flex align-items-center"
-              :class="{ active: selected === 'recipe' }">
+              :class="{ active: selected === 'recipe' }"
+              @click="selectMenu('recipe')"
+            >
               <span class="material-symbols-outlined pe-2"> ramen_dining </span>
               <span>레시피</span>
             </button>
@@ -36,10 +40,11 @@
         <li>
           <router-link :to="`/${user.id}/review`" class="text-decoration-none">
             <button
-              @click="selectMenu('review')"
               type="button"
               class="nav-link d-flex align-items-center"
-              :class="{ active: selected === 'review' }">
+              :class="{ active: selected === 'review' }"
+              @click="selectMenu('review')"
+            >
               <span class="material-symbols-outlined pe-2"> rate_review </span>
               <span>요리 후기</span>
             </button>
@@ -48,10 +53,11 @@
         <li>
           <router-link :to="`/${user.id}/member`" class="text-decoration-none">
             <button
-              @click="selectMenu('member')"
               type="button"
               class="nav-link d-flex align-items-center"
-              :class="{ active: selected === 'member' }">
+              :class="{ active: selected === 'member' }"
+              @click="selectMenu('member')"
+            >
               <span class="material-symbols-outlined pe-2">
                 manage_accounts
               </span>
