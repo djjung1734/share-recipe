@@ -19,17 +19,14 @@
         </div>
         <div class="col-md-3 p-3 d-flex align-items-center">
           <div class="image">
-            <img
-              class="border-0"
-              width="150px"
-              height="100%"
-              src="../../assets/bebe.jpg"
-              alt="..."
-            />
             <label for="mainImage" class="mt-1">
-              <div type="button" class="btn btn-outline-secondary">
-                이미지 업로드
-              </div>
+              <img
+                class="border-0"
+                width="150px"
+                height="100%"
+                src="../../assets/bebe.jpg"
+                alt="..."
+              />
             </label>
             <input id="mainImage" class="upload" type="file" name="mainImage" />
           </div>
