@@ -18,15 +18,20 @@
           </div>
         </div>
         <div class="col-md-3 p-3 d-flex align-items-center">
-          <div class="image">
-            <label for="mainImage" class="mt-1">
-              <img
+          <div class="image mt-4">
+            <label for="mainImage">
+              <!-- <img
                 class="border-0"
                 width="150px"
                 height="100%"
-                src="../../assets/bebe.jpg"
+                src="https://img.icons8.com/sf-regular-filled/96/no-camera.png"
                 alt="..."
-              />
+              /> -->
+              <div class="mainImage d-flex align-items-center justify-content-center">
+                <span class="material-symbols-outlined fs-1 text-muted">
+                  add_photo_alternate
+                </span>
+              </div>
             </label>
             <input id="mainImage" class="upload" type="file" name="mainImage" />
           </div>
@@ -120,13 +125,11 @@
             <textarea id="step1" v-model="step.content" class="form-control" />
           </div>
           <div class="col-md-2 p-3">
-            <img
-              class="border-0"
-              width="80"
-              height="80"
-              src="../../assets/bebe.jpg"
-              alt="..."
-            />
+            <div class="detailImage d-flex align-items-center justify-content-center">
+              <span class="material-symbols-outlined fs-3 text-muted">
+                add_photo_alternate
+              </span>
+            </div>
           </div>
           <button
             class="btn px-1 mt-1"
@@ -209,8 +212,18 @@ export default Vue.extend({
 
 <style scoped>
 .image{
-  width:150px;
-  height:150px;
+  width:160px;
+  height:120px;
+}
+.mainImage{
+  width:160px;
+  height:120px;
+  border:1px solid;
+}
+.detailImage{
+  width:80px;
+  height:60px;
+  border:1px solid;
 }
 #mainImage {
   display: none;
