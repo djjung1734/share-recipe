@@ -42,9 +42,17 @@
             <label for="time" class="form-label">시간</label>
             <select id="time" class="form-select">
               <option selected>
-                Choose...
+                시간
               </option>
-              <option>...</option>
+              <option>5분 이내</option>
+              <option>10분 이내</option>
+              <option>15분 이내</option>
+              <option>20분 이내</option>
+              <option>30분 이내</option>
+              <option>1시간 이내</option>
+              <option>1시간 30분 이내</option>
+              <option>2시간 이내</option>
+              <option>2시간 이상</option>
             </select>
           </div>
           <div class="col-md-4 px-1">
