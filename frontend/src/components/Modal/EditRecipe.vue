@@ -59,9 +59,23 @@
             <label for="level" class="form-label">난이도</label>
             <select id="level" class="form-select">
               <option selected>
-                Choose...
+                난이도
               </option>
-              <option>...</option>
+              <option class="fa">
+                &#xf005;
+              </option>
+              <option class="fa">
+                &#xf005; &#xf005;
+              </option>
+              <option class="fa">
+                &#xf005; &#xf005; &#xf005;
+              </option>
+              <option class="fa">
+                &#xf005; &#xf005; &#xf005; &#xf005;
+              </option>
+              <option class="fa">
+                &#xf005; &#xf005; &#xf005; &#xf005; &#xf005;
+              </option>
             </select>
           </div>
         </div>
@@ -219,6 +233,10 @@ export default Vue.extend({
 </script>
 
 <style scoped>
+.form-select{
+  font-family: "Font Awesome 5 Free";
+font-weight:900;
+}
 .image{
   width:160px;
   height:120px;
