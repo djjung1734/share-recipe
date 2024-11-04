@@ -30,7 +30,7 @@ export class UploadController {
     const response = {
       originalname: upload.originalname,
       filename: upload.filename,
-      url: 'http://192.168.219.105:3000/api/upload/' + upload.filename,
+      url: 'http://192.168.55.220:3000/api/upload/' + upload.filename,
     };
     return response;
   }
@@ -51,6 +51,7 @@ export class UploadController {
       const fileResponse = {
         originalname: file.originalname,
         filename: file.filename,
+        url: 'http://192.168.55.220:3000/api/upload/' + file.filename,
       };
       response.push(fileResponse);
     });

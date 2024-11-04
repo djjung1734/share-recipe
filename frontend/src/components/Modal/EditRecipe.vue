@@ -147,7 +147,7 @@
             <textarea id="step1" v-model="step.content" class="form-control" />
           </div>
           <div class="col-md-2 p-3">
-            <label for="detailImage">
+            <label :for="`detailImage${index}`">
               <!-- <img
                 class="border-0"
                 width="150px"
@@ -161,7 +161,7 @@
                 </span>
               </div>
             </label>
-            <input id="detailImage" class="upload" type="file" name="mainImage" />
+            <input id="detailImage" class="upload" type="file" :name="`detailImage${index}`" />
           </div>
           <button
             class="btn px-1 mt-1"
