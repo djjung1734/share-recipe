@@ -1,3 +1,6 @@
+import { IngredientModule } from './ingredient/ingredient.module';
+import { StepModule } from './step/step.module';
+import { RecipeModule } from './recipe/recipe.module';
 import { UploadModule } from './upload/upload.module';
 import { RouterModule, Routes } from '@nestjs/core';
 import { Module } from '@nestjs/common';
@@ -20,6 +23,18 @@ const routes: Routes = [
         path: '/upload',
         module: UploadModule,
       },
+      {
+        path: '/recipe',
+        module: RecipeModule,
+      },
+      {
+        path: '/ingredient',
+        module: IngredientModule,
+      },
+      {
+        path: '/step',
+        module: StepModule,
+      },
     ],
   },
 ];
@@ -30,6 +45,9 @@ const routes: Routes = [
     AuthModule,
     UserModule,
     UploadModule,
+    RecipeModule,
+    IngredientModule,
+    StepModule,
   ],
 })
 export class ShareRecipeModule {}
