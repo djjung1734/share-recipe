@@ -147,11 +147,21 @@
             <textarea id="step1" v-model="step.content" class="form-control" />
           </div>
           <div class="col-md-2 p-3">
-            <div class="detailImage d-flex align-items-center justify-content-center">
-              <span class="material-symbols-outlined fs-3 text-muted">
-                add_photo_alternate
-              </span>
-            </div>
+            <label for="detailImage">
+              <!-- <img
+                class="border-0"
+                width="150px"
+                height="100%"
+                src="https://img.icons8.com/sf-regular-filled/96/no-camera.png"
+                alt="..."
+              /> -->
+              <div class="detailImage d-flex align-items-center justify-content-center">
+                <span class="material-symbols-outlined fs-3 text-muted">
+                  add_photo_alternate
+                </span>
+              </div>
+            </label>
+            <input id="detailImage" class="upload" type="file" name="mainImage" />
           </div>
           <button
             class="btn px-1 mt-1"
@@ -251,7 +261,7 @@ font-weight:900;
   height:60px;
   border:1px solid;
 }
-#mainImage {
+#mainImage,#detailImage {
   display: none;
 }
 
