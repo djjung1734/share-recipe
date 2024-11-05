@@ -15,6 +15,9 @@ export class Step {
   @Column()
   imagePath: string;
 
+  @Column({ type: 'bigint' })
+  recipeId?: number;
+
   @ManyToOne(() => Recipe, (recipe) => recipe.steps, {
     nullable: false,
     onDelete: 'CASCADE',

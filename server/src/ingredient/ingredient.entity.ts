@@ -15,6 +15,9 @@ export class Ingredient {
   @Column()
   unit: string;
 
+  @Column({ type: 'bigint' })
+  recipeId?: number;
+
   @ManyToOne(() => Recipe, (recipe) => recipe.ingredients, {
     nullable: false,
     onDelete: 'CASCADE',

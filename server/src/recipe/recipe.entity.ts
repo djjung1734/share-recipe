@@ -32,6 +32,9 @@ export class Recipe {
   @Column()
   imagePath: string;
 
+  @Column({ type: 'bigint' })
+  userId?: number;
+
   @ManyToOne(() => User, (user) => user.recipes, {
     nullable: false,
     onDelete: 'CASCADE',
