@@ -10,8 +10,8 @@ export class IngredientService {
     private ingredientRepository: Repository<Ingredient>,
   ) {}
 
-  save(ingredient: Ingredient) {
-    return this.ingredientRepository.save(ingredient);
+  save(ingredients: Ingredient[]) {
+    return this.ingredientRepository.save(ingredients);
   }
 
   findAll() {

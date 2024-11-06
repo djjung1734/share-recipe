@@ -7,8 +7,8 @@ export class IngredientController {
   constructor(private readonly ingredientService: IngredientService) {}
 
   @Post()
-  save(@Body() ingredient: Ingredient) {
-    return this.ingredientService.save(ingredient);
+  save(@Body() ingredients: Ingredient[]) {
+    return this.ingredientService.save(ingredients);
   }
   @Get()
   findAll() {

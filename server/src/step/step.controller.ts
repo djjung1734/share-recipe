@@ -7,8 +7,8 @@ export class StepController {
   constructor(private readonly stepService: StepService) {}
 
   @Post()
-  save(@Body() step: Step) {
-    return this.stepService.save(step);
+  save(@Body() steps: Step[]) {
+    return this.stepService.save(steps);
   }
   @Get()
   findAll() {

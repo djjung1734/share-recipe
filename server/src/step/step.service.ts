@@ -9,8 +9,8 @@ export class StepService {
     @InjectRepository(Step) private stepRepository: Repository<Step>,
   ) {}
 
-  save(step: Step) {
-    return this.stepRepository.save(step);
+  save(steps: Step[]) {
+    return this.stepRepository.save(steps);
   }
 
   findAll() {

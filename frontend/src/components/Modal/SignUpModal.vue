@@ -75,7 +75,7 @@
 import Vue from 'vue';
 
 export default Vue.extend({
-  data(vm: any): any {
+  data(): any {
     return {
       user: {
         email: '',
