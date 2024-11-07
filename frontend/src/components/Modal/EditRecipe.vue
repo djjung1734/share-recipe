@@ -193,6 +193,15 @@ export default Vue.extend({
   name: 'EditRecipe',
   data(): any {
     return {
+      recipe: {
+        title: '',
+        description: '',
+        time: '',
+        level: 1,
+        image: '',
+        imagePath: '',
+        userId: '',
+      },
       ingredients: [
         {
           name: '',
