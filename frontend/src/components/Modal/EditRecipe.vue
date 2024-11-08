@@ -20,14 +20,15 @@
         <div class="col-md-3 p-3 d-flex align-items-center">
           <div class="image mt-4">
             <label for="mainImage">
-              <!-- <img
+              <img
+                v-if="recipe.image"
                 class="border-0"
                 width="150px"
                 height="100%"
                 src="https://img.icons8.com/sf-regular-filled/96/no-camera.png"
                 alt="..."
-              /> -->
-              <div class="mainImage d-flex align-items-center justify-content-center">
+              />
+              <div v-else class="mainImage d-flex align-items-center justify-content-center">
                 <span class="material-symbols-outlined fs-1 text-muted">
                   add_photo_alternate
                 </span>
@@ -40,7 +41,7 @@
           <span class="col-md-2 ps-3">요리정보</span>
           <div class="col-md-4 px-1">
             <label for="time" class="form-label">시간</label>
-            <select id="time" class="form-select">
+            <select id="time" v-model="recipe.time" class="form-select">
               <option selected>
                 시간
               </option>
@@ -57,7 +58,7 @@
           </div>
           <div class="col-md-4 px-1">
             <label for="level" class="form-label">난이도</label>
-            <select id="level" class="form-select">
+            <select id="level" v-model="recipe.level" class="form-select">
               <option selected>
                 난이도
               </option>
