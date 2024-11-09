@@ -107,7 +107,7 @@
                 </div>
                 <div
                   v-for="(ingredient, index) in ingredients"
-                  :key="index"
+                  :key="`ingredient${index}`"
                   class="d-flex align-items-center col-12 m-0 px-3 py-1"
                 >
                   <div class="col-md-3 px-1">
@@ -153,7 +153,7 @@
                 </div>
                 <div
                   v-for="(step, index) in steps"
-                  :key="index"
+                  :key="`step${index}`"
                   class="d-flex align-items-center m-0 pb-3"
                 >
                   <div class="col-md-9 p-3">
@@ -291,7 +291,7 @@ font-weight:900;
   display: none;
 }
 .modal-body{
-    max-height: calc(100vh - 200px);
+    max-height: calc(100vh - 100px);
     overflow-y: auto;
 }
 </style>
