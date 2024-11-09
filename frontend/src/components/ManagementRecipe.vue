@@ -6,7 +6,8 @@
         <button
           type="button"
           class="btn btn-outline-secondary float-end p-1 pb-0"
-          @click="btnPopup"
+          data-bs-toggle="modal"
+          data-bs-target="#editRecipeModal"
         >
           <span class="material-symbols-outlined"> add </span>
           <span class="material-symbols-outlined"> ramen_dining </span>
@@ -49,13 +50,18 @@
         </div>
       </div>
     </div>
+    <EditRecipe />
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
+import EditRecipe from './Modal/EditRecipe.vue';
 
 export default Vue.extend({
+  components: {
+    EditRecipe,
+  },
   methods: {
     btnPopup() {
       window.open('/editRecipe', '_blank', 'width=800,height=800');
