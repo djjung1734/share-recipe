@@ -22,11 +22,11 @@
                 <div class="col-md-9 py-3">
                   <div class="ps-3 pb-1">
                     <label for="title" class="form-label">제목</label>
-                    <input id="title" type="text" class="form-control" />
+                    <input id="title" v-model="recipe.title" type="text" class="form-control" />
                   </div>
                   <div class="ps-3 pt-1">
                     <label for="introduce" class="form-label">요리소개</label>
-                    <textarea id="introduce" class="form-control" />
+                    <textarea id="introduce" v-model="recipe.description" class="form-control" />
                   </div>
                 </div>
                 <div class="col-md-3 p-3 d-flex align-items-center">
@@ -54,39 +54,57 @@
                   <div class="col-md-4 px-1">
                     <label for="time" class="form-label">시간</label>
                     <select id="time" v-model="recipe.time" class="form-select">
-                      <option selected>
+                      <option selected value="">
                         시간
                       </option>
-                      <option>5분 이내</option>
-                      <option>10분 이내</option>
-                      <option>15분 이내</option>
-                      <option>20분 이내</option>
-                      <option>30분 이내</option>
-                      <option>1시간 이내</option>
-                      <option>1시간 30분 이내</option>
-                      <option>2시간 이내</option>
-                      <option>2시간 이상</option>
+                      <option value="5">
+                        5분 이내
+                      </option>
+                      <option value="10">
+                        10분 이내
+                      </option>
+                      <option value="15">
+                        15분 이내
+                      </option>
+                      <option value="20">
+                        20분 이내
+                      </option>
+                      <option value="30">
+                        30분 이내
+                      </option>
+                      <option value="60">
+                        1시간 이내
+                      </option>
+                      <option value="90">
+                        1시간 30분 이내
+                      </option>
+                      <option value="120">
+                        2시간 이내
+                      </option>
+                      <option value="121">
+                        2시간 이상
+                      </option>
                     </select>
                   </div>
                   <div class="col-md-4 px-1">
                     <label for="level" class="form-label">난이도</label>
                     <select id="level" v-model="recipe.level" class="form-select">
-                      <option selected>
+                      <option selected value="">
                         난이도
                       </option>
-                      <option class="fa">
+                      <option value="1" class="fa">
                         &#xf005;
                       </option>
-                      <option class="fa">
+                      <option value="2" class="fa">
                         &#xf005; &#xf005;
                       </option>
-                      <option class="fa">
+                      <option value="3" class="fa">
                         &#xf005; &#xf005; &#xf005;
                       </option>
-                      <option class="fa">
+                      <option value="4" class="fa">
                         &#xf005; &#xf005; &#xf005; &#xf005;
                       </option>
-                      <option class="fa">
+                      <option value="5" class="fa">
                         &#xf005; &#xf005; &#xf005; &#xf005; &#xf005;
                       </option>
                     </select>
