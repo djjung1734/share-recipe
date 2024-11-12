@@ -225,17 +225,15 @@
 import Vue from 'vue';
 
 export default Vue.extend({
-  name: 'EditRecipe',
   data(): any {
     return {
       recipe: {
         title: '',
         description: '',
         time: '',
-        level: 1,
+        level: '',
         image: '',
         imagePath: '',
-        userId: '',
       },
       ingredients: [
         {
@@ -252,6 +250,12 @@ export default Vue.extend({
         },
       ],
     };
+  },
+
+  computed: {
+    user() {
+      return this.$store.state.loginStore.user;
+    },
   },
   methods: {
     addIngredientInput() {
