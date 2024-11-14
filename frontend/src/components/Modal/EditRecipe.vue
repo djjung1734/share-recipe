@@ -37,7 +37,7 @@
                         class="border-0"
                         width="150px"
                         height="100%"
-                        src="https://img.icons8.com/sf-regular-filled/96/no-camera.png"
+                        :src="user.imagePath"
                         alt="..."
                       />
                       <div v-else class="mainImage d-flex align-items-center justify-content-center">
@@ -112,7 +112,7 @@
                 </div>
                 <div class="d-flex justify-content-center px-3 m-0">
                   <hr v-if="recipe.id" />
-                  <button v-else type="button" class="btn btn-secondary">
+                  <button v-else type="button" class="btn btn-secondary" @click="saveRecipe">
                     <span class="material-symbols-outlined fs-3">
                       keyboard_double_arrow_down
                     </span>
@@ -292,6 +292,47 @@ export default Vue.extend({
       } else {
         this.steps.splice(index, 1);
       }
+    },
+    uploadImage() {
+      return new Promise<void>((resolve, reject) => {
+        const form = new FormData();
+        const file = <HTMLInputElement>document.getElementById('mainImage');
+        if (file.files[0]) {
+          form.append('upload', file.files[0]);
+          window.axios
+            .post('upload', form, {
+              headers: {
+                'Content-Type': 'multipart/form-data',
+              },
+            })
+            .then((response) => {
+              resolve(response.data);
+            })
+            .catch(() => {
+              reject();
+            });
+        } else {
+          resolve(null);
+        }
+      });
+    },
+    async saveRecipe() {
+      this.recipe.userId = this.user.id;
+      await this.uploadImage().then((fileInfo: any) => {
+        if (fileInfo) {
+          const { url, originalname } = fileInfo;
+          this.recipe.image = originalname;
+          this.recipe.imagePath = url;
+        }
+        window.axios
+          .post('/recipe', this.recipe)
+          .then(() => {
+            window.axios.get('/recipe').then((res) => {
+              this.recipe = res.data;
+            }).catch(() => null);
+          })
+          .catch(() => null);
+      });
     },
   },
 });
