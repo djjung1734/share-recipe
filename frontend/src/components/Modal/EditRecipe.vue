@@ -326,10 +326,8 @@ export default Vue.extend({
         }
         window.axios
           .post('/recipe', this.recipe)
-          .then(() => {
-            window.axios.get('/recipe').then((res) => {
-              this.recipe = res.data;
-            }).catch(() => null);
+          .then((response) => {
+            this.recipe = response.data;
           })
           .catch(() => null);
       });
