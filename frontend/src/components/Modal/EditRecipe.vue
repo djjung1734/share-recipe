@@ -332,6 +332,11 @@ export default Vue.extend({
           .catch(() => null);
       });
     },
+    async saveIngredients() {
+      this.ingredients.forEach((ingredient) => {
+        ingredient.recipeId = this.recipe.id;
+      });
+    },
   },
 });
 </script>
