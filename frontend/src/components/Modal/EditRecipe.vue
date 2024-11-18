@@ -328,6 +328,7 @@ export default Vue.extend({
           .post('/recipe', this.recipe)
           .then((response) => {
             this.recipe = response.data;
+            this.saveIngredients();
           })
           .catch(() => null);
       });
