@@ -213,7 +213,7 @@
                       <button type="button" class="btn btn-outline-secondary me-1">
                         취소
                       </button>
-                      <button type="button" class="btn btn-outline-success">
+                      <button type="button" class="btn btn-outline-success" @click="saveDetails()">
                         등록
                       </button>
                     </div>
@@ -328,15 +328,17 @@ export default Vue.extend({
           .post('/recipe', this.recipe)
           .then((response) => {
             this.recipe = response.data;
-            this.saveIngredients();
           })
           .catch(() => null);
       });
     },
-    async saveIngredients() {
+    async saveDetails() {
       this.ingredients.forEach((ingredient) => {
         ingredient.recipeId = this.recipe.id;
       });
+      window.axios.post('/ingredient', this.ingredients).then((response) => {
+        this.ingredients = response.data;
+      }).catch(() => null);
     },
   },
 });
