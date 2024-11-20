@@ -339,6 +339,9 @@ export default Vue.extend({
       window.axios.post('/ingredient', this.ingredients).then((response) => {
         this.ingredients = response.data;
       }).catch(() => null);
+      this.steps.forEach((step) => {
+        step.recipeId = this.recipe.id;
+      });
     },
   },
 });
