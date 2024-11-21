@@ -37,7 +37,7 @@
                         class="border-0"
                         width="150px"
                         height="100%"
-                        :src="user.imagePath"
+                        :src="recipe.imagePath"
                         alt="..."
                       />
                       <div v-else class="mainImage d-flex align-items-center justify-content-center">
@@ -185,20 +185,21 @@
                     </div>
                     <div class="col-md-2 p-3">
                       <label :for="`detailImage${index}`">
-                        <!-- <img
-                class="border-0"
-                width="150px"
-                height="100%"
-                src="https://img.icons8.com/sf-regular-filled/96/no-camera.png"
-                alt="..."
-              /> -->
-                        <div class="detailImage d-flex align-items-center justify-content-center">
+                        <img
+                          v-if="step.image"
+                          class="border-0"
+                          width="150px"
+                          height="100%"
+                          :src="step.imagePath"
+                          alt="..."
+                        />
+                        <div v-else class="detailImage d-flex align-items-center justify-content-center">
                           <span class="material-symbols-outlined fs-3 text-muted">
                             add_photo_alternate
                           </span>
                         </div>
                       </label>
-                      <input id="detailImage" class="upload" type="file" :name="`detailImage${index}`" />
+                      <input :id="`detailImage${index}`" class="upload detailImage" type="file" :name="`detailImage${index}`" />
                     </div>
                     <button
                       class="btn px-1 mt-1"
@@ -293,10 +294,10 @@ export default Vue.extend({
         this.steps.splice(index, 1);
       }
     },
-    uploadImage() {
+    uploadImage(elementId) {
       return new Promise<void>((resolve, reject) => {
         const form = new FormData();
-        const file = <HTMLInputElement>document.getElementById('mainImage');
+        const file = <HTMLInputElement>document.getElementById(elementId);
         if (file.files[0]) {
           form.append('upload', file.files[0]);
           window.axios
@@ -318,7 +319,7 @@ export default Vue.extend({
     },
     async saveRecipe() {
       this.recipe.userId = this.user.id;
-      await this.uploadImage().then((fileInfo: any) => {
+      await this.uploadImage('mainImage').then((fileInfo: any) => {
         if (fileInfo) {
           const { url, originalname } = fileInfo;
           this.recipe.image = originalname;
@@ -339,8 +340,21 @@ export default Vue.extend({
       window.axios.post('/ingredient', this.ingredients).then((response) => {
         this.ingredients = response.data;
       }).catch(() => null);
-      this.steps.forEach((step) => {
+      this.steps.forEach((step, index) => {
         step.recipeId = this.recipe.id;
+        this.uploadImage(`detailImage${index}`).then((fileInfo: any) => {
+          if (fileInfo) {
+            const { url, originalname } = fileInfo;
+            step.image = originalname;
+            step.imagePath = url;
+          }
+          window.axios
+            .post('/step', step)
+            .then((response) => {
+              step = response.data;
+            })
+            .catch(() => null);
+        });
       });
     },
   },
@@ -366,7 +380,7 @@ font-weight:900;
   height:60px;
   border:1px solid;
 }
-#mainImage,#detailImage {
+#mainImage,.detailImage {
   display: none;
 }
 .modal-body{
