@@ -211,10 +211,21 @@
                   </div>
                   <div class="col-12 p-3">
                     <div class="float-end">
-                      <button type="button" class="btn btn-outline-secondary me-1">
+                      <button
+                        data-bs-dismiss="modal"
+                        aria-label="Close"
+                        type="button"
+                        class="btn btn-outline-secondary me-1"
+                      >
                         취소
                       </button>
-                      <button type="button" class="btn btn-outline-success" @click="saveDetails()">
+                      <button
+                        data-bs-dismiss="modal"
+                        aria-label="Close"
+                        type="button"
+                        class="btn btn-outline-success"
+                        @click="saveDetails()"
+                      >
                         등록
                       </button>
                     </div>
