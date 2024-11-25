@@ -62,9 +62,22 @@ export default Vue.extend({
   components: {
     EditRecipe,
   },
+  data():any {
+    return {
+      recipes: [],
+    };
+  },
+  mounted() {
+    this.loadRecipe();
+  },
   methods: {
     btnPopup() {
       window.open('/editRecipe', '_blank', 'width=800,height=800');
+    },
+    loadRecipe() {
+      window.axios.get('/recipe').then((response) => {
+        this.recipes = response.data;
+      }).catch(() => null);
     },
   },
 });
