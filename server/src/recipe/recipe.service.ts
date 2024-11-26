@@ -14,7 +14,9 @@ export class RecipeService {
   }
 
   findAll() {
-    return this.recipeRepository.find();
+    return this.recipeRepository.find({
+      relations: ['ingredients', 'steps'],
+    });
   }
 
   findOne(options?: FindManyOptions<Recipe>) {
