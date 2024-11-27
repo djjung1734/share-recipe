@@ -33,10 +33,9 @@
                 >
                   <div v-for="i in Number(recipe.level)" :key="i" class="bi-star-fill" />
                 </div>
-                <span class="text-muted text-decoration-line-through">
-                  $20.00
+                <span class="text-muted">
+                  {{ recipe.time }}분 소요
                 </span>
-                $18.00
               </div>
             </div>
             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent" />
