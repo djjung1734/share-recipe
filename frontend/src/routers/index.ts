@@ -30,7 +30,7 @@ const routes: Array<RouteConfig> = [
     component: EditRecipe,
   },
   {
-    path: '/detail',
+    path: '/detail/:id',
     component: RecipeDetail,
   },
   {
