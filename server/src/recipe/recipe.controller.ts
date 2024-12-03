@@ -14,6 +14,10 @@ export class RecipeController {
   findAll() {
     return this.recipeService.findAll();
   }
+  @Get(':id')
+  findOne(@Param('id') id: string) {
+    return this.recipeService.findOne({ where: { id: +id } });
+  }
   @Delete(':id')
   remove(@Param() id) {
     return this.recipeService.remove(id);
