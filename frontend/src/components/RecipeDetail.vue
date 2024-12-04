@@ -9,7 +9,7 @@
               class="border-0"
               width="auto"
               height="100%"
-              src="../assets/bebe.jpg"
+              :src="recipe.imagePath"
               alt="..."
             />
           </div>
@@ -102,9 +102,23 @@ import Vue from 'vue';
 import TopNav from './Navigation/TopNav.vue';
 
 export default Vue.extend({
-  name: 'RecipeDetail',
   components: {
     TopNav,
+  },
+  data():any {
+    return {
+      recipe: null,
+    };
+  },
+  mounted() {
+    this.loadRecipe();
+  },
+  methods: {
+    loadRecipe() {
+      window.axios.get(`/recipe/${this.$route.params.id}`).then((response) => {
+        this.recipe = response.data;
+      }).catch(() => null);
+    },
   },
 });
 </script>

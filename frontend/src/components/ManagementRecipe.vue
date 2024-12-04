@@ -15,7 +15,7 @@
       </div>
       <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 p-3">
         <div v-for="recipe in recipes" class="col mb-5">
-          <router-link class="text-decoration-none" to="/detail">
+          <router-link class="text-decoration-none" :to="`/detail/${recipe.id}`">
             <div class="card h-100">
               <img
                 class="card-img-top"
