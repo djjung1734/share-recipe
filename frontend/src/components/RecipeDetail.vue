@@ -18,15 +18,15 @@
               class="border-0 rounded-circle me-3"
               width="80"
               height="80"
-              src="../assets/bebe.jpg"
+              :src="recipe.user.imagePath"
               alt="..."
             />
-            <span class="fs-5">Nickname</span>
+            <span class="fs-5">{{ recipe.user.nickname }}</span>
           </div>
           <div class="p-3">
-            <h3>레시피 제목</h3>
+            <h3>{{ recipe.title }}</h3>
             <h5 class="text-muted">
-              레시피 소개
+              {{ recipe.description }}
             </h5>
             <div class="d-flex justify-content-evenly p-5 border-bottom">
               <div class="d-flex">

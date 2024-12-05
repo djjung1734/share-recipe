@@ -18,7 +18,7 @@ export class RecipeController {
   findOne(@Param('id') id: string) {
     return this.recipeService.findOne({
       where: { id: +id },
-      relations: ['ingredients', 'steps'],
+      relations: ['ingredients', 'steps', 'user'],
     });
   }
   @Delete(':id')
