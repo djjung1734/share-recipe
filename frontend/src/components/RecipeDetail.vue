@@ -31,15 +31,15 @@
             <div class="d-flex justify-content-evenly p-5 border-bottom">
               <div class="d-flex">
                 <span class="fw-bold pe-3"> 소요시간 </span>
-                <span>30분 이내</span>
+                <span>{{ recipe.time }}분 이내</span>
               </div>
               <div class="d-flex pb-3">
                 <span class="fw-bold pe-3">난이도</span>
-                <span class="material-icons text-muted"> star_rate </span>
-                <span class="material-symbols-outlined text-muted">
+                <span v-for="i in Number(recipe.level)" :key="i" class="material-icons text-muted"> star_rate </span>
+                <!-- <span class="material-symbols-outlined text-muted">
                   star_half
                 </span>
-                <span class="material-symbols-outlined text-muted"> star </span>
+                <span class="material-symbols-outlined text-muted"> star </span> -->
               </div>
             </div>
             <div class="p-3 border-bottom">
