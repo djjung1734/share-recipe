@@ -44,8 +44,8 @@
             </div>
             <div class="p-3 border-bottom">
               <h5>[재료]</h5>
-              <h6 class="text-muted">
-                재료 나열 ...
+              <h6 v-for="ingredient in recipe.ingredients" class="text-muted">
+                {{ ingredient.name }} {{ ingredient.quantity }}{{ ingredient.unit }}
               </h6>
             </div>
             <div class="p-3">
