@@ -36,10 +36,6 @@
               <div class="d-flex pb-3">
                 <span class="fw-bold pe-3">난이도</span>
                 <span v-for="i in Number(recipe.level)" :key="i" class="material-icons text-muted"> star_rate </span>
-                <!-- <span class="material-symbols-outlined text-muted">
-                  star_half
-                </span>
-                <span class="material-symbols-outlined text-muted"> star </span> -->
               </div>
             </div>
             <div class="p-3 border-bottom">
