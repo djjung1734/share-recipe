@@ -46,42 +46,16 @@
             </div>
             <div class="p-3">
               <h5>[조리법]</h5>
-              <div class="p-3 d-flex justify-content-between">
+              <div v-for="(step, i) in recipe.steps" class="p-3 d-flex justify-content-between">
                 <div class="d-flex flex-column">
-                  <span class="fw-bold">Step 1. </span>
-                  <span>첫 순서 설명</span>
+                  <span class="fw-bold">Step {{ i }}. </span>
+                  <span>{{ step.content }}</span>
                 </div>
                 <img
                   class="border-0 me-3"
                   width="80"
                   height="80"
-                  src="../assets/bebe.jpg"
-                  alt="..."
-                />
-              </div>
-              <div class="p-3 d-flex justify-content-between">
-                <div class="d-flex flex-column">
-                  <span class="fw-bold">Step 2. </span>
-                  <span>두 번째 순서 설명</span>
-                </div>
-                <img
-                  class="border-0 me-3"
-                  width="80"
-                  height="80"
-                  src="../assets/bebe.jpg"
-                  alt="..."
-                />
-              </div>
-              <div class="p-3 d-flex justify-content-between">
-                <div class="d-flex flex-column">
-                  <span class="fw-bold">Step 3. </span>
-                  <span>세 번째 순서 설명</span>
-                </div>
-                <img
-                  class="border-0 me-3"
-                  width="80"
-                  height="80"
-                  src="../assets/bebe.jpg"
+                  :src="step.imagePath"
                   alt="..."
                 />
               </div>
