@@ -15,6 +15,7 @@ module.exports = {
   },
   ignorePatterns: ['.eslintrc.js', 'public/assets'],
   rules: {
+    'vue/multi-word-component-names': 0,
     'operator-linebreak': 'off',
     'import/extensions': [
       'error',
