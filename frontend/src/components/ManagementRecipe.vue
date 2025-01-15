@@ -66,11 +66,8 @@ export default Vue.extend({
     this.loadRecipe();
   },
   methods: {
-    btnPopup() {
-      window.open('/editRecipe', '_blank', 'width=800,height=800');
-    },
     loadRecipe() {
-      window.axios.get('/recipe').then((response) => {
+      window.axios.get(`/recipe/user/${this.$route.params.id}`).then((response) => {
         this.recipes = response.data;
       }).catch(() => null);
     },

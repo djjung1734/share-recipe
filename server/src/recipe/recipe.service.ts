@@ -1,7 +1,7 @@
 import { Recipe } from './recipe.entity';
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { FindManyOptions, Repository } from 'typeorm';
+import { FindManyOptions, Repository, FindOneOptions } from 'typeorm';
 
 @Injectable()
 export class RecipeService {
@@ -13,13 +13,11 @@ export class RecipeService {
     return this.recipeRepository.save(recipe);
   }
 
-  findAll() {
-    return this.recipeRepository.find({
-      relations: ['ingredients', 'steps'],
-    });
+  findAll(options?: FindManyOptions<Recipe>) {
+    return this.recipeRepository.find(options);
   }
 
-  findOne(options?: FindManyOptions<Recipe>) {
+  findOne(options?: FindOneOptions<Recipe>) {
     return this.recipeRepository.findOne(options);
   }
 

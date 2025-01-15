@@ -12,12 +12,21 @@ export class RecipeController {
   }
   @Get()
   findAll() {
-    return this.recipeService.findAll();
+    return this.recipeService.findAll({
+      relations: ['ingredients', 'steps', 'user'],
+    });
   }
-  @Get(':id')
+  @Get('/:id')
   findOne(@Param('id') id: string) {
     return this.recipeService.findOne({
       where: { id: +id },
+      relations: ['ingredients', 'steps', 'user'],
+    });
+  }
+  @Get('/user/:id')
+  findWithUser(@Param('id') id: string) {
+    return this.recipeService.findAll({
+      where: { userId: +id },
       relations: ['ingredients', 'steps', 'user'],
     });
   }
