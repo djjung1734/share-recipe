@@ -61,6 +61,7 @@
                 <button
                   type="button"
                   class="button btn border-0 rounded-circle m-1"
+                  @click="deleteRecipe(recipe)"
                 >
                   <span class="material-symbols-outlined p-0 fs-5">
                     delete
@@ -97,6 +98,11 @@ export default Vue.extend({
       window.axios.get(`/recipe/user/${this.$route.params.id}`).then((response) => {
         this.recipes = response.data;
       }).catch(() => null);
+    },
+    deleteRecipe(recipe) {
+      if (recipe.id) {
+        window.axios.delete(`/recipe/${recipe.id}`).then(() => this.loadRecipes()).catch(() => null);
+      }
     },
   },
 });
