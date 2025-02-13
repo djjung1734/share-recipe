@@ -100,8 +100,11 @@ export default Vue.extend({
       }).catch(() => null);
     },
     deleteRecipe(recipe) {
-      if (recipe.id) {
-        window.axios.delete(`/recipe/${recipe.id}`).then(() => this.loadRecipes()).catch(() => null);
+      if (recipe.id && window.confirm('삭제하시겠습니까?')) {
+        window.axios.delete(`/recipe/${recipe.id}`).then(() => {
+          this.loadRecipes();
+          alert('삭제되었습니다.');
+        }).catch(() => null);
       }
     },
   },
