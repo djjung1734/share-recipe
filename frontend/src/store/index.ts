@@ -16,10 +16,14 @@ export default new Vuex.Store({
   ],
   state: {
     selectedMenu: null,
+    selectedRecipe: null,
   },
   mutations: {
     selectMenu(state, menu) {
       state.selectedMenu = menu;
+    },
+    editRecipe(state, recipe) {
+      state.selectedRecipe = recipe;
     },
   },
   actions: {},

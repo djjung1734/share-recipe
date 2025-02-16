@@ -270,10 +270,47 @@ export default Vue.extend({
       ],
     };
   },
-
   computed: {
     user() {
       return this.$store.state.loginStore.user;
+    },
+    oldRecipe() {
+      return this.$store.state.selectedRecipe;
+    },
+  },
+  watch: {
+    oldRecipe() {
+      if (this.oldRecipe) {
+        this.ingredients = this.oldRecipe.ingredients;
+        this.steps = this.oldRecipe.steps;
+        delete this.oldRecipe.ingredients;
+        delete this.oldRecipe.steps;
+        delete this.oldRecipe.user;
+        this.recipe = this.oldRecipe;
+      } else {
+        this.recipe = {
+          title: '',
+          description: '',
+          time: '',
+          level: '',
+          image: '',
+          imagePath: '',
+        };
+        this.ingredients = [
+          {
+            name: '',
+            quantity: 0,
+            unit: '',
+            recipeId: '',
+          },
+        ];
+        this.steps = [
+          {
+            content: '',
+            recipeId: '',
+          },
+        ];
+      }
     },
   },
   methods: {

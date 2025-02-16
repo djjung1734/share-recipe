@@ -8,6 +8,7 @@
           class="btn btn-outline-secondary float-end p-1 pb-0"
           data-bs-toggle="modal"
           data-bs-target="#editRecipeModal"
+          @click="editRecipe(null)"
         >
           <span class="material-symbols-outlined"> add </span>
           <span class="material-symbols-outlined"> ramen_dining </span>
@@ -53,6 +54,7 @@
                   class="button btn border-0 rounded-circle m-1"
                   data-bs-toggle="modal"
                   data-bs-target="#editRecipeModal"
+                  @click="editRecipe(recipe)"
                 >
                   <span class="material-symbols-outlined p-0 fs-5">
                     edit
@@ -98,6 +100,9 @@ export default Vue.extend({
       window.axios.get(`/recipe/user/${this.$route.params.id}`).then((response) => {
         this.recipes = response.data;
       }).catch(() => null);
+    },
+    editRecipe(recipe) {
+      this.$store.commit('editRecipe', recipe);
     },
     deleteRecipe(recipe) {
       if (recipe.id && window.confirm('삭제하시겠습니까?')) {
