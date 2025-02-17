@@ -110,125 +110,123 @@
                     </select>
                   </div>
                 </div>
-                <div class="d-flex justify-content-center px-3 m-0">
+                <!-- <div class="d-flex justify-content-center px-3 m-0">
                   <hr v-if="recipe.id" />
                   <button v-else type="button" class="btn btn-secondary" @click="saveRecipe">
                     <span class="material-symbols-outlined fs-3">
                       keyboard_double_arrow_down
                     </span>
                   </button>
+                </div> -->
+                <div class="d-flex align-items-center col-12 m-0 pb-3">
+                  <span class="ps-3">재료</span>
+                  <button
+                    class="btn px-1 mt-1"
+                    type="button"
+                    @click="addIngredientInput"
+                  >
+                    <span class="material-symbols-outlined"> add_circle </span>
+                  </button>
                 </div>
-                <div v-if="recipe.id">
-                  <div class="d-flex align-items-center col-12 m-0 pb-3">
-                    <span class="ps-3">재료</span>
-                    <button
-                      class="btn px-1 mt-1"
-                      type="button"
-                      @click="addIngredientInput"
-                    >
-                      <span class="material-symbols-outlined"> add_circle </span>
-                    </button>
+                <div
+                  v-for="(ingredient, index) in ingredients"
+                  :key="`ingredient${index}`"
+                  class="d-flex align-items-center col-12 m-0 px-3 py-1"
+                >
+                  <div class="col-md-3 px-1">
+                    <input
+                      id="ingredient"
+                      v-model="ingredient.name"
+                      type="text"
+                      class="form-control"
+                      placeholder="재료명"
+                    />
                   </div>
-                  <div
-                    v-for="(ingredient, index) in ingredients"
-                    :key="`ingredient${index}`"
-                    class="d-flex align-items-center col-12 m-0 px-3 py-1"
+                  <div class="col-md-3 px-1">
+                    <input
+                      id="quantity"
+                      v-model="ingredient.quantity"
+                      type="number"
+                      placeholder="용량"
+                      class="form-control"
+                    />
+                  </div>
+                  <div class="col-md-2 px-1">
+                    <input
+                      id="unit"
+                      v-model="ingredient.unit"
+                      type="text"
+                      class="form-control"
+                      placeholder="단위"
+                    />
+                  </div>
+                  <button
+                    class="btn px-1 mt-1"
+                    type="button"
+                    @click="removeIngredientInput(index)"
                   >
-                    <div class="col-md-3 px-1">
-                      <input
-                        id="ingredient"
-                        v-model="ingredient.name"
-                        type="text"
-                        class="form-control"
-                        placeholder="재료명"
-                      />
-                    </div>
-                    <div class="col-md-3 px-1">
-                      <input
-                        id="quantity"
-                        v-model="ingredient.quantity"
-                        type="number"
-                        placeholder="용량"
-                        class="form-control"
-                      />
-                    </div>
-                    <div class="col-md-2 px-1">
-                      <input
-                        id="unit"
-                        v-model="ingredient.unit"
-                        type="text"
-                        class="form-control"
-                        placeholder="단위"
-                      />
-                    </div>
-                    <button
-                      class="btn px-1 mt-1"
-                      type="button"
-                      @click="removeIngredientInput(index)"
-                    >
-                      <span class="material-symbols-outlined"> do_not_disturb_on </span>
-                    </button>
+                    <span class="material-symbols-outlined"> do_not_disturb_on </span>
+                  </button>
+                </div>
+                <div class="d-flex align-items-center col-12 m-0 pt-3">
+                  <span class="ps-3">요리순서</span>
+                  <button type="button" class="btn px-1 mt-1" @click="addStepInput">
+                    <span class="material-symbols-outlined"> add_circle </span>
+                  </button>
+                </div>
+                <div
+                  v-for="(step, index) in steps"
+                  :key="`step${index}`"
+                  class="d-flex align-items-center m-0 pb-3"
+                >
+                  <div class="col-md-9 p-3">
+                    <textarea id="step1" v-model="step.content" class="form-control" />
                   </div>
-                  <div class="d-flex align-items-center col-12 m-0 pt-3">
-                    <span class="ps-3">요리순서</span>
-                    <button type="button" class="btn px-1 mt-1" @click="addStepInput">
-                      <span class="material-symbols-outlined"> add_circle </span>
-                    </button>
+                  <div class="col-md-2 p-3">
+                    <label :for="`detailImage${index}`">
+                      <img
+                        v-if="step.image"
+                        class="border-0"
+                        width="150px"
+                        height="100%"
+                        :src="step.imagePath"
+                        alt="..."
+                      />
+                      <div v-else class="detailImage d-flex align-items-center justify-content-center">
+                        <span class="material-symbols-outlined fs-3 text-muted">
+                          add_photo_alternate
+                        </span>
+                      </div>
+                    </label>
+                    <input :id="`detailImage${index}`" class="upload detailImage" type="file" :name="`detailImage${index}`" />
                   </div>
-                  <div
-                    v-for="(step, index) in steps"
-                    :key="`step${index}`"
-                    class="d-flex align-items-center m-0 pb-3"
+                  <button
+                    class="btn px-1 mt-1"
+                    type="button"
+                    @click="removeStepInput(index)"
                   >
-                    <div class="col-md-9 p-3">
-                      <textarea id="step1" v-model="step.content" class="form-control" />
-                    </div>
-                    <div class="col-md-2 p-3">
-                      <label :for="`detailImage${index}`">
-                        <img
-                          v-if="step.image"
-                          class="border-0"
-                          width="150px"
-                          height="100%"
-                          :src="step.imagePath"
-                          alt="..."
-                        />
-                        <div v-else class="detailImage d-flex align-items-center justify-content-center">
-                          <span class="material-symbols-outlined fs-3 text-muted">
-                            add_photo_alternate
-                          </span>
-                        </div>
-                      </label>
-                      <input :id="`detailImage${index}`" class="upload detailImage" type="file" :name="`detailImage${index}`" />
-                    </div>
+                    <span class="material-symbols-outlined"> do_not_disturb_on </span>
+                  </button>
+                </div>
+                <div class="col-12 p-3">
+                  <div class="float-end">
                     <button
-                      class="btn px-1 mt-1"
+                      data-bs-dismiss="modal"
+                      aria-label="Close"
                       type="button"
-                      @click="removeStepInput(index)"
+                      class="btn btn-outline-secondary me-1"
                     >
-                      <span class="material-symbols-outlined"> do_not_disturb_on </span>
+                      취소
                     </button>
-                  </div>
-                  <div class="col-12 p-3">
-                    <div class="float-end">
-                      <button
-                        data-bs-dismiss="modal"
-                        aria-label="Close"
-                        type="button"
-                        class="btn btn-outline-secondary me-1"
-                      >
-                        취소
-                      </button>
-                      <button
-                        data-bs-dismiss="modal"
-                        aria-label="Close"
-                        type="button"
-                        class="btn btn-outline-success"
-                        @click="saveDetails()"
-                      >
-                        등록
-                      </button>
-                    </div>
+                    <button
+                      data-bs-dismiss="modal"
+                      aria-label="Close"
+                      type="button"
+                      class="btn btn-outline-success"
+                      @click="saveRecipe()"
+                    >
+                      등록
+                    </button>
                   </div>
                 </div>
               </div>
@@ -377,32 +375,30 @@ export default Vue.extend({
           .post('/recipe', this.recipe)
           .then((response) => {
             this.recipe = response.data;
+            this.ingredients.forEach((ingredient) => {
+              ingredient.recipeId = this.recipe.id;
+            });
+            window.axios.post('/ingredient', this.ingredients).then((res) => {
+              this.ingredients = res.data;
+            }).catch(() => null);
+            this.steps.forEach((step, index) => {
+              step.recipeId = this.recipe.id;
+              this.uploadImage(`detailImage${index}`).then((detailFileInfo: any) => {
+                if (detailFileInfo) {
+                  const { url, originalname } = detailFileInfo;
+                  step.image = originalname;
+                  step.imagePath = url;
+                }
+                window.axios
+                  .post('/step', step)
+                  .then((res) => {
+                    step = res.data;
+                  })
+                  .catch(() => null);
+              });
+            });
           })
           .catch(() => null);
-      });
-    },
-    async saveDetails() {
-      this.ingredients.forEach((ingredient) => {
-        ingredient.recipeId = this.recipe.id;
-      });
-      window.axios.post('/ingredient', this.ingredients).then((response) => {
-        this.ingredients = response.data;
-      }).catch(() => null);
-      this.steps.forEach((step, index) => {
-        step.recipeId = this.recipe.id;
-        this.uploadImage(`detailImage${index}`).then((fileInfo: any) => {
-          if (fileInfo) {
-            const { url, originalname } = fileInfo;
-            step.image = originalname;
-            step.imagePath = url;
-          }
-          window.axios
-            .post('/step', step)
-            .then((response) => {
-              step = response.data;
-            })
-            .catch(() => null);
-        });
       });
     },
   },
