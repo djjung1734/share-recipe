@@ -1,5 +1,5 @@
 <template>
-  <div id="editRecipeModal" class="modal fade modal-xl" tabindex="-1" aria-hidden="true">
+  <div id="editRecipeModal" class="modal fade modal-xl" tabindex="-1">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header border-bottom-0 p-2">
