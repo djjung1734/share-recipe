@@ -14,7 +14,7 @@
           <span class="material-symbols-outlined"> ramen_dining </span>
         </button>
       </div>
-      <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-5 p-3">
+      <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-6 p-3">
         <div v-for="recipe in recipes" class="col mb-5">
           <div class="card h-100">
             <img
