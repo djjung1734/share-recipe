@@ -3,7 +3,7 @@
     <TopNav />
     <div class="bg-light overflow-auto">
       <div class="container p-4 px-lg-5 d-flex flex-column">
-        <div class="card border-0 p-3">
+        <div v-if="recipe" class="card border-0 p-3">
           <div class="image p-3 d-flex justify-content-center">
             <img
               class="border-0"
@@ -61,6 +61,9 @@
               </div>
             </div>
           </div>
+        </div>
+        <div class="card border-0 p-3">
+          asd
         </div>
       </div>
     </div>
