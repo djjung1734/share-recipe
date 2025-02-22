@@ -24,8 +24,27 @@
         <span v-else class="me-3 text-white" style="font-size: 12px">
           {{ user.nickname }}님, 환영합니다!
         </span>
-        <router-link v-if="!user" to="/login">
-          <button type="button" class="btn border-0 rounded-circle">
+        <div v-if="!user">
+          <router-link to="/login">
+            <button type="button" class="btn border-0 rounded-circle">
+              <span
+                class="material-symbols-outlined text-white"
+                style="font-size: 32px"
+              >
+                person
+              </span>
+            </button>
+          </router-link>
+        </div>
+        <div
+          v-if="user"
+          class="dropdown"
+        >
+          <button
+            type="button"
+            class="btn border-0 rounded-circle dropdown-toggle"
+            data-bs-toggle="dropdown"
+          >
             <span
               class="material-symbols-outlined text-white"
               style="font-size: 32px"
@@ -33,54 +52,41 @@
               person
             </span>
           </button>
-        </router-link>
-        <button
-          v-if="user"
-          type="button"
-          class="btn border-0 rounded-circle dropdown-toggle"
-          data-bs-toggle="dropdown"
-        >
-          <span
-            class="material-symbols-outlined text-white"
-            style="font-size: 32px"
-          >
-            person
-          </span>
-        </button>
-        <div class="dropdown-menu dropdown-menu-end">
-          <router-link class="text-decoration-none" :to="`/${user?.id}/recipe`">
-            <button
-              type="button"
-              class="dropdown-item"
-              @click="selectMenu('recipe')"
-            >
-              레시피
-            </button>
-          </router-link>
-          <router-link class="text-decoration-none" :to="`/${user?.id}/review`">
-            <button
-              type="button"
-              class="dropdown-item"
-              @click="selectMenu('review')"
-            >
-              요리 후기
-            </button>
-          </router-link>
-          <router-link class="text-decoration-none" :to="`/${user?.id}/member`">
-            <button
-              type="button"
-              class="dropdown-item"
-              :href="`/${user?.id}/member`"
-              @click="selectMenu('member')"
-            >
-              회원정보수정
-            </button>
-          </router-link>
-          <router-link class="text-decoration-none" to="/">
-            <button type="button" class="dropdown-item" @click="logout">
-              로그아웃
-            </button>
-          </router-link>
+          <div class="dropdown-menu dropdown-menu-end">
+            <router-link class="text-decoration-none" :to="`/${user?.id}/recipe`">
+              <button
+                type="button"
+                class="dropdown-item"
+                @click="selectMenu('recipe')"
+              >
+                레시피
+              </button>
+            </router-link>
+            <router-link class="text-decoration-none" :to="`/${user?.id}/review`">
+              <button
+                type="button"
+                class="dropdown-item"
+                @click="selectMenu('review')"
+              >
+                요리 후기
+              </button>
+            </router-link>
+            <router-link class="text-decoration-none" :to="`/${user?.id}/member`">
+              <button
+                type="button"
+                class="dropdown-item"
+                :href="`/${user?.id}/member`"
+                @click="selectMenu('member')"
+              >
+                회원정보수정
+              </button>
+            </router-link>
+            <router-link class="text-decoration-none" to="/">
+              <button type="button" class="dropdown-item" @click="logout">
+                로그아웃
+              </button>
+            </router-link>
+          </div>
         </div>
       </div>
     </div>
