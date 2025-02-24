@@ -62,8 +62,39 @@
             </div>
           </div>
         </div>
+      </div>
+      <div class="container pt-0 pb-4 px-4 px-lg-5 d-flex flex-column">
         <div class="card border-0 p-3">
-          asd
+          <h5>요리 후기</h5>
+          <div class="p-3 d-flex justify-content-between">
+            <div class="d-flex">
+              <img
+                class="border-0 rounded-circle me-3"
+                width="80"
+                height="80"
+                src="https://img.icons8.com/sf-regular-filled/96/no-camera.png"
+                alt="..."
+              />
+              <div class="d-flex flex-column">
+                <div class="d-flex">
+                  <span class="fw-bold">닉네임</span>
+                  <div class="d-flex ps-3">
+                    <div class="bi-star-fill" />
+                    <div class="bi-star-fill" />
+                    <div class="bi-star-fill" />
+                  </div>
+                </div>
+                <span>후기 내용...</span>
+              </div>
+            </div>
+            <img
+              class="border-0 me-3"
+              width="80"
+              height="80"
+              src="https://img.icons8.com/sf-regular-filled/96/no-camera.png"
+              alt="..."
+            />
+          </div>
         </div>
       </div>
     </div>
