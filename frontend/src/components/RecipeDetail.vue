@@ -95,6 +95,17 @@
               alt="..."
             />
           </div>
+          <div class="d-flex border-top">
+            <textarea id="introduce" class="form-control ms-4 me-2 mt-3" />
+            <button
+              type="button"
+              class="btn border mt-3 me-4"
+            >
+              <span class="material-symbols-outlined">
+                edit
+              </span>
+            </button>
+          </div>
         </div>
       </div>
     </div>
