@@ -66,7 +66,7 @@
       <div class="container pt-0 pb-4 px-4 px-lg-5 d-flex flex-column">
         <div class="card border-0 p-3">
           <h5>요리 후기</h5>
-          <div class="p-3 d-flex justify-content-between">
+          <div class="p-3 d-flex justify-content-between  border-bottom">
             <div class="d-flex">
               <img
                 class="border-0 rounded-circle me-3"
@@ -75,7 +75,7 @@
                 src="https://img.icons8.com/sf-regular-filled/96/no-camera.png"
                 alt="..."
               />
-              <div class="d-flex flex-column">
+              <div class="d-flex flex-colum">
                 <div class="d-flex">
                   <span class="fw-bold">닉네임</span>
                   <div class="d-flex ps-3">
@@ -95,7 +95,7 @@
               alt="..."
             />
           </div>
-          <div class="d-flex border-top">
+          <div class="d-flex">
             <textarea id="introduce" class="form-control ms-4 me-2 mt-3" />
             <button
               type="button"
