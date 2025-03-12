@@ -1,3 +1,4 @@
+import { Review } from './../review/review.entity';
 import { Recipe } from './../recipe/recipe.entity';
 import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
 
@@ -26,4 +27,7 @@ export class User {
 
   @OneToMany(() => Recipe, (recipes) => recipes.user, { cascade: true })
   recipes: Recipe[];
+
+  @OneToMany(() => Review, (reviews) => reviews.user)
+  reviews: Review[];
 }

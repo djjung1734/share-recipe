@@ -75,7 +75,7 @@
                 src="https://img.icons8.com/sf-regular-filled/96/no-camera.png"
                 alt="..."
               />
-              <div class="d-flex flex-colum">
+              <div class="d-flex flex-column">
                 <div class="d-flex">
                   <span class="fw-bold">닉네임</span>
                   <div class="d-flex ps-3">

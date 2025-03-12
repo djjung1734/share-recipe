@@ -1,3 +1,4 @@
+import { Review } from './../review/review.entity';
 import { Step } from './../step/step.entity';
 import { Ingredient } from './../ingredient/ingredient.entity';
 import { User } from './../user/user.entity';
@@ -46,4 +47,7 @@ export class Recipe {
 
   @OneToMany(() => Step, (steps) => steps.recipe)
   steps: Step[];
+
+  @OneToMany(() => Review, (reviews) => reviews.recipe)
+  reviews: Review[];
 }

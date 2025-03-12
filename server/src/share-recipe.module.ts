@@ -1,3 +1,4 @@
+import { ReviewModule } from './review/review.module';
 import { IngredientModule } from './ingredient/ingredient.module';
 import { StepModule } from './step/step.module';
 import { RecipeModule } from './recipe/recipe.module';
@@ -35,6 +36,10 @@ const routes: Routes = [
         path: '/step',
         module: StepModule,
       },
+      {
+        path: '/review',
+        module: ReviewModule,
+      },
     ],
   },
 ];
@@ -48,6 +53,7 @@ const routes: Routes = [
     RecipeModule,
     IngredientModule,
     StepModule,
+    ReviewModule,
   ],
 })
 export class ShareRecipeModule {}
