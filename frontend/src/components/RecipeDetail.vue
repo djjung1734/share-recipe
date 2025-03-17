@@ -95,16 +95,41 @@
               alt="..."
             />
           </div>
-          <div class="d-flex">
-            <textarea id="introduce" class="form-control ms-4 me-2 mt-3" />
-            <button
-              type="button"
-              class="btn border mt-3 me-4"
-            >
-              <span class="material-symbols-outlined">
-                edit
+          <div class="d-flex flex-column">
+            <div class="d-flex p-3">
+              <!-- <label for="level" class="form-label pe-1">별점</label> -->
+              <select id="level" v-model="review.score" class="fa border-0 border-bottom pb-1">
+                <option value="1" class="fa">
+                  &#xf005;
+                </option>
+                <option value="2" class="fa">
+                  &#xf005; &#xf005;
+                </option>
+                <option value="3" class="fa">
+                  &#xf005; &#xf005; &#xf005;
+                </option>
+                <option value="4" class="fa">
+                  &#xf005; &#xf005; &#xf005; &#xf005;
+                </option>
+                <option value="5" class="fa">
+                  &#xf005; &#xf005; &#xf005; &#xf005; &#xf005;
+                </option>
+              </select>
+              <span class="ps-3 mt-1 material-symbols-outlined">
+                add_photo_alternate
               </span>
-            </button>
+            </div>
+            <div class="d-flex">
+              <textarea id="review" v-model="review.content" placeholder="후기를 작성해주세요" rows="1" class="w-100 border-0 border-bottom ms-4 me-2" />
+              <button
+                type="button"
+                class="btn border mt-3 me-4"
+              >
+                <span class="material-symbols-outlined">
+                  edit
+                </span>
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -123,6 +148,14 @@ export default Vue.extend({
   data():any {
     return {
       recipe: null,
+      review: {
+        score: 1,
+        content: '',
+        image: '',
+        imagePath: '',
+        userId: '',
+        recipeId: '',
+      },
     };
   },
   mounted() {
@@ -142,5 +175,12 @@ export default Vue.extend({
 .image {
   width: 100%;
   height: 400px;
+}
+
+#review{
+  resize: none;
+}
+#review:focus{
+  outline:none;
 }
 </style>
