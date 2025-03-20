@@ -110,14 +110,6 @@
                     </select>
                   </div>
                 </div>
-                <!-- <div class="d-flex justify-content-center px-3 m-0">
-                  <hr v-if="recipe.id" />
-                  <button v-else type="button" class="btn btn-secondary" @click="saveRecipe">
-                    <span class="material-symbols-outlined fs-3">
-                      keyboard_double_arrow_down
-                    </span>
-                  </button>
-                </div> -->
                 <div class="d-flex align-items-center col-12 m-0 pb-3">
                   <span class="ps-3">재료</span>
                   <button

@@ -97,7 +97,6 @@
           </div>
           <div class="d-flex flex-column">
             <div class="d-flex p-3">
-              <!-- <label for="level" class="form-label pe-1">별점</label> -->
               <select id="level" v-model="review.score" class="fa border-0 border-bottom pb-1">
                 <option value="1" class="fa">
                   &#xf005;
@@ -115,15 +114,21 @@
                   &#xf005; &#xf005; &#xf005; &#xf005; &#xf005;
                 </option>
               </select>
-              <span class="ps-3 mt-1 material-symbols-outlined">
-                add_photo_alternate
-              </span>
+              <div>
+                <label for="reviewImage">
+                  <span class="ps-3 mt-1 material-symbols-outlined">
+                    add_photo_alternate
+                  </span>
+                </label>
+                <input id="reviewImage" class="upload" type="file" name="reviewImage" />
+              </div>
             </div>
             <div class="d-flex">
               <textarea id="review" v-model="review.content" placeholder="후기를 작성해주세요" rows="1" class="w-100 border-0 border-bottom ms-4 me-2" />
               <button
                 type="button"
                 class="btn border mt-3 me-4"
+                @click="saveReview"
               >
                 <span class="material-symbols-outlined">
                   edit
@@ -158,6 +163,11 @@ export default Vue.extend({
       },
     };
   },
+  computed: {
+    user() {
+      return this.$store.state.loginStore.user;
+    },
+  },
   mounted() {
     this.loadRecipe();
   },
@@ -165,7 +175,46 @@ export default Vue.extend({
     loadRecipe() {
       window.axios.get(`/recipe/${this.$route.params.id}`).then((response) => {
         this.recipe = response.data;
+        this.review.recipeId = this.recipe.id;
+        this.review.userId = this.user.id;
       }).catch(() => null);
+    },
+    uploadImage(elementId) {
+      return new Promise<void>((resolve, reject) => {
+        const form = new FormData();
+        const file = <HTMLInputElement>document.getElementById(elementId);
+        if (file.files[0]) {
+          form.append('upload', file.files[0]);
+          window.axios
+            .post('upload', form, {
+              headers: {
+                'Content-Type': 'multipart/form-data',
+              },
+            })
+            .then((response) => {
+              resolve(response.data);
+            })
+            .catch(() => {
+              reject();
+            });
+        } else {
+          resolve(null);
+        }
+      });
+    },
+    async saveReview() {
+      await this.uploadImage('reviewImage').then((fileInfo:any) => {
+        if (fileInfo) {
+          const { url, originalname } = fileInfo;
+          this.review.image = originalname;
+          this.review.imagePath = url;
+        }
+        window.axios
+          .post('/review', this.review)
+          .then((response) => {
+            this.review = response.data;
+          }).catch(() => null);
+      });
     },
   },
 });
@@ -180,7 +229,12 @@ export default Vue.extend({
 #review{
   resize: none;
 }
+
 #review:focus{
   outline:none;
+}
+
+#reviewImage {
+  display: none;
 }
 </style>
