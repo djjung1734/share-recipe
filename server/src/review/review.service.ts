@@ -13,8 +13,8 @@ export class ReviewService {
     return this.reviewRepository.save(reviews);
   }
 
-  findAll() {
-    return this.reviewRepository.find();
+  findAll(options?: FindManyOptions<Review>) {
+    return this.reviewRepository.find(options);
   }
 
   findOne(options?: FindManyOptions<Review>) {
