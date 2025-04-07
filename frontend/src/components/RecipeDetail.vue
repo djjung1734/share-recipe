@@ -39,22 +39,26 @@
               </div>
             </div>
             <div class="p-3 border-bottom">
-              <h5>[재료]</h5>
+              <h5 class="fw-bold">
+                [재료]
+              </h5>
               <h6 v-for="ingredient in recipe.ingredients" class="text-muted">
                 {{ ingredient.name }} {{ ingredient.quantity }}{{ ingredient.unit }}
               </h6>
             </div>
             <div class="p-3">
-              <h5>[조리법]</h5>
+              <h5 class="fw-bold">
+                [조리법]
+              </h5>
               <div v-for="(step, i) in recipe.steps" class="p-3 d-flex justify-content-between">
                 <div class="d-flex flex-column">
-                  <span class="fw-bold">Step {{ i }}. </span>
-                  <span>{{ step.content }}</span>
+                  <span class="fw-bold fs-5">Step {{ i + 1 }}. </span>
+                  <span class="fs-5">{{ step.content }}</span>
                 </div>
                 <img
                   class="border-0 me-3"
-                  width="80"
-                  height="80"
+                  width="120"
+                  height="120"
                   :src="step.imagePath"
                   alt="..."
                 />
@@ -78,13 +82,39 @@
                 <span>{{ rev.content }}</span>
               </div>
             </div>
-            <img
-              class="border-0 me-3"
-              width="80"
-              height="80"
-              :src="rev.imagePath"
-              alt="..."
-            />
+            <div class="d-flex align-items-center">
+              <img
+                class="border-0 me-3"
+                width="80"
+                height="80"
+                :src="rev.imagePath"
+                alt="..."
+              />
+              <div
+                v-if="recipe.userId === rev.userId"
+                class="dropdown"
+              >
+                <button
+                  type="button"
+                  class="btn border-0 p-0"
+                  data-bs-toggle="dropdown"
+                >
+                  <span class="material-symbols-outlined">
+                    more_vert
+                  </span>
+                </button>
+                <div class="dropdown-menu">
+                  <button type="button" class="dropdown-item">
+                    수정
+                  </button>
+                  <button type="button" class="dropdown-item">
+                    삭제
+                  </button>
+                </div>
+              </div>
+
+              <span v-else class="ps-3 pe-2" />
+            </div>
           </div>
           <div class="d-flex flex-column">
             <div class="d-flex p-3">
@@ -118,7 +148,7 @@
               <textarea id="review" v-model="review.content" placeholder="후기를 작성해주세요" rows="1" class="w-100 border-0 border-bottom ms-4 me-2" />
               <button
                 type="button"
-                class="btn border mt-3 me-4"
+                class="btn mt-3 me-4"
                 @click="saveReview"
               >
                 <span class="material-symbols-outlined">
