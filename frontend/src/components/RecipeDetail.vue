@@ -92,7 +92,7 @@
               />
 
               <button
-                v-if="recipe.userId === rev.userId"
+                v-if="user.id === rev.userId"
                 type="button"
                 class="btn p-0"
                 @click="deleteReview(rev)"
@@ -185,7 +185,6 @@ export default Vue.extend({
     loadRecipe() {
       window.axios.get(`/recipe/${this.$route.params.id}`).then((response) => {
         this.recipe = response.data;
-        console.log(1);
         window.axios.get(`/review/${this.recipe.id}`).then((res) => {
           this.reviews = res.data;
         }).catch(() => null);
