@@ -90,29 +90,17 @@
                 :src="rev.imagePath"
                 alt="..."
               />
-              <div
-                v-if="recipe.userId === rev.userId"
-                class="dropdown"
-              >
-                <button
-                  type="button"
-                  class="btn border-0 p-0"
-                  data-bs-toggle="dropdown"
-                >
-                  <span class="material-symbols-outlined">
-                    more_vert
-                  </span>
-                </button>
-                <div class="dropdown-menu">
-                  <button type="button" class="dropdown-item">
-                    수정
-                  </button>
-                  <button type="button" class="dropdown-item">
-                    삭제
-                  </button>
-                </div>
-              </div>
 
+              <button
+                v-if="recipe.userId === rev.userId"
+                type="button"
+                class="btn p-0"
+                @click="deleteReview(rev)"
+              >
+                <span class="material-symbols-outlined text-muted">
+                  delete
+                </span>
+              </button>
               <span v-else class="ps-3 pe-2" />
             </div>
           </div>
@@ -244,6 +232,16 @@ export default Vue.extend({
             }).catch(() => null);
           }).catch(() => null);
       });
+    },
+    deleteReview(review) {
+      if (review.id && window.confirm('리뷰를 삭제하시겠습니까?')) {
+        window.axios.delete(`/review/${review.id}`).then(() => {
+          window.axios.get(`/review/${this.recipe.id}`).then((res) => {
+            this.reviews = res.data;
+          }).catch(() => null);
+          alert('삭제되었습니다.');
+        }).catch(() => null);
+      }
     },
   },
 });
