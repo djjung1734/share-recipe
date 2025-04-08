@@ -17,6 +17,13 @@ export class ReviewController {
       relations: ['user'],
     });
   }
+  @Get('/user/:id')
+  findWithUser(@Param('id') id: string) {
+    return this.reviewService.findAll({
+      where: { userId: +id },
+      relations: ['recipe'],
+    });
+  }
   @Delete(':id')
   remove(@Param() id) {
     return this.reviewService.remove(id);

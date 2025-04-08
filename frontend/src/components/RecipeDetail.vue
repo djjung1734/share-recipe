@@ -70,41 +70,7 @@
       <div class="container pt-0 pb-4 px-4 px-lg-5 d-flex flex-column">
         <div class="card border-0 p-3">
           <h5>요리 후기</h5>
-          <div v-for="rev in reviews" class="p-3 d-flex justify-content-between  border-bottom">
-            <div class="d-flex">
-              <div class="d-flex flex-column">
-                <div class="d-flex">
-                  <span class="fw-bold">{{ rev.user.nickname }}</span>
-                  <div class="d-flex ps-3">
-                    <div v-for="i in Number(rev.score)" :key="i" class="bi-star-fill" />
-                  </div>
-                </div>
-                <span>{{ rev.content }}</span>
-              </div>
-            </div>
-            <div class="d-flex align-items-center">
-              <img
-                class="border-0 me-3"
-                width="80"
-                height="80"
-                :src="rev.imagePath"
-                alt="..."
-              />
-
-              <button
-                v-if="user.id === rev.userId"
-                type="button"
-                class="btn p-0"
-                @click="deleteReview(rev)"
-              >
-                <span class="material-symbols-outlined text-muted">
-                  delete
-                </span>
-              </button>
-              <span v-else class="ps-3 pe-2" />
-            </div>
-          </div>
-          <div class="d-flex flex-column">
+          <div class="d-flex flex-column py-3">
             <div class="d-flex p-3">
               <select id="level" v-model="review.score" class="fa border-0 border-bottom pb-1">
                 <option value="1" class="fa">
@@ -143,6 +109,40 @@
                   edit
                 </span>
               </button>
+            </div>
+          </div>
+          <div v-for="rev in reviews" class="p-3 d-flex justify-content-between  border-bottom">
+            <div class="d-flex">
+              <div class="d-flex flex-column">
+                <div class="d-flex">
+                  <span class="fw-bold">{{ rev.user.nickname }}</span>
+                  <div class="d-flex ps-3">
+                    <div v-for="i in Number(rev.score)" :key="i" class="bi-star-fill" />
+                  </div>
+                </div>
+                <span>{{ rev.content }}</span>
+              </div>
+            </div>
+            <div class="d-flex align-items-center">
+              <img
+                class="border-0 me-3"
+                width="80"
+                height="80"
+                :src="rev.imagePath"
+                alt="..."
+              />
+
+              <button
+                v-if="user.id === rev.userId"
+                type="button"
+                class="btn p-0"
+                @click="deleteReview(rev)"
+              >
+                <span class="material-symbols-outlined text-muted">
+                  delete
+                </span>
+              </button>
+              <span v-else class="ps-3 pe-2" />
             </div>
           </div>
         </div>
