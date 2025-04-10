@@ -2,40 +2,42 @@
   <div class="container d-flex flex-column m-0 bg-light p-3">
     <span class="navbar-brand fs-5 py-1">요리 후기</span>
     <div class="card border-0 h-100">
-      <div v-for="rev in reviews" class="p-3 d-flex justify-content-between  border-bottom">
-        <div class="p-3 d-flex">
-          <div class="d-flex flex-column">
-            <span class="fw-bold text-muted">{{ rev.recipe.title }}</span>
+      <div v-for="rev in reviews" class="p-3">
+        <span class="fs-5 text-muted">{{ rev.recipe.title }}</span>
 
-            <div class="d-flex">
-              <span class="fw-bold">{{ user.nickname }}</span>
-              <div class="d-flex ps-3">
-                <div v-for="i in Number(rev.score)" :key="i" class="bi-star-fill" />
+        <div class="d-flex justify-content-between border-bottom">
+          <div class="p-3 d-flex">
+            <div class="d-flex flex-column">
+              <div class="d-flex">
+                <span class="fw-bold">{{ user.nickname }}</span>
+                <div class="d-flex ps-3">
+                  <div v-for="i in Number(rev.score)" :key="i" class="bi-star-fill" />
+                </div>
               </div>
+              <span>{{ rev.content }}</span>
             </div>
-            <span>{{ rev.content }}</span>
           </div>
-        </div>
-        <div class="d-flex align-items-center">
-          <img
-            class="border-0 me-3"
-            width="80"
-            height="80"
-            :src="rev.imagePath"
-            alt="..."
-          />
+          <div class="d-flex align-items-center p-3">
+            <img
+              class="border-0 me-3"
+              width="80"
+              height="80"
+              :src="rev.imagePath"
+              alt="..."
+            />
 
-          <button
-            v-if="user.id === rev.userId"
-            type="button"
-            class="btn p-0"
-            @click="deleteReview(rev)"
-          >
-            <span class="material-symbols-outlined text-muted">
-              delete
-            </span>
-          </button>
-          <span v-else class="ps-3 pe-2" />
+            <button
+              v-if="user.id === rev.userId"
+              type="button"
+              class="btn p-0"
+              @click="deleteReview(rev)"
+            >
+              <span class="material-symbols-outlined text-muted">
+                delete
+              </span>
+            </button>
+            <span v-else class="ps-3 pe-2" />
+          </div>
         </div>
       </div>
     </div>
