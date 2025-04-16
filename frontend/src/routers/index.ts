@@ -4,7 +4,6 @@ import UserPage from '@/components/UserPage.vue';
 import ManagementRecipe from '@/components/ManagementRecipe.vue';
 import CookingReview from '@/components/CookingReview.vue';
 import EditMember from '@/components/EditMember.vue';
-import EditRecipe from '@/components/Modal/EditRecipe.vue';
 import RecipeDetail from '@/components/RecipeDetail.vue';
 import Login from '@/components/Login.vue';
 import Vue from 'vue';
@@ -24,10 +23,6 @@ const routes: Array<RouteConfig> = [
   {
     path: '/login',
     component: Login,
-  },
-  {
-    path: '/editRecipe',
-    component: EditRecipe,
   },
   {
     path: '/detail/:id',

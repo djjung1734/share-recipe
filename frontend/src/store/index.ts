@@ -17,6 +17,7 @@ export default new Vuex.Store({
   state: {
     selectedMenu: null,
     selectedRecipe: null,
+    selectedReview: null,
   },
   mutations: {
     selectMenu(state, menu) {
@@ -24,6 +25,9 @@ export default new Vuex.Store({
     },
     editRecipe(state, recipe) {
       state.selectedRecipe = recipe;
+    },
+    editReview(state, review) {
+      state.selectedReview = review;
     },
   },
   actions: {},
