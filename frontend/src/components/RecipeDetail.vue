@@ -225,7 +225,14 @@ export default Vue.extend({
         window.axios
           .post('/review', this.review)
           .then((response) => {
-            this.review = response.data;
+            this.review = {
+              score: 1,
+              content: '',
+              image: '',
+              imagePath: '',
+              userId: '',
+              recipeId: '',
+            };
             window.axios.get(`/review/${this.recipe.id}`).then((res) => {
               this.reviews = res.data;
             }).catch(() => null);
