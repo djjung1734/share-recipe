@@ -3,8 +3,9 @@
     <span class="navbar-brand fs-5 py-1">요리 후기</span>
     <div class="card border-0 h-100">
       <div v-for="rev in reviews" class="p-3">
-        <span class="ps-2 fs-5 text-muted">{{ rev.recipe.title }} > </span>
-
+        <router-link class="text-decoration-none" :to="`/detail/${rev.recipe.id}`">
+          <span class="ps-2 fs-5 text-muted">{{ rev.recipe.title }} > </span>
+        </router-link>
         <div class="d-flex justify-content-between border-bottom">
           <div class="p-3 d-flex">
             <div class="d-flex flex-column">

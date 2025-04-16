@@ -224,7 +224,7 @@ export default Vue.extend({
         }
         window.axios
           .post('/review', this.review)
-          .then((response) => {
+          .then(() => {
             this.review = {
               score: 1,
               content: '',
