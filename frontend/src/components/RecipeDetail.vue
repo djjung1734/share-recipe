@@ -116,32 +116,96 @@
               <div class="d-flex flex-column">
                 <div class="d-flex">
                   <span class="fw-bold">{{ rev.user.nickname }}</span>
-                  <div class="d-flex ps-3">
+                  <select v-if="edit && user.id === rev.userId" id="level" v-model="newReview.score" class="fa border-0 border-bottom pb-1 ms-3">
+                    <option value="1" class="fa">
+                      &#xf005;
+                    </option>
+                    <option value="2" class="fa">
+                      &#xf005; &#xf005;
+                    </option>
+                    <option value="3" class="fa">
+                      &#xf005; &#xf005; &#xf005;
+                    </option>
+                    <option value="4" class="fa">
+                      &#xf005; &#xf005; &#xf005; &#xf005;
+                    </option>
+                    <option value="5" class="fa">
+                      &#xf005; &#xf005; &#xf005; &#xf005; &#xf005;
+                    </option>
+                  </select>
+                  <div v-else class="d-flex ps-3">
                     <div v-for="i in Number(rev.score)" :key="i" class="bi-star-fill" />
                   </div>
                 </div>
-                <span>{{ rev.content }}</span>
+                <textarea v-if="edit && user.id === rev.userId" id="review" v-model="newReview.content" rows="2" class="w-100 border-0 border-bottom" />
+                <span v-else>{{ rev.content }}</span>
               </div>
             </div>
             <div class="d-flex align-items-center">
+              <div v-if="edit && user.id === rev.userId">
+                <label for="reviewImage">
+                  <img
+                    class="border-0 me-3"
+                    width="80"
+                    height="80"
+                    :src="newReview.imagePath"
+                    alt="..."
+                  />
+                </label>
+                <input id="reviewImage" class="upload" type="file" name="reviewImage" />
+              </div>
               <img
+                v-else
                 class="border-0 me-3"
                 width="80"
                 height="80"
                 :src="rev.imagePath"
                 alt="..."
               />
-
-              <button
-                v-if="user.id === rev.userId"
-                type="button"
-                class="btn p-0"
-                @click="deleteReview(rev)"
-              >
-                <span class="material-symbols-outlined text-muted">
-                  delete
-                </span>
-              </button>
+              <div v-if="user.id === rev.userId">
+                <button
+                  v-if="edit"
+                  type="button"
+                  class="btn p-0"
+                  @click="saveReview"
+                >
+                  <span class="material-symbols-outlined">
+                    edit
+                  </span>
+                </button>
+                <div v-else>
+                  <button
+                    type="button" class="btn p-0"
+                    data-bs-toggle="dropdown"
+                  >
+                    <span class="material-symbols-outlined text-muted">
+                      more_vert
+                    </span>
+                  </button>
+                  <div class="dropdown-menu dropdown-menu-end">
+                    <button
+                      type="button"
+                      class="dropdown-item d-flex align-items-center"
+                      @click="editReview(rev)"
+                    >
+                      <span class="material-symbols-outlined text-muted pe-1">
+                        edit
+                      </span>
+                      <span>수정하기</span>
+                    </button>
+                    <button
+                      type="button"
+                      class="dropdown-item d-flex align-items-center"
+                      @click="deleteReview(rev)"
+                    >
+                      <span class="material-symbols-outlined text-muted pe-1">
+                        delete
+                      </span>
+                      <span>삭제하기</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
               <span v-else class="ps-3 pe-2" />
             </div>
           </div>
@@ -170,7 +234,16 @@ export default Vue.extend({
         userId: '',
         recipeId: '',
       },
+      newReview: {
+        score: 1,
+        content: '',
+        image: '',
+        imagePath: '',
+        userId: '',
+        recipeId: '',
+      },
       reviews: [],
+      edit: false,
     };
   },
   computed: {
@@ -223,7 +296,7 @@ export default Vue.extend({
           this.review.imagePath = url;
         }
         window.axios
-          .post('/review', this.review)
+          .post('/review', this.edit ? this.newReview : this.review)
           .then(() => {
             this.review = {
               score: 1,
@@ -238,6 +311,11 @@ export default Vue.extend({
             }).catch(() => null);
           }).catch(() => null);
       });
+      this.edit = false;
+    },
+    editReview(review) {
+      this.edit = true;
+      this.newReview = review;
     },
     deleteReview(review) {
       if (review.id && window.confirm('리뷰를 삭제하시겠습니까?')) {
