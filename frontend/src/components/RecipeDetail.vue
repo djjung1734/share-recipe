@@ -101,6 +101,7 @@
             <div class="d-flex">
               <textarea id="review" v-model="review.content" placeholder="후기를 작성해주세요" rows="1" class="w-100 border-0 border-bottom ms-4 me-2" />
               <button
+                v-if="review.content !== ''"
                 type="button"
                 class="btn mt-3 me-4"
                 @click="saveReview"
@@ -109,6 +110,11 @@
                   edit
                 </span>
               </button>
+              <div v-else class="nobtn">
+                <span class="material-symbols-outlined text-muted">
+                  edit
+                </span>
+              </div>
             </div>
           </div>
           <div v-for="rev in reviews" class="p-3 d-flex justify-content-between  border-bottom">
@@ -347,5 +353,10 @@ export default Vue.extend({
 
 #reviewImage {
   display: none;
+}
+
+.nobtn{
+  padding: 6px 12px;
+  margin: 16px 24px 0 0;
 }
 </style>
