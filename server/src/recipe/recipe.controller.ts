@@ -1,6 +1,14 @@
 import { Recipe } from './recipe.entity';
 import { RecipeService } from './recipe.service';
-import { Controller, Get, Post, Delete, Body, Param } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Delete,
+  Body,
+  Param,
+  Query,
+} from '@nestjs/common';
 
 @Controller()
 export class RecipeController {
@@ -11,10 +19,8 @@ export class RecipeController {
     return this.recipeService.save(recipe);
   }
   @Get()
-  findAll() {
-    return this.recipeService.findAll({
-      relations: ['ingredients', 'steps', 'user'],
-    });
+  findAll(@Query('pageNum') pageNum: string) {
+    return this.recipeService.findAll(+pageNum);
   }
   @Get('/:id')
   findOne(@Param('id') id: string) {
@@ -24,11 +30,8 @@ export class RecipeController {
     });
   }
   @Get('/user/:id')
-  findWithUser(@Param('id') id: string) {
-    return this.recipeService.findAll({
-      where: { userId: +id },
-      relations: ['ingredients', 'steps', 'user'],
-    });
+  findWithUser(@Param('id') id: string, @Query('pageNum') pageNum: string) {
+    return this.recipeService.findAll(+id, +pageNum);
   }
   @Delete(':id')
   remove(@Param() id) {
