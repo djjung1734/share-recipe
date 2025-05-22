@@ -41,27 +41,33 @@
             </router-link>
           </div>
         </div>
-        <div class="d-flex justify-content-center align-items-center">
-          <button
-            v-if="pageNum > 1"
-            type="button"
-            class="btn"
-            @click="previousPage()"
-          >
-            <span class="material-symbols-outlined"> chevron_left </span>
-          </button>
-          <span class="pb-1">{{ pageNum }} / {{ lastPage }}</span>
-          <button
-            v-if="pageNum < lastPage"
-            type="button"
-            class="btn"
-            @click="nextPage()"
-          >
-            <span class="material-symbols-outlined"> chevron_right </span>
-          </button>
-        </div>
       </div>
     </section>
+    <div class="d-flex justify-content-center align-items-center">
+      <button
+        v-if="pageNum > 1"
+        type="button"
+        class="btn"
+        @click="previousPage()"
+      >
+        <span class="material-symbols-outlined"> chevron_left </span>
+      </button>
+      <button v-else type="button" class="btn invisible">
+        <span class="material-symbols-outlined"> chevron_left </span>
+      </button>
+      <span class="pb-1">{{ pageNum }} / {{ lastPage }}</span>
+      <button
+        v-if="pageNum < lastPage"
+        type="button"
+        class="btn"
+        @click="nextPage()"
+      >
+        <span class="material-symbols-outlined"> chevron_right </span>
+      </button>
+      <button v-else type="button" class="btn invisible">
+        <span class="material-symbols-outlined"> chevron_right </span>
+      </button>
+    </div>
   </div>
 </template>
 
