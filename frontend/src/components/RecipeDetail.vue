@@ -35,22 +35,28 @@
               </div>
               <div class="d-flex pb-3">
                 <span class="fw-bold pe-3">난이도</span>
-                <span v-for="i in Number(recipe.level)" :key="i" class="material-icons text-muted"> star_rate </span>
+                <span
+                  v-for="i in Number(recipe.level)"
+                  :key="i"
+                  class="material-icons text-muted"
+                >
+                  star_rate
+                </span>
               </div>
             </div>
             <div class="p-3 border-bottom">
-              <h5 class="fw-bold">
-                [재료]
-              </h5>
+              <h5 class="fw-bold">[재료]</h5>
               <h6 v-for="ingredient in recipe.ingredients" class="text-muted">
-                {{ ingredient.name }} {{ ingredient.quantity }}{{ ingredient.unit }}
+                {{ ingredient.name }} {{ ingredient.quantity
+                }}{{ ingredient.unit }}
               </h6>
             </div>
             <div class="p-3">
-              <h5 class="fw-bold">
-                [조리법]
-              </h5>
-              <div v-for="(step, i) in recipe.steps" class="p-3 d-flex justify-content-between">
+              <h5 class="fw-bold">[조리법]</h5>
+              <div
+                v-for="(step, i) in recipe.steps"
+                class="p-3 d-flex justify-content-between"
+              >
                 <div class="d-flex flex-column">
                   <span class="fw-bold fs-5">Step {{ i + 1 }}. </span>
                   <span class="fs-5">{{ step.content }}</span>
@@ -72,16 +78,14 @@
           <h5>요리 후기</h5>
           <div class="d-flex flex-column py-3">
             <div class="d-flex p-3">
-              <select id="level" v-model="review.score" class="fa border-0 border-bottom pb-1">
-                <option value="1" class="fa">
-                  &#xf005;
-                </option>
-                <option value="2" class="fa">
-                  &#xf005; &#xf005;
-                </option>
-                <option value="3" class="fa">
-                  &#xf005; &#xf005; &#xf005;
-                </option>
+              <select
+                id="level"
+                v-model="review.score"
+                class="fa border-0 border-bottom pb-1"
+              >
+                <option value="1" class="fa">&#xf005;</option>
+                <option value="2" class="fa">&#xf005; &#xf005;</option>
+                <option value="3" class="fa">&#xf005; &#xf005; &#xf005;</option>
                 <option value="4" class="fa">
                   &#xf005; &#xf005; &#xf005; &#xf005;
                 </option>
@@ -95,40 +99,51 @@
                     add_photo_alternate
                   </span>
                 </label>
-                <input id="reviewImage" class="upload" type="file" name="reviewImage" />
+                <input
+                  id="reviewImage"
+                  class="upload"
+                  type="file"
+                  name="reviewImage"
+                />
               </div>
             </div>
             <div class="d-flex">
-              <textarea id="review" v-model="review.content" placeholder="후기를 작성해주세요" rows="1" class="w-100 border-0 border-bottom ms-4 me-2" />
+              <textarea
+                id="review"
+                v-model="review.content"
+                placeholder="후기를 작성해주세요"
+                rows="1"
+                class="w-100 border-0 border-bottom ms-4 me-2"
+              />
               <button
                 v-if="review.content !== ''"
                 type="button"
                 class="btn mt-3 me-4"
                 @click="saveReview"
               >
-                <span class="material-symbols-outlined">
-                  edit
-                </span>
+                <span class="material-symbols-outlined"> edit </span>
               </button>
               <div v-else class="nobtn">
-                <span class="material-symbols-outlined text-muted">
-                  edit
-                </span>
+                <span class="material-symbols-outlined text-muted"> edit </span>
               </div>
             </div>
           </div>
-          <div v-for="rev in reviews" class="p-3 d-flex justify-content-between  border-bottom">
+          <div
+            v-for="rev in reviews"
+            class="p-3 d-flex justify-content-between border-bottom"
+          >
             <div class="d-flex">
               <div class="d-flex flex-column">
                 <div class="d-flex">
                   <span class="fw-bold">{{ rev.user.nickname }}</span>
-                  <select v-if="edit && user.id === rev.userId" id="level" v-model="newReview.score" class="fa border-0 border-bottom pb-1 ms-3">
-                    <option value="1" class="fa">
-                      &#xf005;
-                    </option>
-                    <option value="2" class="fa">
-                      &#xf005; &#xf005;
-                    </option>
+                  <select
+                    v-if="edit && user.id === rev.userId"
+                    id="level"
+                    v-model="newReview.score"
+                    class="fa border-0 border-bottom pb-1 ms-3"
+                  >
+                    <option value="1" class="fa">&#xf005;</option>
+                    <option value="2" class="fa">&#xf005; &#xf005;</option>
                     <option value="3" class="fa">
                       &#xf005; &#xf005; &#xf005;
                     </option>
@@ -140,10 +155,20 @@
                     </option>
                   </select>
                   <div v-else class="d-flex ps-3">
-                    <div v-for="i in Number(rev.score)" :key="i" class="bi-star-fill" />
+                    <div
+                      v-for="i in Number(rev.score)"
+                      :key="i"
+                      class="bi-star-fill"
+                    />
                   </div>
                 </div>
-                <textarea v-if="edit && user.id === rev.userId" id="review" v-model="newReview.content" rows="2" class="w-100 border-0 border-bottom" />
+                <textarea
+                  v-if="edit && user.id === rev.userId"
+                  id="review"
+                  v-model="newReview.content"
+                  rows="2"
+                  class="w-100 border-0 border-bottom"
+                />
                 <span v-else>{{ rev.content }}</span>
               </div>
             </div>
@@ -158,7 +183,12 @@
                     alt="..."
                   />
                 </label>
-                <input id="reviewImage" class="upload" type="file" name="reviewImage" />
+                <input
+                  id="reviewImage"
+                  class="upload"
+                  type="file"
+                  name="reviewImage"
+                />
               </div>
               <img
                 v-else
@@ -175,13 +205,12 @@
                   class="btn p-0"
                   @click="saveReview"
                 >
-                  <span class="material-symbols-outlined">
-                    edit
-                  </span>
+                  <span class="material-symbols-outlined"> edit </span>
                 </button>
                 <div v-else>
                   <button
-                    type="button" class="btn p-0"
+                    type="button"
+                    class="btn p-0"
                     data-bs-toggle="dropdown"
                   >
                     <span class="material-symbols-outlined text-muted">
@@ -215,6 +244,31 @@
               <span v-else class="ps-3 pe-2" />
             </div>
           </div>
+          <div class="d-flex justify-content-center align-items-center">
+            <button
+              v-if="pageNum > 1"
+              type="button"
+              class="btn"
+              @click="previousPage()"
+            >
+              <span class="material-symbols-outlined"> chevron_left </span>
+            </button>
+            <button v-else type="button" class="btn invisible">
+              <span class="material-symbols-outlined"> chevron_left </span>
+            </button>
+            <span class="pb-1">{{ pageNum }} / {{ lastPage }}</span>
+            <button
+              v-if="pageNum < lastPage"
+              type="button"
+              class="btn"
+              @click="nextPage()"
+            >
+              <span class="material-symbols-outlined"> chevron_right </span>
+            </button>
+            <button v-else type="button" class="btn invisible">
+              <span class="material-symbols-outlined"> chevron_right </span>
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -229,7 +283,7 @@ export default Vue.extend({
   components: {
     TopNav,
   },
-  data():any {
+  data(): any {
     return {
       recipe: null,
       review: {
@@ -250,6 +304,8 @@ export default Vue.extend({
       },
       reviews: [],
       edit: false,
+      pageNum: 1,
+      lastPage: null,
     };
   },
   computed: {
@@ -262,14 +318,26 @@ export default Vue.extend({
   },
   methods: {
     loadRecipe() {
-      window.axios.get(`/recipe/${this.$route.params.id}`).then((response) => {
-        this.recipe = response.data;
-        window.axios.get(`/review/${this.recipe.id}`).then((res) => {
-          this.reviews = res.data;
-        }).catch(() => null);
-        this.review.recipeId = this.recipe.id;
-        this.review.userId = this.user.id;
-      }).catch(() => null);
+      window.axios
+        .get(`/recipe/${this.$route.params.id}`)
+        .then((response) => {
+          this.recipe = response.data;
+          this.loadReview();
+          this.review.recipeId = this.recipe.id;
+          this.review.userId = this.user.id;
+        })
+        .catch(() => null);
+    },
+    loadReview() {
+      window.axios
+        .get(`/review/${this.recipe.id}`, {
+          params: { pageNum: this.pageNum },
+        })
+        .then((res) => {
+          this.reviews = res.data.data;
+          this.lastPage = res.data.lastPage;
+        })
+        .catch(() => null);
     },
     uploadImage(elementId) {
       return new Promise<void>((resolve, reject) => {
@@ -295,7 +363,7 @@ export default Vue.extend({
       });
     },
     async saveReview() {
-      await this.uploadImage('reviewImage').then((fileInfo:any) => {
+      await this.uploadImage('reviewImage').then((fileInfo: any) => {
         if (fileInfo) {
           const { url, originalname } = fileInfo;
           this.review.image = originalname;
@@ -312,10 +380,9 @@ export default Vue.extend({
               userId: '',
               recipeId: '',
             };
-            window.axios.get(`/review/${this.recipe.id}`).then((res) => {
-              this.reviews = res.data;
-            }).catch(() => null);
-          }).catch(() => null);
+            this.loadReview();
+          })
+          .catch(() => null);
       });
       this.edit = false;
     },
@@ -325,13 +392,27 @@ export default Vue.extend({
     },
     deleteReview(review) {
       if (review.id && window.confirm('리뷰를 삭제하시겠습니까?')) {
-        window.axios.delete(`/review/${review.id}`).then(() => {
-          window.axios.get(`/review/${this.recipe.id}`).then((res) => {
-            this.reviews = res.data;
-          }).catch(() => null);
-          alert('삭제되었습니다.');
-        }).catch(() => null);
+        window.axios
+          .delete(`/review/${review.id}`)
+          .then(() => {
+            window.axios
+              .get(`/review/${this.recipe.id}`)
+              .then((res) => {
+                this.reviews = res.data;
+              })
+              .catch(() => null);
+            alert('삭제되었습니다.');
+          })
+          .catch(() => null);
       }
+    },
+    nextPage() {
+      this.pageNum++;
+      this.loadReview();
+    },
+    previousPage() {
+      this.pageNum--;
+      this.loadReview();
     },
   },
 });
@@ -343,19 +424,19 @@ export default Vue.extend({
   height: 400px;
 }
 
-#review{
+#review {
   resize: none;
 }
 
-#review:focus{
-  outline:none;
+#review:focus {
+  outline: none;
 }
 
 #reviewImage {
   display: none;
 }
 
-.nobtn{
+.nobtn {
   padding: 6px 12px;
   margin: 16px 24px 0 0;
 }

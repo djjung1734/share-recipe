@@ -1,7 +1,7 @@
 <template>
-  <div class="h-100">
+  <div style="height: calc(100vh - 50px)">
     <TopNav />
-    <div class="d-flex">
+    <div class="d-flex h-100">
       <SideNav />
       <router-view />
     </div>

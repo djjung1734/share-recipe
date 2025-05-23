@@ -13,8 +13,16 @@ export class ReviewService {
     return this.reviewRepository.save(reviews);
   }
 
-  findAll(options?: FindManyOptions<Review>) {
-    return this.reviewRepository.find(options);
+  async findAll(pageNum: number, id?: number, req?: Request) {
+    const relationCondition = req.url.includes('/user') ? ['recipe'] : ['user'];
+    const limit = req.url.includes('/user') ? 5 : 3;
+    const [data, total] = await this.reviewRepository.findAndCount({
+      where: { recipeId: +id },
+      relations: relationCondition,
+      skip: limit * (pageNum - 1),
+      take: limit,
+    });
+    return { data, total, pageNum, lastPage: Math.ceil(total / limit) };
   }
 
   findOne(options?: FindManyOptions<Review>) {
