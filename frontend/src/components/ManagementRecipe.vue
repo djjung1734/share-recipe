@@ -32,14 +32,21 @@
                 <div
                   class="d-flex justify-content-center small text-warning mb-2"
                 >
-                  <div v-for="i in Number(recipe.level)" :key="i" class="bi-star-fill" />
+                  <div
+                    v-for="i in Number(recipe.level)"
+                    :key="i"
+                    class="bi-star-fill"
+                  />
                 </div>
-                <span class="text-muted">
-                  {{ recipe.time }}분 소요
-                </span>
+                <span class="text-muted"> {{ recipe.time }}분 소요 </span>
               </div>
-              <div class="manage position-absolute top-50 start-50 translate-middle">
-                <router-link class="text-decoration-none" :to="`/detail/${recipe.id}`">
+              <div
+                class="manage position-absolute top-50 start-50 translate-middle"
+              >
+                <router-link
+                  class="text-decoration-none"
+                  :to="`/detail/${recipe.id}`"
+                >
                   <button
                     type="button"
                     class="button btn border-0 rounded-circle m-1"
@@ -56,9 +63,7 @@
                   data-bs-target="#editRecipeModal"
                   @click="editRecipe(recipe)"
                 >
-                  <span class="material-symbols-outlined p-0 fs-5">
-                    edit
-                  </span>
+                  <span class="material-symbols-outlined p-0 fs-5"> edit </span>
                 </button>
                 <button
                   type="button"
@@ -74,7 +79,33 @@
           </div>
         </div>
       </div>
+      <div class="d-flex justify-content-center align-items-center">
+        <button
+          v-if="pageNum > 1"
+          type="button"
+          class="btn"
+          @click="previousPage()"
+        >
+          <span class="material-symbols-outlined"> chevron_left </span>
+        </button>
+        <button v-else type="button" class="btn invisible">
+          <span class="material-symbols-outlined"> chevron_left </span>
+        </button>
+        <span class="pb-1">{{ pageNum }} / {{ lastPage }}</span>
+        <button
+          v-if="pageNum < lastPage"
+          type="button"
+          class="btn"
+          @click="nextPage()"
+        >
+          <span class="material-symbols-outlined"> chevron_right </span>
+        </button>
+        <button v-else type="button" class="btn invisible">
+          <span class="material-symbols-outlined"> chevron_right </span>
+        </button>
+      </div>
     </div>
+
     <EditRecipe />
   </div>
 </template>
@@ -87,9 +118,11 @@ export default Vue.extend({
   components: {
     EditRecipe,
   },
-  data():any {
+  data(): any {
     return {
       recipes: [],
+      pageNum: 1,
+      lastPage: null,
     };
   },
   mounted() {
@@ -97,20 +130,37 @@ export default Vue.extend({
   },
   methods: {
     loadRecipes() {
-      window.axios.get(`/recipe/user/${this.$route.params.id}`).then((response) => {
-        this.recipes = response.data;
-      }).catch(() => null);
+      window.axios
+        .get(`/recipe/user/${this.$route.params.id}`, {
+          params: { pageNum: this.pageNum },
+        })
+        .then((response) => {
+          this.recipes = response.data.data;
+          this.lastPage = response.data.lastPage;
+        })
+        .catch(() => null);
     },
     editRecipe(recipe) {
       this.$store.commit('editRecipe', recipe);
     },
     deleteRecipe(recipe) {
       if (recipe.id && window.confirm('삭제하시겠습니까?')) {
-        window.axios.delete(`/recipe/${recipe.id}`).then(() => {
-          this.loadRecipes();
-          alert('삭제되었습니다.');
-        }).catch(() => null);
+        window.axios
+          .delete(`/recipe/${recipe.id}`)
+          .then(() => {
+            this.loadRecipes();
+            alert('삭제되었습니다.');
+          })
+          .catch(() => null);
       }
+    },
+    nextPage() {
+      this.pageNum++;
+      this.loadRecipes();
+    },
+    previousPage() {
+      this.pageNum--;
+      this.loadRecipes();
     },
   },
 });
@@ -121,32 +171,32 @@ export default Vue.extend({
   max-width: none;
 }
 
-.manage{
+.manage {
   display: none;
 }
 
-.button{
+.button {
   padding: 0.25rem 0.25rem 0 0.25rem;
   background-color: #fff;
 }
 
-.button span{
+.button span {
   color: #212529;
 }
 
-.button:hover{
+.button:hover {
   background-color: #212529;
 }
 
-.button:hover span{
+.button:hover span {
   color: #fff;
 }
 
-.recipe:hover{
+.recipe:hover {
   background-color: rgba(33, 37, 41, 0.5);
 }
 
-.recipe:hover .manage{
+.recipe:hover .manage {
   display: flex;
 }
 </style>

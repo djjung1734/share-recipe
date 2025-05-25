@@ -4,7 +4,7 @@
       <router-link to="/home">
         <span type="button" class="btn border-0 navbar-brand">ShareRECIPE</span>
       </router-link>
-      <div class="d-flex align-items-center w-50">
+      <!-- <div class="d-flex align-items-center w-50">
         <input
           class="form-control mr-sm-2 py-1"
           type="search"
@@ -14,7 +14,7 @@
         <button type="button" class="btn border-0">
           <span class="material-symbols-outlined text-white">search</span>
         </button>
-      </div>
+      </div> -->
       <div class="d-flex align-items-center">
         <router-link v-if="!user" class="text-decoration-none" to="/login">
           <span type="button" class="me-3 text-white" style="font-size: 12px">
@@ -36,10 +36,7 @@
             </button>
           </router-link>
         </div>
-        <div
-          v-if="user"
-          class="dropdown"
-        >
+        <div v-if="user" class="dropdown">
           <button
             type="button"
             class="btn border-0 rounded-circle dropdown-toggle"
@@ -53,7 +50,10 @@
             </span>
           </button>
           <div class="dropdown-menu dropdown-menu-end">
-            <router-link class="text-decoration-none" :to="`/${user?.id}/recipe`">
+            <router-link
+              class="text-decoration-none"
+              :to="`/${user?.id}/recipe`"
+            >
               <button
                 type="button"
                 class="dropdown-item"
@@ -62,7 +62,10 @@
                 레시피
               </button>
             </router-link>
-            <router-link class="text-decoration-none" :to="`/${user?.id}/review`">
+            <router-link
+              class="text-decoration-none"
+              :to="`/${user?.id}/review`"
+            >
               <button
                 type="button"
                 class="dropdown-item"
@@ -71,7 +74,10 @@
                 요리 후기
               </button>
             </router-link>
-            <router-link class="text-decoration-none" :to="`/${user?.id}/member`">
+            <router-link
+              class="text-decoration-none"
+              :to="`/${user?.id}/member`"
+            >
               <button
                 type="button"
                 class="dropdown-item"
