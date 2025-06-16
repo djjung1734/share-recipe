@@ -19,8 +19,11 @@ export class RecipeController {
     return this.recipeService.save(recipe);
   }
   @Get()
-  findAll(@Query('pageNum') pageNum: string) {
-    return this.recipeService.findAll(+pageNum);
+  findAll(
+    @Query('pageNum') pageNum: string,
+    @Query('keyword') keyword: string,
+  ) {
+    return this.recipeService.findAll(+pageNum, keyword);
   }
   @Get('/:id')
   findOne(@Param('id') id: string) {
@@ -31,7 +34,7 @@ export class RecipeController {
   }
   @Get('/user/:id')
   findWithUser(@Param('id') id: string, @Query('pageNum') pageNum: string) {
-    return this.recipeService.findAll(+id, +pageNum);
+    return this.recipeService.findAllForUser(+id, +pageNum);
   }
   @Delete(':id')
   remove(@Param() id) {

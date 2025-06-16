@@ -3,7 +3,23 @@
     <TopNav />
     <section>
       <div class="container px-4 px-lg-5 mt-5">
+        <div class="d-flex justify-content-center">
+          <div class="d-flex align-items-center w-75">
+            <input
+              v-model="search"
+              class="border-0 border-bottom form-control mr-sm-2 py-1"
+              type="search"
+              placeholder="Search"
+              aria-label="Search"
+            />
+            <button type="button" class="btn border-0" @click="searchRecipe()">
+              <span class="material-symbols-outlined">search</span>
+            </button>
+          </div>
+        </div>
+
         <div
+          v-if="recipes.length !== 0"
           class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-5 p-3"
         >
           <div v-for="recipe in recipes" class="col mb-5">
@@ -41,6 +57,12 @@
             </router-link>
           </div>
         </div>
+        <div
+          v-else
+          class="py-3 d-flex flex-column align-items-center justify-content-center"
+        >
+          <span>레시피가 없습니다.</span>
+        </div>
       </div>
     </section>
     <div class="d-flex justify-content-center align-items-center">
@@ -55,7 +77,9 @@
       <button v-else type="button" class="btn invisible">
         <span class="material-symbols-outlined"> chevron_left </span>
       </button>
-      <span class="pb-1">{{ pageNum }} / {{ lastPage }}</span>
+      <span class="pb-1">
+        {{ pageNum }} / {{ lastPage === 0 ? 1 : lastPage }}
+      </span>
       <button
         v-if="pageNum < lastPage"
         type="button"
@@ -84,6 +108,7 @@ export default Vue.extend({
       recipes: [],
       pageNum: 1,
       lastPage: null,
+      search: null,
     };
   },
   mounted() {
@@ -106,6 +131,18 @@ export default Vue.extend({
     previousPage() {
       this.pageNum--;
       this.loadRecipe();
+    },
+    searchRecipe() {
+      this.pageNum = 1;
+      window.axios
+        .get('/recipe', {
+          params: { pageNum: this.pageNum, keyword: this.search },
+        })
+        .then((response) => {
+          this.recipes = response.data.data;
+          this.lastPage = response.data.lastPage;
+        })
+        .catch(() => null);
     },
   },
 });
