@@ -14,19 +14,26 @@
           <div>
             <div class="p-2">
               <div>
-                <h5 class="font-weight-normal text-center">
-                  레시피 등록
-                </h5>
+                <h5 class="font-weight-normal text-center">레시피 등록</h5>
               </div>
               <div class="row g-3">
                 <div class="col-md-9 py-3">
                   <div class="ps-3 pb-1">
                     <label for="title" class="form-label">제목</label>
-                    <input id="title" v-model="recipe.title" type="text" class="form-control" />
+                    <input
+                      id="title"
+                      v-model="recipe.title"
+                      type="text"
+                      class="form-control"
+                    />
                   </div>
                   <div class="ps-3 pt-1">
                     <label for="introduce" class="form-label">요리소개</label>
-                    <textarea id="introduce" v-model="recipe.description" class="form-control" />
+                    <textarea
+                      id="introduce"
+                      v-model="recipe.description"
+                      class="form-control"
+                    />
                   </div>
                 </div>
                 <div class="col-md-3 p-3 d-flex align-items-center">
@@ -40,13 +47,22 @@
                         :src="recipe.imagePath"
                         alt="..."
                       />
-                      <div v-else class="mainImage d-flex align-items-center justify-content-center">
+                      <div
+                        v-else
+                        class="mainImage d-flex align-items-center justify-content-center"
+                      >
                         <span class="material-symbols-outlined fs-1 text-muted">
                           add_photo_alternate
                         </span>
                       </div>
                     </label>
-                    <input id="mainImage" class="upload" type="file" name="mainImage" />
+                    <input
+                      id="mainImage"
+                      class="upload"
+                      type="file"
+                      name="mainImage"
+                      @change="previewImage('main')"
+                    />
                   </div>
                 </div>
                 <div class="d-flex align-items-center pb-3">
@@ -54,50 +70,28 @@
                   <div class="col-md-4 px-1">
                     <label for="time" class="form-label">시간</label>
                     <select id="time" v-model="recipe.time" class="form-select">
-                      <option selected value="">
-                        시간
-                      </option>
-                      <option value="5">
-                        5분 이내
-                      </option>
-                      <option value="10">
-                        10분 이내
-                      </option>
-                      <option value="15">
-                        15분 이내
-                      </option>
-                      <option value="20">
-                        20분 이내
-                      </option>
-                      <option value="30">
-                        30분 이내
-                      </option>
-                      <option value="60">
-                        1시간 이내
-                      </option>
-                      <option value="90">
-                        1시간 30분 이내
-                      </option>
-                      <option value="120">
-                        2시간 이내
-                      </option>
-                      <option value="121">
-                        2시간 이상
-                      </option>
+                      <option selected value="">시간</option>
+                      <option value="5">5분 이내</option>
+                      <option value="10">10분 이내</option>
+                      <option value="15">15분 이내</option>
+                      <option value="20">20분 이내</option>
+                      <option value="30">30분 이내</option>
+                      <option value="60">1시간 이내</option>
+                      <option value="90">1시간 30분 이내</option>
+                      <option value="120">2시간 이내</option>
+                      <option value="121">2시간 이상</option>
                     </select>
                   </div>
                   <div class="col-md-4 px-1">
                     <label for="level" class="form-label">난이도</label>
-                    <select id="level" v-model="recipe.level" class="form-select">
-                      <option selected value="">
-                        난이도
-                      </option>
-                      <option value="1" class="fa">
-                        &#xf005;
-                      </option>
-                      <option value="2" class="fa">
-                        &#xf005; &#xf005;
-                      </option>
+                    <select
+                      id="level"
+                      v-model="recipe.level"
+                      class="form-select"
+                    >
+                      <option selected value="">난이도</option>
+                      <option value="1" class="fa">&#xf005;</option>
+                      <option value="2" class="fa">&#xf005; &#xf005;</option>
                       <option value="3" class="fa">
                         &#xf005; &#xf005; &#xf005;
                       </option>
@@ -157,12 +151,18 @@
                     type="button"
                     @click="removeIngredientInput(index)"
                   >
-                    <span class="material-symbols-outlined"> do_not_disturb_on </span>
+                    <span class="material-symbols-outlined">
+                      do_not_disturb_on
+                    </span>
                   </button>
                 </div>
                 <div class="d-flex align-items-center col-12 m-0 pt-3">
-                  <span class="ps-3">요리순서</span>
-                  <button type="button" class="btn px-1 mt-1" @click="addStepInput">
+                  <span class="ps-3">요리과정</span>
+                  <button
+                    type="button"
+                    class="btn px-1 mt-1"
+                    @click="addStepInput"
+                  >
                     <span class="material-symbols-outlined"> add_circle </span>
                   </button>
                 </div>
@@ -172,7 +172,11 @@
                   class="d-flex align-items-center m-0 pb-3"
                 >
                   <div class="col-md-9 p-3">
-                    <textarea id="step1" v-model="step.content" class="form-control" />
+                    <textarea
+                      id="step1"
+                      v-model="step.content"
+                      class="form-control"
+                    />
                   </div>
                   <div class="col-md-2 p-3">
                     <label :for="`detailImage${index}`">
@@ -184,20 +188,31 @@
                         :src="step.imagePath"
                         alt="..."
                       />
-                      <div v-else class="detailImage d-flex align-items-center justify-content-center">
+                      <div
+                        v-else
+                        class="detailImage d-flex align-items-center justify-content-center"
+                      >
                         <span class="material-symbols-outlined fs-3 text-muted">
                           add_photo_alternate
                         </span>
                       </div>
                     </label>
-                    <input :id="`detailImage${index}`" class="upload detailImage" type="file" :name="`detailImage${index}`" />
+                    <input
+                      :id="`detailImage${index}`"
+                      class="upload detailImage"
+                      type="file"
+                      :name="`detailImage${index}`"
+                      @change="previewImage(index)"
+                    />
                   </div>
                   <button
                     class="btn px-1 mt-1"
                     type="button"
                     @click="removeStepInput(index)"
                   >
-                    <span class="material-symbols-outlined"> do_not_disturb_on </span>
+                    <span class="material-symbols-outlined">
+                      do_not_disturb_on
+                    </span>
                   </button>
                 </div>
                 <div class="col-12 p-3">
@@ -355,6 +370,27 @@ export default Vue.extend({
         }
       });
     },
+    previewImage(type) {
+      if (type === 'main') {
+        this.uploadImage('mainImage').then((fileInfo: any) => {
+          if (fileInfo) {
+            const { url, originalname } = fileInfo;
+            this.recipe.image = originalname;
+            this.recipe.imagePath = url;
+          }
+        });
+      } else {
+        this.uploadImage(`detailImage${type}`).then((detailFileInfo: any) => {
+          if (detailFileInfo) {
+            const { url, originalname } = detailFileInfo;
+            const updatedStep = { ...this.steps[type] };
+            updatedStep.image = originalname;
+            updatedStep.imagePath = url;
+            this.steps.splice(type, 1, updatedStep);
+          }
+        });
+      }
+    },
     async saveRecipe() {
       this.recipe.userId = this.user.id;
       await this.uploadImage('mainImage').then((fileInfo: any) => {
@@ -370,24 +406,30 @@ export default Vue.extend({
             this.ingredients.forEach((ingredient) => {
               ingredient.recipeId = this.recipe.id;
             });
-            window.axios.post('/ingredient', this.ingredients).then((res) => {
-              this.ingredients = res.data;
-            }).catch(() => null);
+            window.axios
+              .post('/ingredient', this.ingredients)
+              .then((res) => {
+                this.ingredients = res.data;
+              })
+              .catch(() => null);
             this.steps.forEach((step, index) => {
               step.recipeId = this.recipe.id;
-              this.uploadImage(`detailImage${index}`).then((detailFileInfo: any) => {
-                if (detailFileInfo) {
-                  const { url, originalname } = detailFileInfo;
-                  step.image = originalname;
-                  step.imagePath = url;
+              this.uploadImage(`detailImage${index}`).then(
+                (detailFileInfo: any) => {
+                  if (detailFileInfo) {
+                    const { url, originalname } = detailFileInfo;
+                    step.image = originalname;
+                    step.imagePath = url;
+                  }
+                  window.axios
+                    .post('/step', step)
+                    .then((res) => {
+                      step = res.data;
+                    })
+                    .catch(() => null);
+                  // eslint-disable-next-line comma-dangle
                 }
-                window.axios
-                  .post('/step', step)
-                  .then((res) => {
-                    step = res.data;
-                  })
-                  .catch(() => null);
-              });
+              );
             });
           })
           .catch(() => null);
@@ -398,29 +440,30 @@ export default Vue.extend({
 </script>
 
 <style scoped>
-.form-select{
-  font-family: "Font Awesome 5 Free";
-font-weight:900;
+.form-select {
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 900;
 }
-.image{
-  width:160px;
-  height:120px;
+.image {
+  width: 160px;
+  height: 120px;
 }
-.mainImage{
-  width:160px;
-  height:120px;
-  border:1px solid;
+.mainImage {
+  width: 160px;
+  height: 120px;
+  border: 1px solid;
 }
-.detailImage{
-  width:80px;
-  height:60px;
-  border:1px solid;
+.detailImage {
+  width: 80px;
+  height: 60px;
+  border: 1px solid;
 }
-#mainImage,.detailImage {
+#mainImage,
+.detailImage {
   display: none;
 }
-.modal-body{
-    max-height: calc(100vh - 100px);
-    overflow-y: auto;
+.modal-body {
+  max-height: calc(100vh - 100px);
+  overflow-y: auto;
 }
 </style>
