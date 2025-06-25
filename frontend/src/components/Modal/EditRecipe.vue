@@ -41,9 +41,9 @@
                     <label for="mainImage">
                       <img
                         v-if="recipe.image"
-                        class="border-0"
-                        width="150px"
-                        height="100%"
+                        class="border-0 object-cover-fit"
+                        width="160px"
+                        height="120px"
                         :src="recipe.imagePath"
                         alt="..."
                       />
@@ -182,9 +182,9 @@
                     <label :for="`detailImage${index}`">
                       <img
                         v-if="step.image"
-                        class="border-0"
-                        width="150px"
-                        height="100%"
+                        class="border-0 object-cover-fit"
+                        width="120px"
+                        height="90px"
                         :src="step.imagePath"
                         alt="..."
                       />
@@ -454,8 +454,8 @@ export default Vue.extend({
   border: 1px solid;
 }
 .detailImage {
-  width: 80px;
-  height: 60px;
+  width: 120px;
+  height: 90px;
   border: 1px solid;
 }
 #mainImage,
