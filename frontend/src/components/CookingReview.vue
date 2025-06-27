@@ -79,7 +79,9 @@
         <button v-else type="button" class="btn invisible">
           <span class="material-symbols-outlined"> chevron_left </span>
         </button>
-        <span class="pb-1">{{ pageNum }} / {{ lastPage }}</span>
+        <span class="pb-1">
+          {{ pageNum }} / {{ lastPage === 0 ? 1 : lastPage }}
+        </span>
         <button
           v-if="pageNum < lastPage"
           type="button"
