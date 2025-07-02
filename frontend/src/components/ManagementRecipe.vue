@@ -154,6 +154,7 @@ export default Vue.extend({
             alert('삭제되었습니다.');
           })
           .catch(() => null);
+        window.location.reload();
       }
     },
     nextPage() {
