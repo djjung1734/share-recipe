@@ -34,7 +34,7 @@ export class RecipeController {
   }
   @Get('/user/:id')
   findWithUser(@Param('id') id: string, @Query('pageNum') pageNum: string) {
-    return this.recipeService.findAllForUser(+id, +pageNum);
+    return this.recipeService.findAllForUser(+pageNum, +id);
   }
   @Delete(':id')
   remove(@Param() id) {

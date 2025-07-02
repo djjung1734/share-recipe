@@ -108,7 +108,7 @@
       </div>
     </div>
 
-    <EditRecipe />
+    <EditRecipe @refresh-parent="refreshPage()" />
   </div>
 </template>
 
@@ -163,6 +163,9 @@ export default Vue.extend({
     previousPage() {
       this.pageNum--;
       this.loadRecipes();
+    },
+    refreshPage() {
+      window.location.reload();
     },
   },
 });

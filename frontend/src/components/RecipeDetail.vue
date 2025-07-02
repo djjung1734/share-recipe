@@ -63,7 +63,7 @@
                 </div>
                 <img
                   class="border-0 me-3"
-                  width="120"
+                  width="160"
                   height="120"
                   :src="step.imagePath"
                   alt="..."

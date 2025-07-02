@@ -434,6 +434,7 @@ export default Vue.extend({
           })
           .catch(() => null);
       });
+      this.$emit('refresh-parent');
     },
   },
 });
