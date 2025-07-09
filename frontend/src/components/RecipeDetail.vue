@@ -77,33 +77,52 @@
         <div class="card border-0 p-3">
           <h5>요리 후기</h5>
           <div class="d-flex flex-column py-3">
-            <div class="d-flex p-3">
-              <select
-                id="level"
-                v-model="review.score"
-                class="fa border-0 border-bottom pb-1"
-              >
-                <option value="1" class="fa">&#xf005;</option>
-                <option value="2" class="fa">&#xf005; &#xf005;</option>
-                <option value="3" class="fa">&#xf005; &#xf005; &#xf005;</option>
-                <option value="4" class="fa">
-                  &#xf005; &#xf005; &#xf005; &#xf005;
-                </option>
-                <option value="5" class="fa">
-                  &#xf005; &#xf005; &#xf005; &#xf005; &#xf005;
-                </option>
-              </select>
+            <div class="d-flex align-items-center p-3">
+              <div>
+                <select
+                  id="level"
+                  v-model="review.score"
+                  class="fa border-0 border-bottom pb-1"
+                >
+                  <option value="1" class="fa">&#xf005;</option>
+                  <option value="2" class="fa">&#xf005; &#xf005;</option>
+                  <option value="3" class="fa">
+                    &#xf005; &#xf005; &#xf005;
+                  </option>
+                  <option value="4" class="fa">
+                    &#xf005; &#xf005; &#xf005; &#xf005;
+                  </option>
+                  <option value="5" class="fa">
+                    &#xf005; &#xf005; &#xf005; &#xf005; &#xf005;
+                  </option>
+                </select>
+              </div>
+
               <div>
                 <label for="reviewImage">
-                  <span class="ps-3 mt-1 material-symbols-outlined">
-                    add_photo_alternate
-                  </span>
+                  <img
+                    v-if="review.image"
+                    class="border-0 object-cover-fit"
+                    width="100px"
+                    height="75px"
+                    :src="review.imagePath"
+                    alt="..."
+                  />
+                  <div
+                    v-else
+                    class="d-flex align-items-center justify-content-center"
+                  >
+                    <span class="ps-3 mt-1 material-symbols-outlined">
+                      add_photo_alternate
+                    </span>
+                  </div>
                 </label>
                 <input
                   id="reviewImage"
                   class="upload"
                   type="file"
                   name="reviewImage"
+                  @change="previewImage('review')"
                 />
               </div>
             </div>
@@ -174,27 +193,28 @@
             </div>
             <div class="d-flex align-items-center">
               <div v-if="edit && user.id === rev.userId">
-                <label for="reviewImage">
+                <label for="newReviewImage">
                   <img
                     class="border-0 me-3"
-                    width="80"
-                    height="80"
+                    width="100"
+                    height="75"
                     :src="newReview.imagePath"
                     alt="..."
                   />
                 </label>
                 <input
-                  id="reviewImage"
+                  id="newReviewImage"
                   class="upload"
                   type="file"
-                  name="reviewImage"
+                  name="newReviewImage"
+                  @change="previewImage('edit')"
                 />
               </div>
               <img
                 v-else
                 class="border-0 me-3"
-                width="80"
-                height="80"
+                width="100"
+                height="75"
                 :src="rev.imagePath"
                 alt="..."
               />
@@ -256,7 +276,9 @@
             <button v-else type="button" class="btn invisible">
               <span class="material-symbols-outlined"> chevron_left </span>
             </button>
-            <span class="pb-1">{{ pageNum }} / {{ lastPage }}</span>
+            <span class="pb-1">
+              {{ pageNum }} / {{ lastPage === 0 ? 1 : lastPage }}
+            </span>
             <button
               v-if="pageNum < lastPage"
               type="button"
@@ -395,12 +417,7 @@ export default Vue.extend({
         window.axios
           .delete(`/review/${review.id}`)
           .then(() => {
-            window.axios
-              .get(`/review/${this.recipe.id}`)
-              .then((res) => {
-                this.reviews = res.data;
-              })
-              .catch(() => null);
+            this.loadReview();
             alert('삭제되었습니다.');
           })
           .catch(() => null);
@@ -413,6 +430,25 @@ export default Vue.extend({
     previousPage() {
       this.pageNum--;
       this.loadReview();
+    },
+    previewImage(type) {
+      if (type === 'review') {
+        this.uploadImage('reviewImage').then((fileInfo: any) => {
+          if (fileInfo) {
+            const { url, originalname } = fileInfo;
+            this.review.image = originalname;
+            this.review.imagePath = url;
+          }
+        });
+      } else if (type === 'edit') {
+        this.uploadImage('newReviewImage').then((fileInfo: any) => {
+          if (fileInfo) {
+            const { url, originalname } = fileInfo;
+            this.newReview.image = originalname;
+            this.newReview.imagePath = url;
+          }
+        });
+      }
     },
   },
 });
@@ -432,7 +468,8 @@ export default Vue.extend({
   outline: none;
 }
 
-#reviewImage {
+#reviewImage,
+#newReviewImage {
   display: none;
 }
 
