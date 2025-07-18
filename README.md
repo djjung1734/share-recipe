@@ -16,6 +16,8 @@ Vue 2 기반 프론트엔드와 NestJS 기반 백엔드가 연동되어 동작�
 - Backend: NestJS, TypeORM, MySQL
 
 ## 데모
+- 회원가입 및 로그인   
+  https://github.com/user-attachments/assets/b31c637b-7a5b-4fcf-9003-17f8baadd3c2
 - 레시피 등록   
   https://github.com/user-attachments/assets/543719ea-a0cb-4375-9f8d-2cb6dddcee71
 - 검색 및 상세페이지   
