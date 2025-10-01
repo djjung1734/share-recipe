@@ -2,7 +2,7 @@
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark py-0">
     <div class="container px-1 py-0">
       <router-link to="/home">
-        <span type="button" class="btn border-0 navbar-brand">ShareRECIPE</span>
+        <span type="button" class="btn border-0 navbar-brand">SHARECIPE</span>
       </router-link>
       <div class="d-flex align-items-center">
         <router-link v-if="!user" class="text-decoration-none" to="/login">

@@ -102,7 +102,7 @@
                 <label for="reviewImage">
                   <img
                     v-if="review.image"
-                    class="border-0 object-cover-fit"
+                    class="ps-3 border-0 object-cover-fit"
                     width="100px"
                     height="75px"
                     :src="review.imagePath"
