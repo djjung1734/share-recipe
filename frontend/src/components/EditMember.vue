@@ -32,7 +32,31 @@
         </div>
         <div class="input-box">
           <label for="image">이미지</label>
-          <input id="uploadImage" class="upload" type="file" name="file" />
+          <label for="userImage">
+            <img
+              v-if="user.image"
+              class="border-0 object-cover-fit"
+              width="120px"
+              height="90px"
+              :src="preImagePath"
+              alt="..."
+            />
+            <div
+              v-else
+              class="userImage d-flex align-items-center justify-content-center"
+            >
+              <span class="material-symbols-outlined fs-3 text-muted">
+                add_photo_alternate
+              </span>
+            </div>
+          </label>
+          <input
+            id="userImage"
+            type="file"
+            class="userImage"
+            name="userImage"
+            @change="previewImage()"
+          />
         </div>
         <div class="float-end">
           <button
@@ -52,10 +76,21 @@
 import Vue from 'vue';
 
 export default Vue.extend({
+  data(): any {
+    return {
+      preImage: '',
+      preImagePath: '',
+    };
+  },
   computed: {
     user() {
       return this.$store.state.loginStore.user;
     },
+  },
+  mounted() {
+    if (this.user.image) {
+      this.preImagePath = this.user.imagePath;
+    }
   },
   methods: {
     async saveUser() {
@@ -94,7 +129,7 @@ export default Vue.extend({
     uploadImage() {
       return new Promise<void>((resolve, reject) => {
         const form = new FormData();
-        const file = <HTMLInputElement>document.getElementById('uploadImage');
+        const file = <HTMLInputElement>document.getElementById('userImage');
         if (file.files[0]) {
           form.append('upload', file.files[0]);
           window.axios
@@ -114,11 +149,23 @@ export default Vue.extend({
         }
       });
     },
+    previewImage() {
+      this.uploadImage().then((fileInfo: any) => {
+        if (fileInfo) {
+          const { url, originalname } = fileInfo;
+          this.preImage = originalname;
+          this.preImagePath = url;
+        }
+      });
+    },
   },
 });
 </script>
 
 <style scoped>
+.userImage {
+  display: none;
+}
 .input-box {
   margin: 10px 0;
   display: flex;
@@ -135,7 +182,6 @@ export default Vue.extend({
 input:focus + label,
 label {
   color: #8aa1a1;
-  pointer-events: none;
   min-width: 80px;
   margin-right: 5px;
 }
@@ -146,18 +192,5 @@ input:not(:placeholder-shown) {
 }
 .container {
   max-width: none;
-}
-input[type='file']::file-selector-button {
-  width: 100px;
-  height: 30px;
-  background: #fff;
-  border: 1px solid #8aa1a1;
-  border-radius: 10px;
-  cursor: pointer;
-  font-size: 14px;
-}
-input[type='file']::file-selector-button:hover {
-  background: #8aa1a1;
-  color: #fff;
 }
 </style>
