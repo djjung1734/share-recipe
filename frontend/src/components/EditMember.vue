@@ -37,7 +37,7 @@
               v-if="user.image"
               class="border-0 object-cover-fit"
               width="120px"
-              height="90px"
+              height="120px"
               :src="preImagePath"
               alt="..."
             />
